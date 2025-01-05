@@ -27,7 +27,14 @@ export default function Contact() {
     )
 }
 
-function ContactButton({ href, icon, label, className }) {
+interface ContactButtonProps {
+    href: string;
+    icon: any;
+    label: string;
+    className?: string;
+}
+
+function ContactButton({ href, icon, label, className }: ContactButtonProps) {
     return (
         <a
             href={href}
