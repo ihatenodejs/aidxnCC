@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 export default function Contact() {
     return (
@@ -29,7 +30,7 @@ export default function Contact() {
 
 interface ContactButtonProps {
     href: string;
-    icon: any;
+    icon: IconDefinition;
     label: string;
     className?: string;
 }
