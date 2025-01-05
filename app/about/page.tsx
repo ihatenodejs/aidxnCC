@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import AboutTmp from '../components/AboutTmp'
+import AboutPg from '../components/pages/About'
 import Footer from '../components/Footer'
 
 export default function About() {
@@ -7,7 +7,7 @@ export default function About() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
-        <AboutTmp />
+        <AboutPg />
       </main>
       <Footer />
     </div>

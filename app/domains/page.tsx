@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import DomainTmp from '../components/DomainTmp'
+import DomainsPg from '../components/pages/Domains'
 import Footer from '../components/Footer'
 
 export default function Domains() {
@@ -7,7 +7,7 @@ export default function Domains() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
-        <DomainTmp />
+        <DomainsPg />
       </main>
       <Footer />
     </div>

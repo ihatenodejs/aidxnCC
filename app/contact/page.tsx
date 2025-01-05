@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import ContactTmp from '../components/ContactTmp'
+import ContactPg from '../components/pages/Contact'
 import Footer from '../components/Footer'
 
 export default function Contact() {
@@ -7,7 +7,7 @@ export default function Contact() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
-        <ContactTmp />
+        <ContactPg />
       </main>
       <Footer />
     </div>
