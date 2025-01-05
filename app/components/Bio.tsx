@@ -18,9 +18,13 @@ export default function Bio() {
       <section id="about" className="mb-12">
         <h2 className="text-2xl font-semibold mb-4 text-gray-200">Who I am</h2>
         <p className="text-gray-300 leading-relaxed">
-          Hey there! I'm Aidan, a web developer and student from the US.<br /><br />
-          I am most interested in backend development and have experience with Node.js, Express, and Tailwind CSS.<br /><br />
-          When I'm not programming, I can be found re-flashing my phone with a new custom ROM and telling everyone I use Arch.
+          Hey there! I&apos;m Aidan, a web developer and student from the US.
+        </p>
+        <p className="text-gray-300 leading-relaxed mt-2">
+          I am most interested in backend development and have experience with Node.js, Express, and Tailwind CSS.
+        </p>
+        <p className="text-gray-300 leading-relaxed mt-2">
+          When I&apos;m not programming, I can be found re-flashing my phone with a new custom ROM and telling everyone I use Arch.
         </p>
       </section>
       

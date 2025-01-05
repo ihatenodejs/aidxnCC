@@ -15,12 +15,12 @@ export default function Contact() {
                 <ContactButton href="mailto:aidan@p0ntus.com" icon={faEnvelope} label="aidan@p0ntus.com" className="" />
             </div>
             <div className="p-6">
-                <h2 className="text-2xl font-semibold mb-4 text-gray-200">I'm a busy person</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-200">I&apos;m a busy person</h2>
                 <p className="text-gray-300 mb-4">
-                    I do a lot of things during the day and I'm not always able to respond to messages right away. Please be patient and remember not to demand things from me... Somehow this is an issue for people :(
+                    I do a lot of things during the day and I&apos;m not always able to respond to messages right away. Please be patient and remember not to demand things from me... Somehow this is an issue for people :(
                 </p>
                 <p className="text-gray-300 mb-4">
-                    For the best chance of a response, please send me a message on Telegram. If you've made a pull request on one of my repos, I will most likely respond by the next day. If you've sent me an email, I will most likely respond within three days or less.
+                    For the best chance of a response, please send me a message on Telegram. If you&apos;ve made a pull request on one of my repos, I will most likely respond by the next day. If you&apos;ve sent me an email, I will most likely respond within three days or less.
                 </p>
             </div>
         </div>
