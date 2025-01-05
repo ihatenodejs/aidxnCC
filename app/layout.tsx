@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 config.autoAddCss = false
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.className} bg-gray-900 text-gray-100`}>
         {children}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
