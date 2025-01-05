@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "domain": "aidxn.cc",
+        "usage": "The home of my primary homepage and website (v3)"
+    },
+    {
+        "id": 2,
+        "domain": "aidxn.fun",
+        "usage": "My alternative homepage (v2)"
+    },
+    {
+        "id": 3,
+        "domain": "pontusmail.org",
+        "usage": "My personal email service, free to the public"
+    },
+    {
+        "id": 4,
+        "domain": "ihate.college",
+        "usage": "One of my fun domains, used for p0ntus mail"
+    },
+    {
+        "id": 5,
+        "domain": "pontus.pics",
+        "usage": "An unused domain for an upcoming image hosting service"
+    },
+    {
+        "id": 6,
+        "domain": "p0ntus.com",
+        "usage": "A website for my online persona which hosts a small archive"
+    },
+    {
+        "id": 7,
+        "domain": "androidintegrity.org",
+        "usage": "A collaborative project to improve Google's Play Integrity"
+    },
+    {
+        "id": 8,
+        "domain": "modules.lol",
+        "usage": "An 'app store' of Magisk modules and FOSS Android apps"
+    },
+    {
+        "id": 9,
+        "domain": "wikitools.cloud",
+        "usage": "A collection of tools made by me for Wikipedia"
+    }
+]
