@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Bio() {
+export default function Home() {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="mb-12 text-center">
@@ -28,7 +28,7 @@ export default function Bio() {
         </p>
       </section>
       
-      <section id="contact" className="text-center">
+      <section id="contact">
         <h2 className="text-2xl font-semibold mb-4 text-gray-200">Send me a message</h2>
         <p className="text-gray-300 mb-6">Feel free to reach out for collaborations or just a hello :)</p>
         <a href="/contact" className="bg-gray-700 text-white px-8 py-3 rounded-full hover:bg-gray-600 transition-colors text-lg font-medium">

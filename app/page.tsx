@@ -1,15 +1,17 @@
-import Header from './components/Header'
-import Bio from './components/Bio'
-import Footer from './components/Footer'
+import Header from './components/Header';
+import HomePg from './components/pages/Home';
+import Footer from './components/Footer';
+import NowPlaying from './components/NowPlaying';
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
-        <Bio />
+        <HomePg />
+        <NowPlaying />
       </main>
       <Footer />
     </div>
-  )
+  );
 }
