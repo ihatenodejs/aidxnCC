@@ -25,12 +25,9 @@ export default function About() {
             </div>
             <div className="mt-12">
                 <h2 className="text-2xl font-semibold mb-4 text-gray-200">My GitHub Contributions</h2>
-                <div className="flex justify-center gap-4">
-                    <div className="flex flex-col gap-4 w-1/2">
-                        <img src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" alt="ihatenodejs's Stats" className="w-full" />
-                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=ihatenodejs&theme=dark&hide_border=true" alt="ihatenodejs's Streak" className="w-full" />
-                    </div>
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" alt="ihatenodejs's Top Languages" className="w-1/3" />
+                <div className="flex flex-col md:flex-row justify-center gap-4">
+                    <img src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" alt="ihatenodejs's Stats" className="w-full md:w-1/2" />
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" alt="ihatenodejs's Top Languages" className="w-full md:w-1/3" />
                 </div>
             </div>
             <div className="mt-12">
