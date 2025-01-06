@@ -13,6 +13,7 @@ export default function Contact() {
             <div className="p-6 space-y-4">
                 <ContactButton href="https://github.com/ihatenodejs" icon={faGithub} label="ihatenodejs" className="mr-3" />
                 <ContactButton href="https://t.me/p0ntu5" icon={faTelegram} label="@p0ntu5" className="mr-3" />
+                <ContactButton href="tel:+18024169516" icon={faPhone} label="(802) 416-9516" className="mr-3" />
                 <ContactButton href="mailto:aidan@p0ntus.com" icon={faEnvelope} label="aidan@p0ntus.com" className="" />
             </div>
             <div className="p-6">
@@ -20,8 +21,15 @@ export default function Contact() {
                 <p className="text-gray-300 mb-4">
                     I do a lot of things during the day and I&apos;m not always able to respond to messages right away. Please be patient and remember not to demand things from me... Somehow this is an issue for people :(
                 </p>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-300 mb-10">
                     For the best chance of a response, please send me a message on Telegram. If you&apos;ve made a pull request on one of my repos, I will most likely respond by the next day. If you&apos;ve sent me an email, I will most likely respond within three days or less.
+                </p>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-200">A note about calling and texting</h2>
+                <p className="text-gray-300 mb-4">
+                    I have a phone number listed above. Please do not call or text me unless you absolutely need to. I will likely not respond, or use an automated recording system to handle your call. No, I haven't provided you my real phone number. I may be able to respond to your call/text, just know this is not checked/used often.
+                </p>
+                <p className="text-gray-300 mb-4">
+                    If you need to get in touch with me, please send me a message on Telegram or an email.
                 </p>
             </div>
         </div>
