@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState, JSX } from 'react';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLastfm } from '@fortawesome/free-brands-svg-icons'
 import { faCompactDisc, faUser } from '@fortawesome/free-solid-svg-icons'
@@ -40,10 +41,12 @@ const NowPlaying: React.FC = () => {
     <div className="max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 pt-10 text-gray-200">Music</h2>
       <div className="now-playing flex items-center border border-gray-300 rounded-lg p-4 max-w-md mt-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg">
-        <img 
-          src={track.image.find(img => img.size === 'large')?.['#text']} 
+        <Image 
+          src={track.image.find(img => img.size === 'large')?.['#text'] || '/placeholder.png'} 
           alt={track.name} 
-          className="w-24 h-24 rounded-lg mr-4"
+          width={96} 
+          height={96} 
+          className="rounded-lg mr-4"
         />
         <div>
           <p className="font-bold">{track.name}</p>
