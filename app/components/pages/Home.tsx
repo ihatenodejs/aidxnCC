@@ -11,7 +11,7 @@ export default function Home() {
           height={150}
           className="rounded-full mx-auto mb-6 border-4 border-gray-700"
         />
-        <h1 className="text-4xl font-bold mb-2">Aidan</h1>
+        <h1 className="text-4xl font-bold mb-2 text-gray-100 glow">Aidan</h1>
         <p className="text-gray-400 text-xl">Web Developer & Student</p>
       </div>
       

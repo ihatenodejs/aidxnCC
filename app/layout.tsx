@@ -1,15 +1,13 @@
 import React from 'react';
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import { GeistSans } from 'geist/font/sans';
 
 config.autoAddCss = false
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'aidxn.cc',
@@ -48,9 +46,8 @@ export default function RootLayout({
           <meta name="robots" content="index, follow" />
           <meta name="language" content="English" />
           <meta name="author" content="aidxn.cc" />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /> 
         </head>
-        <body className={`${inter.className} bg-gray-900 text-gray-100`}>
+        <body className={`${GeistSans.className} bg-gray-900 text-gray-100`}>
           {children}
           <Analytics />
           <SpeedInsights />
