@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "aidxnCC",
+    "description": "aidxnCC is the third version of my personal website",
+    "url": "https://github.com/ihatenodejs/aidxnCC",
+    "stars": 1,
+    "forks": 1
+  },
+  {
+    "id": 2,
+    "name": "pontus-mail",
+    "description": "Landing page for p0ntus mail",
+    "url": "https://github.com/ihatenodejs/pontus-mail",
+    "stars": 7,
+    "forks": 0
+  },
+  {
+    "id": 3,
+    "name": "modules",
+    "description": "An open-source Magisk module and FOSS app store",
+    "url": "https://github.com/ihatenodejs/modules",
+    "stars": 2,
+    "forks": 0
+  },
+  {
+    "id": 4,
+    "name": "AndroidIntegrity/website",
+    "description": "AIA website source code",
+    "url": "https://github.com/AndroidIntegrity/website",
+    "stars": 5,
+    "forks": 1
+  }
+]

@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import GitHubFeatured from '../GitHubFeatured'
 
 export default function About() {
     return (
@@ -21,6 +22,20 @@ export default function About() {
                 <p className="text-gray-300">
                     I am almost always active on GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
                 </p>
+            </div>
+            <div className="mt-12">
+                <h2 className="text-2xl font-semibold mb-4 text-gray-200">My GitHub Contributions</h2>
+                <div className="flex justify-center gap-4">
+                    <div className="flex flex-col gap-4 w-1/2">
+                        <img src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" alt="ihatenodejs's Stats" className="w-full" />
+                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=ihatenodejs&theme=dark&hide_border=true" alt="ihatenodejs's Streak" className="w-full" />
+                    </div>
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" alt="ihatenodejs's Top Languages" className="w-1/3" />
+                </div>
+            </div>
+            <div className="mt-12">
+                <h2 className="text-2xl font-semibold mb-4 text-gray-200">Featured Projects</h2>
+                <GitHubFeatured />
             </div>
         </div>
     )
