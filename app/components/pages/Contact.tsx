@@ -26,7 +26,7 @@ export default function Contact() {
                 </p>
                 <h2 className="text-2xl font-semibold mb-4 text-gray-200">A note about calling and texting</h2>
                 <p className="text-gray-300 mb-4">
-                    I have a phone number listed above. Please do not call or text me unless you absolutely need to. I will likely not respond, or use an automated recording system to handle your call. No, I haven't provided you my real phone number. I may be able to respond to your call/text, just know this is not checked/used often.
+                    I have a phone number listed above. Please do not call or text me unless you absolutely need to. I will likely not respond, or use an automated recording system to handle your call. No, I haven&apos;t provided you my real phone number. I may be able to respond to your call/text, just know this is not checked/used often.
                 </p>
                 <p className="text-gray-300 mb-4">
                     If you need to get in touch with me, please send me a message on Telegram or an email.
