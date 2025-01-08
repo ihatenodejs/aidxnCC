@@ -5,7 +5,7 @@
       {
         "albumArt": "https://p0ntus.com/archives/img/noticeme.png",
         "name": "Notice Me",
-        "artist": "​tobi lou feat. MIA GLADSTONE",
+        "artist": "tobi lou feat. MIA GLADSTONE",
         "duration": "2:35",
         "link": "https://www.last.fm/music/tobi+lou/Notice+Me"
       },
@@ -36,6 +36,27 @@
         "artist": "Lay Bankz",
         "duration": "1:55",
         "link": "https://www.last.fm/music/Lay+Bankz/_/Ick"
+      },
+      {
+        "albumArt": "https://p0ntus.com/archives/img/nani.webp",
+        "name": "NANi",
+        "artist": "Saweetie",
+        "duration": "2:34",
+        "link": "https://www.last.fm/music/Saweetie/Nani"
+      },
+      {
+        "albumArt": "https://p0ntus.com/archives/img/nani.webp",
+        "name": "NANi",
+        "artist": "Saweetie",
+        "duration": "2:34",
+        "link": "https://www.last.fm/music/Saweetie/Nani"
+      },
+      {
+        "albumArt": "https://p0ntus.com/archives/img/killerloverboy.webp",
+        "name": "killer lover boy",
+        "artist": "SEB",
+        "duration": "2:14",
+        "link": "https://www.last.fm/music/Seb/_/killer+lover+boy"
       }
     ]
   }
