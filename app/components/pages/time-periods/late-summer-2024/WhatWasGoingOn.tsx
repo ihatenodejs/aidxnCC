@@ -9,10 +9,10 @@ const WhatWasGoingOnLateSummer2024: React.FC = () => {
       </h1>
       <div className="px-6 pt-6">
         <p className="text-gray-300 mb-4">
-          During late summer 2024, my depression and the "after effects" of treatment really kicked in. I had quit going to my therapist as I didn't feel like they were doing much of anything for me. I am very happy to say that since I quit my therapist, I have been doing much better.
+          During late summer 2024, my depression and the &quot;after effects&quot; of treatment really kicked in. I had quit going to my therapist as I didn&apos;t feel like they were doing much of anything for me. I am very happy to say that since I quit my therapist, I have been doing much better.
         </p>
         <p className="text-gray-300 mb-4">
-          At this time, the baseball season was over, so I was walking around much less. I was still listening to a lot of music and I started getting into less depressed songs. I was also starting to get into more "normal" music, which was an interesting phase (which I believe I'm still in).
+          At this time, the baseball season was over, so I was walking around much less. I was still listening to a lot of music and I started getting into less depressed songs. I was also starting to get into more &quot;normal&quot; music, which was an interesting phase (which I believe I&apos;m still in).
         </p>
         <p className="text-gray-300 mb-4">
           A highlight of late summer 2024 was a vacation I took. This vacation has entire albums which remind me of it and I will always cherish those memories deeply.
