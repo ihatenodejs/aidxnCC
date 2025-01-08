@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import HomePg from './components/pages/Home';
 import Footer from './components/Footer';
-import NowPlaying from './components/NowPlaying';
+import NowPlaying from './components/widgets/NowPlaying';
 
 export default function Home() {
   return (

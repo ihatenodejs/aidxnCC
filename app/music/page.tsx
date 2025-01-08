@@ -1,6 +1,6 @@
 import Header from '../components/Header'
-import MusicWidget from '../components/Music'
-import MusicInfo from '../components/MusicInfo'
+import MusicWidget from '../components/widgets/Music'
+import MusicInfo from '../components/objects/MusicInfo'
 import Footer from '../components/Footer'
 
 export default function Music() {

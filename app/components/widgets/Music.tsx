@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Play, SkipBack, SkipForward, ChevronLeft, ChevronRight } from 'lucide-react';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../objects/LoadingSpinner';
 
 interface Song {
   albumArt: string;

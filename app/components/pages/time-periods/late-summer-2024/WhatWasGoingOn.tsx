@@ -1,5 +1,5 @@
 import React from 'react';
-import BackButton from '../../../BackButton';
+import BackButton from '../../../objects/BackButton';
 
 const WhatWasGoingOnLateSummer2024: React.FC = () => {
   return (

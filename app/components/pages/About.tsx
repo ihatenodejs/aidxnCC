@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import GitHubFeatured from '../GitHubFeatured'
+import GitHubFeatured from '../widgets/GitHubFeatured'
 import Image from 'next/image'
 
 export default function About() {

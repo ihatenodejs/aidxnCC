@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons'
-import featuredProjects from '../data/featured.json'
+import featuredProjects from '../../data/featured.json'
 
 export default function GitHubFeatured() {
     return (
