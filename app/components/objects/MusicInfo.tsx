@@ -1,5 +1,5 @@
 import React from 'react';
-import MusicInfoButton from './MusicInfoButton';
+import Button from './Button';
 
 interface TimePeriod {
   title: string;
@@ -18,7 +18,7 @@ const MusicInfo: React.FC = () => {
         <section key={period.slug} className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">{period.title}</h2>
           <div className="flex justify-center">
-            <MusicInfoButton 
+            <Button 
               href={`/time-periods/${period.slug}/what-was-going-on`}
               label="WHAT WAS GOING ON"
             />
