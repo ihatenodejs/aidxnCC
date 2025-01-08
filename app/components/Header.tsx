@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWordpressSimple } from '@fortawesome/free-brands-svg-icons'
-import { faLink, faHouse, faUser, faPhone, faBars, faTimes, faTerminal } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWordpressSimple } from '@fortawesome/free-brands-svg-icons';
+import { faLink, faHouse, faUser, faPhone, faBars, faTimes, faTerminal, faMusic } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <header className="bg-gray-800">
@@ -28,6 +28,7 @@ export default function Header() {
           <li><Link href="/contact" className="flex items-center text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 transition-all"><FontAwesomeIcon icon={faPhone} className="text-md mr-2" /> Contact</Link></li>
           <li><Link href="/domains" className="flex items-center text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 transition-all"><FontAwesomeIcon icon={faLink} className="text-md mr-2" /> Domains</Link></li>
           <li><Link href="https://blog.aidxn.fun/" className="flex items-center text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 transition-all"><FontAwesomeIcon icon={faWordpressSimple} className="text-md mr-2" /> Blog</Link></li>
+          <li><Link href="/music" className="flex items-center text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 transition-all"><FontAwesomeIcon icon={faMusic} className="text-md mr-2" /> Music by Time</Link></li>
           <li className="flex items-center">
             <Link href="https://tilde.club/~lxu" className="flex items-center text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 transition-all">
               <FontAwesomeIcon icon={faTerminal} className="text-md mr-2" /> Tilde
@@ -39,5 +40,5 @@ export default function Header() {
         </ul>
       </nav>
     </header>
-  )
+  );
 }
