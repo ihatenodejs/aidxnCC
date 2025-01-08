@@ -2,47 +2,44 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faStepBackward, faStepForward, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Play, SkipBack, SkipForward, ChevronLeft, ChevronRight } from 'lucide-react';
+import LoadingSpinner from './LoadingSpinner';
+
+interface Song {
+  albumArt: string;
+  name: string;
+  artist: string;
+  duration: string;
+  link?: string;
+}
+
+interface Period {
+  timePeriod: string;
+  songs: Song[];
+}
 
 export default function Home() {
-  const [timePeriod, setTimePeriod] = useState('2020s');
-  interface Song {
-    albumArt: string;
-    name: string;
-    artist: string;
-    duration: string;
-    link?: string;
-  }
+  const [timePeriod, setTimePeriod] = useState('Summer 2024');
   const [songs, setSongs] = useState<Song[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('/data/music.json')
       .then(response => response.json())
-      .then(data => {
-        interface Song {
-          albumArt: string;
-          name: string;
-          artist: string;
-          duration: string;
-        }
-        interface Period {
-          timePeriod: string;
-          songs: Song[];
-        }
-        const selectedPeriod = data.find((period: Period) => period.timePeriod === timePeriod);        const songsList = selectedPeriod ? selectedPeriod.songs : [];
+      .then((data: Period[]) => {
+        const selectedPeriod = data.find((period) => period.timePeriod === timePeriod);
+        const songsList = selectedPeriod ? selectedPeriod.songs : [];
         setSongs(songsList);
         setCurrentIndex(Math.floor(Math.random() * songsList.length));
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching music data:', error);
+        setIsLoading(false);
       });
   }, [timePeriod]);
-
-  useEffect(() => {
-    const selectElement = document.getElementById('timePeriod');
-    if (selectElement) {
-      setTimePeriod((selectElement as HTMLSelectElement).value);
-    }
-  }, []);
 
   const handleNext = () => {
     setCurrentIndex((currentIndex + 1) % songs.length);
@@ -68,10 +65,12 @@ export default function Home() {
           </select>
         </div>
 
-        {songs.length > 0 && (
+        {isLoading && <LoadingSpinner />}
+
+        {!isLoading && songs.length > 0 && (
           <div className="relative">
             <button onClick={handlePrevious} className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-300">
-              <FontAwesomeIcon icon={faArrowLeft} size="2x" />
+              <ChevronLeft className="w-8 h-8" />
             </button>
 
             <div className="text-center">
@@ -87,19 +86,19 @@ export default function Home() {
               <p className="text-gray-300">{songs[currentIndex].duration}</p>
               <div className="mt-4">
                 <button className="mr-4 text-gray-300">
-                  <FontAwesomeIcon icon={faStepBackward} size="2x" />
+                  <SkipBack className="w-8 h-8" />
                 </button>
                 <button className="mr-4 text-gray-300" onClick={() => window.open(songs[currentIndex]?.link, '_blank')}>
-                  <FontAwesomeIcon icon={faPlay} size="2x" />
+                  <Play className="w-8 h-8" />
                 </button>
                 <button className="text-gray-300">
-                  <FontAwesomeIcon icon={faStepForward} size="2x" />
+                  <SkipForward className="w-8 h-8" />
                 </button>
               </div>
             </div>
 
             <button onClick={handleNext} className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-300">
-              <FontAwesomeIcon icon={faArrowRight} size="2x" />
+              <ChevronRight className="w-8 h-8" />
             </button>
           </div>
         )}
@@ -107,3 +106,4 @@ export default function Home() {
     </div>
   );
 }
+
