@@ -7,15 +7,31 @@ import { faPlay, faStepBackward, faStepForward, faArrowLeft, faArrowRight } from
 
 export default function Home() {
   const [timePeriod, setTimePeriod] = useState('2020s');
-  const [songs, setSongs] = useState([]);
+  interface Song {
+    albumArt: string;
+    name: string;
+    artist: string;
+    duration: string;
+    link?: string;
+  }
+  const [songs, setSongs] = useState<Song[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     fetch('/data/music.json')
       .then(response => response.json())
       .then(data => {
-        const selectedPeriod = data.find(period => period.timePeriod === timePeriod);
-        const songsList = selectedPeriod ? selectedPeriod.songs : [];
+        interface Song {
+          albumArt: string;
+          name: string;
+          artist: string;
+          duration: string;
+        }
+        interface Period {
+          timePeriod: string;
+          songs: Song[];
+        }
+        const selectedPeriod = data.find((period: Period) => period.timePeriod === timePeriod);        const songsList = selectedPeriod ? selectedPeriod.songs : [];
         setSongs(songsList);
         setCurrentIndex(Math.floor(Math.random() * songsList.length));
       });
@@ -24,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     const selectElement = document.getElementById('timePeriod');
     if (selectElement) {
-      setTimePeriod(selectElement.value);
+      setTimePeriod((selectElement as HTMLSelectElement).value);
     }
   }, []);
 

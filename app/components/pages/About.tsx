@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import GitHubFeatured from '../GitHubFeatured'
+import Image from 'next/image'
 
 export default function About() {
     return (
@@ -29,8 +30,8 @@ export default function About() {
                 <h2 className="text-2xl font-semibold mb-4 text-gray-200">My GitHub Contributions</h2>
                 <p className="text-gray-300 mb-4">You can find me on GitHub as <a href="https://github.com/ihatenodejs/" className="text-blue-400 hover:underline">ihatenodejs</a>.</p>
                 <div className="flex flex-col md:flex-row justify-center gap-4">
-                    <img src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" alt="ihatenodejs's Stats" className="w-full md:w-1/2" />
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" alt="ihatenodejs's Top Languages" className="w-full md:w-1/3" />
+                    <Image src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" alt="ihatenodejs's Stats" width={500} height={200} className="w-full md:w-1/2" />
+                    <Image src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" alt="ihatenodejs's Top Languages" width={500} height={200} className="w-full md:w-1/3" />
                 </div>
             </div>
             <div className="mt-12">
