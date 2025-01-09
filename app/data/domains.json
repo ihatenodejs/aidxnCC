@@ -43,5 +43,20 @@
     "id": 9,
     "domain": "wikitools.cloud",
     "usage": "A collection of tools made by me for Wikipedia"
+  },
+  {
+    "id": 10,
+    "domain": "dontbeevil.lol",
+    "usage": "A joke domain used for p0ntus mail"
+  },
+  {
+    "id": 11,
+    "domain": "dont-be-evil.lol",
+    "usage": "Another joke domain on p0ntus mail"
+  },
+  {
+    "id": 12,
+    "domain": "strongintegrity.life",
+    "usage": "An Android-targeted joke domain for p0ntus mail"
   }
 ]
