@@ -1,6 +1,7 @@
-import React from 'react';
+"use client"
+
+import React, { useEffect } from 'react';
 import './globals.css'
-import type { Metadata } from 'next'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -9,16 +10,34 @@ import { GeistSans } from 'geist/font/sans';
 
 config.autoAddCss = false
 
-export const metadata: Metadata = {
-  title: 'aidxn.cc',
-  description: 'The Internet home of Aidan. Come on in!',
-}
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  useEffect(() => {
+    const title = 'aidxn.cc';
+    let index = 1;
+    let forward = true;
+    const interval = setInterval(() => {
+      document.title = title.substring(0, index);
+      if (forward) {
+        index++;
+        if (index > title.length) {
+          forward = false;
+          index = title.length - 1;
+        }
+      } else {
+        index--;
+        if (index < 1) {
+          forward = true;
+          index = 1;
+        }
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
       <html lang="en" className="dark">
         <head>
@@ -41,7 +60,7 @@ export default function RootLayout({
           <meta name="theme-color" content="#ffffff" />
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="description" content={metadata.description ?? ''} />
+          <meta name="description" content="The Internet home of Aidan. Come on in!" />
           <meta name="keywords" content="blog, android, developer" />
           <meta name="robots" content="index, follow" />
           <meta name="language" content="English" />
