@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWordpressSimple } from '@fortawesome/free-brands-svg-icons';
 import { faLink, faHouse, faUser, faPhone, faBars, faTimes, faTerminal, faMusic } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 interface NavItemProps {
   href: string;
-  icon: any;
+  icon: IconDefinition;
   children: React.ReactNode;
 }
 
