@@ -24,21 +24,24 @@ body {
   }
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.transition-colors {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 .glow {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+}
+
+.hover\:glow:hover {
+  animation: pulse-glow 2s infinite;
 }
 
