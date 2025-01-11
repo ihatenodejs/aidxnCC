@@ -3,6 +3,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import GitHubFeatured from '../widgets/GitHubFeatured'
+import Image from 'next/image'
 import { useState } from 'react'
 
 export default function About() {
@@ -35,7 +36,7 @@ export default function About() {
         <p className="text-gray-300 mb-4">You can find me on GitHub as <a href="https://github.com/ihatenodejs/" className="text-blue-400 hover:underline">ihatenodejs</a>.</p>
         {!imageError && (
           <div className="flex flex-col md:flex-row justify-center gap-4">
-            <img 
+            <Image 
               src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" 
               alt="ihatenodejs's Stats" 
               width={500} 
@@ -43,8 +44,10 @@ export default function About() {
               className="w-full md:w-1/2" 
               onError={() => setImageError(true)}
               loading="eager"
+              priority
+              unoptimized
             />
-            <img 
+            <Image 
               src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" 
               alt="ihatenodejs's Top Languages" 
               width={500} 
@@ -52,6 +55,8 @@ export default function About() {
               className="w-full md:w-1/3" 
               onError={() => setImageError(true)}
               loading="eager"
+              priority
+              unoptimized
             />
           </div>
         )}
