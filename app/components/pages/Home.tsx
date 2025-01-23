@@ -28,6 +28,19 @@ export default function Home() {
           When I&apos;m not programming, I can be found re-flashing my phone with a new custom ROM and telling everyone I use Arch.
         </p>
       </section>
+
+      <section id="about" className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-200">What I do</h2>
+        <p className="text-gray-300 leading-relaxed">
+          I am at my best when I am doing system administration, but I also enjoy working on web development projects.
+        </p>
+        <p className="text-gray-300 leading-relaxed mt-2">
+          I host a few public services and websites on my VPS, most of which can be found on the &quot;Domains&quot; page with a short description.
+        </p>
+        <p className="text-gray-300 leading-relaxed mt-2">
+          I&apos;m most proud of LibreCloud/p0ntus mail, which is a cloud services provider that I self-host and maintain, free of charge.
+        </p>
+      </section>
       
       <section id="contact">
         <h2 className="text-2xl font-semibold mb-4 text-gray-200">Send me a message</h2>
