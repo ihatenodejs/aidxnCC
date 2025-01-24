@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
-import domains from '../../data/domains.json'
+import domains from '../../../public/data/domains.json'
 
 export default function About() {
   return (

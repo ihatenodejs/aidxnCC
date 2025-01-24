@@ -40,6 +40,9 @@ export default function Home() {
         <p className="text-gray-300 leading-relaxed mt-2">
           I&apos;m most proud of LibreCloud/p0ntus mail, which is a cloud services provider that I self-host and maintain, free of charge.
         </p>
+        <p className="text-gray-300 leading-relaxed mt-2">
+          I frequently write and work on a website hosted on a public Linux server, called a &quot;tilde.&quot; You can check it out by clicking the link &quot;Tilde&quot; in the header, or &quot;what?&quot; if you are still confused!
+        </p>
       </section>
       
       <section id="contact">

@@ -14,12 +14,12 @@ interface NavItemProps {
 }
 
 const NavItem = ({ href, icon, children }: NavItemProps) => (
-  <li>
+  <div className="nav-item">
     <Link href={href} className="flex items-center text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 transition-all duration-300">
       <FontAwesomeIcon icon={icon} className="text-md mr-2" />
       {children}
     </Link>
-  </li>
+  </div>
 );
 
 export default function Header() {
@@ -43,12 +43,12 @@ export default function Header() {
           <NavItem href="/domains" icon={faLink}>Domains</NavItem>
           <NavItem href="https://blog.aidxn.fun/" icon={faWordpressSimple}>Blog</NavItem>
           <NavItem href="/music" icon={faMusic}>Music by Time</NavItem>
-          <li className="flex items-center">
+          <div className="flex items-center">
             <NavItem href="https://tilde.club/~lxu" icon={faTerminal}>Tilde</NavItem>
             <a href="https://tilde.wiki/Tildeverse" className="text-gray-300 hover:text-green-400 ml-1 text-sm" target="_blank" rel="noopener noreferrer">
               <sup>what?</sup>
             </a>
-          </li>
+          </div>
         </ul>
       </nav>
     </header>

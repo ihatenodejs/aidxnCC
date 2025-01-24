@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Play, SkipBack, SkipForward, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, SkipBack, SkipForward } from 'lucide-react';
 import LoadingSpinner from '../objects/LoadingSpinner';
 
 interface Song {
@@ -19,7 +19,7 @@ interface Period {
 }
 
 export default function Home() {
-  const [timePeriod, setTimePeriod] = useState('Summer 2024');
+  const [timePeriod, setTimePeriod] = useState('Early Summer 2024');
   const [songs, setSongs] = useState<Song[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -61,7 +61,7 @@ export default function Home() {
             onChange={(e) => setTimePeriod(e.target.value)}
             className="ml-2 p-2 bg-gray-700 text-gray-300 rounded"
           >
-            <option value="Summer 2024">Summer 2024</option>
+            <option value="Early Summer 2024">Early Summer 2024</option>
           </select>
         </div>
 
@@ -69,10 +69,6 @@ export default function Home() {
 
         {!isLoading && songs.length > 0 && (
           <div className="relative">
-            <button onClick={handlePrevious} className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-300">
-              <ChevronLeft className="w-8 h-8" />
-            </button>
-
             <div className="text-center">
               <Image
                 src={songs[currentIndex].albumArt}
@@ -85,21 +81,17 @@ export default function Home() {
               <p className="text-gray-300">{songs[currentIndex].artist}</p>
               <p className="text-gray-300">{songs[currentIndex].duration}</p>
               <div className="mt-4">
-                <button className="mr-4 text-gray-300">
+                <button onClick={handlePrevious} className="mr-4 text-gray-300">
                   <SkipBack className="w-8 h-8" />
                 </button>
                 <button className="mr-4 text-gray-300" onClick={() => window.open(songs[currentIndex]?.link, '_blank')}>
                   <Play className="w-8 h-8" />
                 </button>
-                <button className="text-gray-300">
+                <button onClick={handleNext} className="text-gray-300">
                   <SkipForward className="w-8 h-8" />
                 </button>
               </div>
             </div>
-
-            <button onClick={handleNext} className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-300">
-              <ChevronRight className="w-8 h-8" />
-            </button>
           </div>
         )}
       </section>

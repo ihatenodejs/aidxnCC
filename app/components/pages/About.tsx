@@ -2,9 +2,10 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import GitHubFeatured from '../widgets/GitHubFeatured'
+import FeaturedRepos from '../widgets/FeaturedRepos'
 import Image from 'next/image'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function About() {
   const [imageError, setImageError] = useState(false);
@@ -28,12 +29,13 @@ export default function About() {
           When I&apos;m not programming, I can typically be found installing another Linux distro on my laptop or flashing a new ROM to my phone. I am also a passionate writer and I like to write creatively in my free time.
         </p>
         <p className="text-gray-300">
-          I am almost always active on GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
+          I am almost always active on <Link href="https://git.pontusmail.org/" className="text-blue-400 hover:underline">my Gitea instance</Link> and GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
         </p>
       </div>
       <div className="mt-12">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-200">My GitHub Contributions</h2>
-        <p className="text-gray-300 mb-4">You can find me on GitHub as <a href="https://github.com/ihatenodejs/" className="text-blue-400 hover:underline">ihatenodejs</a>.</p>
+        <h2 className="text-2xl font-semibold mb-4 text-gray-200">My Gitea/GitHub Contributions</h2>
+        <p className="text-gray-300 mb-4">Most of my repositories have migrated to <Link href="https://git.pontusmail.org/" className="text-blue-400 hover:underline">LibreCloud Git</Link>. My username is <Link href="https://git.pontusmail.org/aidan/" className="text-blue-400 hover:underline">aidan</Link>.</p>
+        <p className="text-gray-300 mb-4">You can find me on GitHub as <Link href="https://github.com/ihatenodejs/" className="text-blue-400 hover:underline">ihatenodejs</Link>.</p>
         {!imageError && (
           <div className="flex flex-col md:flex-row justify-center gap-4">
             <Image 
@@ -63,8 +65,8 @@ export default function About() {
       </div>
       <div className="mt-12">
         <h2 className="text-2xl font-semibold mb-4 text-gray-200">Featured Projects</h2>
-        <p className="text-gray-300 mb-6">Here&apos;s just four of my top projects.</p>
-        <GitHubFeatured />
+        <p className="text-gray-300 mb-6">Here&apos;s just four of my top projects. Star and fork counts are manually updated and count both Gitea and GitHub.</p>
+        <FeaturedRepos />
       </div>
     </div>
   )
