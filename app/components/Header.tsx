@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { House, Link as LinkIcon, User, Phone, BookOpen, Rss, Music, SquareTerminal, X, Menu } from 'lucide-react';
+import { House, Link as LinkIcon, User, Phone, BookOpen, Music, SquareTerminal, X, Menu } from 'lucide-react';
 
 interface NavItemProps {
   href: string;
@@ -39,7 +39,6 @@ export default function Header() {
           <NavItem href="/contact" icon={Phone}>Contact</NavItem>
           <NavItem href="/domains" icon={LinkIcon}>Domains</NavItem>
           <NavItem href="/manifesto" icon={BookOpen}>Manifesto</NavItem>
-          <NavItem href="https://blog.aidxn.fun/" icon={Rss}>Blog</NavItem>
           <NavItem href="/music" icon={Music}>Music by Time</NavItem>
           <div className="flex items-center">
             <NavItem href="https://tilde.club/~lxu" icon={SquareTerminal}>Tilde</NavItem>
