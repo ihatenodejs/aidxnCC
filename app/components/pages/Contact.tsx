@@ -1,12 +1,14 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { Phone } from 'lucide-react'
 import ContactButton from '../objects/ContactButton'
 
 export default function Contact() {
   return (
     <div className="max-w-2xl mx-auto text-center">
-      <FontAwesomeIcon icon={faPhone} className="text-6xl mb-6" />
+      <div className='mb-6 flex justify-center'>
+        <Phone size={60} />
+      </div>
       <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
         Contact
       </h1>
