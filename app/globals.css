@@ -45,3 +45,8 @@ html {
   animation: pulse-glow 2s infinite;
 }
 
+.sub {
+  list-style-type: circle;
+  margin-left: 2rem;
+}
+

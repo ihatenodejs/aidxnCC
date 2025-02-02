@@ -7,7 +7,7 @@ export default function About() {
         <BookOpen size={60} />
       </div>
       <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
-        Manifesto
+        Internet Manifesto
       </h1>
       <div className="px-6 pt-6">
         <h2 className="text-2xl font-semibold mb-4 text-gray-200">
@@ -47,11 +47,11 @@ export default function About() {
         </p>
         <ul className="list-disc list-inside text-left text-gray-300 mt-8 mb-4">
           <li>Respect user data as a fundamental human right</li>
-          <li>Not implement tracking and/or monetization in my services
-            <ul className="list-disc list-inside text-left text-gray-300 mt-2 mb-4">
-              <li>Ensure user data is never used for profit</li>
-            </ul>
-          </li>
+          <li>Not implement tracking and/or monetization in my services</li>
+          <ul className="sub">
+            <li>I pledge to not implement tracking or systems in which a user can be individualized or categorized</li>
+          </ul>
+          <li>Ensure user data is never used for profit</li>
           <li>Focus my services on being free and open</li>
           <li>Suggest/support technologies that help privacy</li>
         </ul>
