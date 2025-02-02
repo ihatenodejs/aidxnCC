@@ -1,7 +1,6 @@
-import Header from './components/Header';
-import HomePg from './components/pages/Home';
-import Footer from './components/Footer';
-import LastPlayed from './components/widgets/LastPlayed';
+import Header from '@/components/Header';
+import HomePg from '@/components/pages/Home';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -9,7 +8,6 @@ export default function Home() {
       <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
         <HomePg />
-        <LastPlayed />
       </main>
       <Footer />
     </div>

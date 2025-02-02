@@ -1,6 +1,6 @@
-import Header from '../components/Header'
-import DomainsPg from '../components/pages/Domains'
-import Footer from '../components/Footer'
+import Header from '@/components/Header'
+import DomainsPg from '@/components/pages/Domains'
+import Footer from '@/components/Footer'
 
 export default function Domains() {
   return (

@@ -1,5 +1,5 @@
 import { Link } from 'lucide-react'
-import domains from '../../../public/data/domains.json'
+import domains from '@/public/data/domains.json'
 
 export default function About() {
   return (

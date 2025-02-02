@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { House, Link as LinkIcon, User, Phone, BookOpen, Music, SquareTerminal, X, Menu } from 'lucide-react';
+import { House, Link as LinkIcon, User, Phone, BookOpen, Music, Users, X, Menu } from 'lucide-react';
 
 interface NavItemProps {
   href: string;
@@ -39,9 +39,9 @@ export default function Header() {
           <NavItem href="/contact" icon={Phone}>Contact</NavItem>
           <NavItem href="/domains" icon={LinkIcon}>Domains</NavItem>
           <NavItem href="/manifesto" icon={BookOpen}>Manifesto</NavItem>
-          <NavItem href="/music" icon={Music}>Music by Time</NavItem>
+          <NavItem href="/music" icon={Music}>Music</NavItem>
           <div className="flex items-center">
-            <NavItem href="https://tilde.club/~lxu" icon={SquareTerminal}>Tilde</NavItem>
+            <NavItem href="https://tilde.club/~lxu" icon={Users}>Tilde</NavItem>
             <a href="https://tilde.wiki/Tildeverse" className="text-gray-300 hover:text-green-400 ml-1 text-sm" target="_blank" rel="noopener noreferrer">
               <sup>what?</sup>
             </a>

@@ -1,6 +1,6 @@
-import Header from '../../components/Header'
-import WhatWasGoingOn from '../../components/pages/time-periods/early-summer-2024/WhatWasGoingOn'
-import Footer from '../../components/Footer'
+import Header from '@/components/Header'
+import WhatWasGoingOn from '@/components/pages/time-periods/early-summer-2024/WhatWasGoingOn'
+import Footer from '@/components/Footer'
 
 export default function EarlySummer2024() {
   return (

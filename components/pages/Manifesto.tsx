@@ -47,8 +47,12 @@ export default function About() {
         </p>
         <ul className="list-disc list-inside text-left text-gray-300 mt-8 mb-4">
           <li>Respect user data as a fundamental human right</li>
-          <li>Not implement tracking and/or monetization in my services</li>
-          <li>Focus my services to focus on being free and open</li>
+          <li>Not implement tracking and/or monetization in my services
+            <ul className="list-disc list-inside text-left text-gray-300 mt-2 mb-4">
+              <li>Ensure user data is never used for profit</li>
+            </ul>
+          </li>
+          <li>Focus my services on being free and open</li>
           <li>Suggest/support technologies that help privacy</li>
         </ul>
         <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">

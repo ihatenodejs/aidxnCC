@@ -1,6 +1,6 @@
-import Header from '../components/Header'
-import ManifestoPg from '../components/pages/Manifesto'
-import Footer from '../components/Footer'
+import Header from '@/components/Header'
+import ManifestoPg from '@/components/pages/Manifesto'
+import Footer from '@/components/Footer'
 
 export default function Manifesto() {
   return (

@@ -1,6 +1,6 @@
-import Header from '../components/Header'
-import ContactPg from '../components/pages/Contact'
-import Footer from '../components/Footer'
+import Header from '@/components/Header'
+import ContactPg from '@/components/pages/Contact'
+import Footer from '@/components/Footer'
 
 export default function Contact() {
   return (

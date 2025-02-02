@@ -1,7 +1,7 @@
-import Header from '../components/Header'
-import MusicWidget from '../components/widgets/Music'
-import MusicInfo from '../components/objects/MusicInfo'
-import Footer from '../components/Footer'
+import Header from '@/components/Header'
+import MusicWidget from '@/components/widgets/Music'
+import MusicInfo from '@/components/objects/MusicInfo'
+import Footer from '@/components/Footer'
 
 export default function Music() {
   return (

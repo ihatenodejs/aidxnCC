@@ -1,6 +1,6 @@
-import Header from '../components/Header'
-import AboutPg from '../components/pages/About'
-import Footer from '../components/Footer'
+import Header from '@/components/Header'
+import AboutPg from '@/components/pages/About'
+import Footer from '@/components/Footer'
 
 export default function About() {
   return (

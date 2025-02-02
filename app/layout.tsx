@@ -4,8 +4,6 @@ import React, { useEffect } from 'react';
 import './globals.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/react"
 import { GeistSans } from 'geist/font/sans';
 
 config.autoAddCss = false
@@ -68,8 +66,6 @@ export default function RootLayout({
         </head>
         <body className={`${GeistSans.className} bg-gray-900 text-gray-100`}>
           {children}
-          <Analytics />
-          <SpeedInsights />
         </body>
       </html>
   );
