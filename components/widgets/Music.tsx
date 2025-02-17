@@ -59,7 +59,7 @@ export default function Home() {
             id="timePeriod"
             value={timePeriod}
             onChange={(e) => setTimePeriod(e.target.value)}
-            className="ml-2 p-2 bg-gray-700 text-gray-300 rounded"
+            className="ml-2 p-2 bg-gray-700 text-gray-300 rounded-sm"
           >
             <option value="Early Summer 2024">Early Summer 2024</option>
           </select>

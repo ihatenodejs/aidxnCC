@@ -40,7 +40,7 @@ const LastPlayed: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto mb-12">
       <h2 className="text-2xl font-bold mb-4 text-gray-200">Last Played Song</h2>
-      <div className="now-playing flex items-center border border-gray-300 rounded-lg p-4 max-w-md mt-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg">
+      <div className="now-playing flex items-center border border-gray-300 rounded-lg p-4 max-w-md mt-8 bg-white/10 backdrop-filter backdrop-blur-lg">
         <Image 
           src={track.image.find(img => img.size === 'large')?.['#text'] || '/placeholder.png'} 
           alt={track.name} 

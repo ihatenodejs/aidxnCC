@@ -30,7 +30,7 @@ export default function Header() {
         <Link href="/" className="text-gray-300 hover:text-white text-2xl font-bold transition-all duration-300 hover:glow">
           aidxn.cc
         </Link>
-        <button onClick={toggleMenu} className="md:hidden text-gray-300 focus:outline-none">
+        <button onClick={toggleMenu} className="md:hidden text-gray-300 focus:outline-hidden">
           {isOpen ? <X className="text-2xl" /> : <Menu className="text-2xl" />}
         </button>
         <ul className={`flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 absolute md:static bg-gray-800 md:bg-transparent w-full md:w-auto left-0 md:left-auto top-16 md:top-auto p-4 md:p-0 transition-all duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden md:flex'}`}>
