@@ -5,12 +5,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'lastfm.freetls.fastly.net',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'p0ntus.com',
         port: '',
         pathname: '/**',
@@ -21,10 +15,15 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: '*.archive.org',
+        port: '',
+        pathname: '/**',
+      },
     ],
     dangerouslyAllowSVG: true,
   },
 };
 
 export default nextConfig;
-
