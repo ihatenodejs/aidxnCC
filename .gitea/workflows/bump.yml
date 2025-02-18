@@ -37,7 +37,7 @@ jobs:
       run: |
         git config --global user.name "LibreCloud Actions Bot"
         git config --global user.email "git@pontusmail.org"
-        git remote set-url origin https://${USERNAME_GITEA}:${TOKEN_GITEA}@git.pontusmail.org/aidan/pontus.git
+        git remote set-url origin https://${USERNAME_GITEA}:${TOKEN_GITEA}@git.pontusmail.org/aidan/aidxnCC.git
         git add .
         git commit -m "chore: bump dependencies" || exit 0
         git push origin main
