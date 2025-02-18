@@ -14,16 +14,12 @@ jobs:
 
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
     - name: Setup Bun
-      run: |
-        curl -fsSL https://bun.sh/install | bash
-        echo 'export PATH="$HOME/.bun/bin:$PATH"' >> $HOME/.bashrc
-        source $HOME/.bashrc
-        bun --version
+      uses: oven-sh/setup-bun@v2
 
     - name: Install Dependencies
       run: bun install
@@ -34,10 +30,14 @@ jobs:
     - name: Build App
       run: bun run build
 
-    - name: Commit and Push
+    - name: Commit and Push Changes
+      env:
+        USERNAME_GITEA: ${{ secrets.USERNAME_GITEA }}
+        TOKEN_GITEA: ${{ secrets.TOKEN_GITEA }}
       run: |
         git config --global user.name "LibreCloud Actions Bot"
         git config --global user.email "git@pontusmail.org"
-        git add package.json bun.lockb
+        git remote set-url origin https://${USERNAME_GITEA}:${TOKEN_GITEA}@git.pontusmail.org/aidan/pontus.git
+        git add .
         git commit -m "chore: bump dependencies" || exit 0
         git push origin main
