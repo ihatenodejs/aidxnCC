@@ -10,11 +10,11 @@
   },
   {
     "id": 2,
-    "name": "pontus-mail",
+    "name": "librecloud/web",
     "description": "Landing page for p0ntus mail",
     "github": false,
-    "url": "https://git.pontusmail.org/aidan/pontus-mail",
-    "stars": 8,
+    "url": "https://git.pontusmail.org/librecloud/web",
+    "stars": 0,
     "forks": 0
   },
   {

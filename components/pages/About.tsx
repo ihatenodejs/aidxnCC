@@ -38,7 +38,7 @@ export default function About() {
         <p className="text-gray-300 mb-4">
           I consider maintaining my technology as a hobby as well, as I devote a lot of time to it. I currently run Gentoo Linux on my Thinkpad T470s, which does not use a single bin package. I am very proud of this laptop, despite it&apos;s constant need for compiling updates.
         </p>
-        <p className="text-gray-300">
+        <p className="text-gray-300 mb-4">
           I am almost always active on <Link href="https://git.pontusmail.org/" className="text-blue-400 hover:underline">my Gitea instance</Link> and GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
         </p>
         <p className="text-gray-300 mb-4">
