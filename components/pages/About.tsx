@@ -19,18 +19,30 @@ export default function About() {
       </h1>
       <div className="px-6 pt-6">
         <p className="text-gray-300 mb-4">
-          Hey there! I&apos;m Aidan, a web developer and student, and this is my website. I&apos;m passionate about web development (although I&apos;m not great with design) and I love building things with Node.js and Express.
+          Hey there! I&apos;m Aidan, a web developer and student, and this is my website. I&apos;m passionate about web development (although I&apos;m not great with design), especially with Next.js and APIs! I enjoy working with both backend and frontend.
         </p>
-        <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">Academics</h2>
+        <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">Projects</h2>
         <p className="text-gray-300 mb-4">
-          In terms of my academic background, I am currently pursuing a degree in computer science at SNHU. I really enjoy learning, though it depends on the subject. I am mostly self-taught when it comes to programming. I prefer this style of learning, especially with programming, as it lets me learn faster and apply creativity much more.
+          I have worked on countless projects over the past five years, for the most part. I have been learning to program in Python since I was seven and have evolved from there. I got into web development due to my uncle, who taught my how to write my first lines of HTML.
+        </p>
+        <p className="text-gray-300 mb-4">
+          Recently, I have been involved in developing several projects, especially with Node.js, my new favorite language as of a year ago. My biggest project is <Link href="https://librecloud.cc">LibreCloud</Link>, a free service provider for individuals.
+        </p>
+        <p className="text-gray-300 mb-4">
+          In terms of system administration, I have developed my skills over the past three years of learning Linux for fun. I currently operate three servers running in the cloud, which run out of Germany and the United States.
         </p>
         <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">Hobbies</h2>
         <p className="text-gray-300 mb-4">
           When I&apos;m not programming, I can typically be found installing another Linux distro on my laptop or flashing a new ROM to my phone. I am also a passionate writer and I like to write creatively in my free time.
         </p>
+        <p className="text-gray-300 mb-4">
+          I consider maintaining my technology as a hobby as well, as I devote a lot of time to it. I currently run Gentoo Linux on my Thinkpad T470s, which does not use a single bin package. I am very proud of this laptop, despite it&apos;s constant need for compiling updates.
+        </p>
         <p className="text-gray-300">
           I am almost always active on <Link href="https://git.pontusmail.org/" className="text-blue-400 hover:underline">my Gitea instance</Link> and GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
+        </p>
+        <p className="text-gray-300 mb-4">
+          My Google Pixel 7 Pro (cheetah) runs LineageOS 22.1, and has been one of my favorite additions to my life. It is proudly rooted with KernelSU-Next. It has suffered one drop to it&apos;s back on a tile floor.
         </p>
       </div>
       <div className="mt-12">

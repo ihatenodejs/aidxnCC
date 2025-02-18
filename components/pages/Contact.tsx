@@ -1,5 +1,5 @@
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faTelegram, faBluesky } from '@fortawesome/free-brands-svg-icons'
 import { Phone } from 'lucide-react'
 import ContactButton from '../objects/ContactButton'
 
@@ -15,6 +15,7 @@ export default function Contact() {
       <div className="p-6 space-y-4">
         <ContactButton href="https://github.com/ihatenodejs" icon={faGithub} label="ihatenodejs" className="mr-3" />
         <ContactButton href="https://t.me/p0ntu5" icon={faTelegram} label="@p0ntu5" className="mr-3" />
+        <ContactButton href="https://bsky.app/profile/ihatenodejs.bsky.social" icon={faBluesky} label="@ihatenodejs.bsky.social" className="mr-3" />
         <ContactButton href="tel:+18024169516" icon={faPhone} label="(802) 416-9516" className="mr-3" />
         <ContactButton href="mailto:aidan@p0ntus.com" icon={faEnvelope} label="aidan@p0ntus.com" className="" />
       </div>

@@ -1,6 +1,7 @@
 # aidxnCC
 
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+[![Build Status](https://git.pontusmail.org/aidan/aidxnCC/actions/workflows/bump.yml/badge.svg)](https://git.pontusmail.org/aidan/aidxnCC/actions/?workflow=bump.yml)
 
 aidxnCC is the third version of my personal website.
 
@@ -24,10 +25,9 @@ You will need some environment variables set to properly self-host aidxnCC. They
 
 | Environment Variable | Description | Example |
 |----------------------|-------------|---------|
-| `BRAINZ_USER_AGENT`    | User agent used to make requests to MusicBrainz (should include your contact info) | `aidxnCC/1.0 ( aidan@p0ntus.com )` |
-| `LISTENBRAINZ_TOKEN`   | Your ListenBrainz user token (get this in [settings](https://listenbrainz.org/settings/)) | `0e0x0a0m-0p0l-0e0t-0o0k-0e0n00000000` |
+| `BRAINZ_USER_AGENT`  | User agent used to make requests to MusicBrainz (should include your contact info)        | `aidxnCC/1.0 ( aidan@p0ntus.com )` |
+| `LISTENBRAINZ_TOKEN` | Your ListenBrainz user token (get this in [settings](https://listenbrainz.org/settings/)) | `0e0x0a0m-0p0l-0e0t-0o0k-0e0n00000000` |
 
 ## To-Do
 
 - [ ] Dockerize for easier deployment
-- [ ] Improve speed of fetching now playing

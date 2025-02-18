@@ -1,0 +1,43 @@
+name: Bump Dependencies
+
+on:
+  push:
+    branches:
+    - main
+  schedule:
+  - cron: "0 0 * * *"
+  - cron: "0 12 * * *"
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup Bun
+      run: |
+        curl -fsSL https://bun.sh/install | bash
+        echo 'export PATH="$HOME/.bun/bin:$PATH"' >> $HOME/.bashrc
+        source $HOME/.bashrc
+        bun --version
+
+    - name: Install Dependencies
+      run: bun install
+
+    - name: Update Dependencies
+      run: bun update
+
+    - name: Build App
+      run: bun run build
+
+    - name: Commit and Push
+      run: |
+        git config --global user.name "LibreCloud Actions Bot"
+        git config --global user.email "git@pontusmail.org"
+        git add package.json bun.lockb
+        git commit -m "chore: bump dependencies" || exit 0
+        git push origin main
