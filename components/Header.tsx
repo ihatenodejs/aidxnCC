@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { House, Link as LinkIcon, User, Phone, BookOpen, Music, Users, X, Menu } from 'lucide-react';
+import { House, Link as LinkIcon, User, Phone, BookOpen, Music, Rss, X, Menu } from 'lucide-react';
 
 interface NavItemProps {
   href: string;
@@ -30,22 +30,17 @@ export default function Header() {
         <Link href="/" className="text-gray-300 hover:text-white text-2xl font-bold transition-all duration-300 hover:glow">
           aidxn.cc
         </Link>
-        <button onClick={toggleMenu} className="md:hidden text-gray-300 focus:outline-hidden">
+        <button onClick={toggleMenu} className="lg:hidden text-gray-300 focus:outline-hidden">
           {isOpen ? <X className="text-2xl" /> : <Menu className="text-2xl" />}
         </button>
-        <ul className={`flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 absolute md:static bg-gray-800 md:bg-transparent w-full md:w-auto left-0 md:left-auto top-16 md:top-auto p-4 md:p-0 transition-all duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden md:flex'}`}>
+        <ul className={`flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 absolute lg:static bg-gray-800 lg:bg-transparent w-full lg:w-auto left-0 lg:left-auto top-16 lg:top-auto p-4 lg:p-0 transition-all duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden lg:flex'}`}>
           <NavItem href="/" icon={House}>Home</NavItem>
           <NavItem href="/about" icon={User}>About</NavItem>
           <NavItem href="/contact" icon={Phone}>Contact</NavItem>
           <NavItem href="/domains" icon={LinkIcon}>Domains</NavItem>
           <NavItem href="/manifesto" icon={BookOpen}>Manifesto</NavItem>
           <NavItem href="/music" icon={Music}>Music</NavItem>
-          <div className="flex items-center">
-            <NavItem href="https://tilde.club/~lxu" icon={Users}>Tilde</NavItem>
-            <a href="https://tilde.wiki/Tildeverse" className="text-gray-300 hover:text-green-400 ml-1 text-sm" target="_blank" rel="noopener noreferrer">
-              <sup>what?</sup>
-            </a>
-          </div>
+          <NavItem href="https://disfunction.blog" icon={Rss}>Blog</NavItem>
         </ul>
       </nav>
     </header>

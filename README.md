@@ -13,6 +13,8 @@ It's built with Next.js and Tailwind CSS. aidxnCC will always be a work in progr
 
 To deploy with Vercel, simply click the button above. When prompted for environment variables, see the section below.
 
+**Own a server? Deploy on your own!** F*** Vercel, check out [Coolify](https://coolify.io/), a free and open-source alternative to Vercel. 
+
 ## Contributing
 
 Any and all contributions are welcome! Simply create a pull request and I should have a response to you within a day.

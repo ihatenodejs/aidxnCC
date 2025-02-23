@@ -5,6 +5,7 @@ import FeaturedRepos from '../widgets/FeaturedRepos'
 import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
+import Button from '../objects/Button'
 
 export default function About() {
   const [imageError, setImageError] = useState(false);
@@ -44,6 +45,14 @@ export default function About() {
         <p className="text-gray-300 mb-4">
           My Google Pixel 7 Pro (cheetah) runs LineageOS 22.1, and has been one of my favorite additions to my life. It is proudly rooted with KernelSU-Next. It has suffered one drop to it&apos;s back on a tile floor.
         </p>
+      </div>
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-200">Devices</h2>
+        <p className="text-gray-300 mb-4">You can learn more about the devices I use daily with the pages below:</p>
+        <Button
+          href="/phone"
+          label="My Phone"
+        />
       </div>
       <div className="mt-12">
         <h2 className="text-2xl font-semibold mb-4 text-gray-200">My Gitea/GitHub Contributions</h2>
