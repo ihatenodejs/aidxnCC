@@ -234,9 +234,14 @@ export default function About() {
                   <FaStar size={15} /> <FaStar size={15} /> <FaStar size={15} /> <FaStar size={15} />{" "}
                   <FaStarHalfStroke size={15} />
                 </p>
-                <p className="max-w-sm">
-                  I have really enjoyed using this phone in my daily life, and it has been the perfect companion, in
-                  comparison to my previous phone.
+                <p className="max-w-sm mt-4 lg:text-sm">
+                  Coming from a Galaxy A32 5G, the Pixel 7 Pro is a massive upgrade. The Tensor chip is highly performant, and with 12GB of RAM, the device is extremely snappy.
+                </p>
+                <p className="max-w-sm mt-4 lg:text-sm">
+                  I have had some issues with battery, although this may be due to Play Integrity Fix, which is known to consume battery. However, the camera has been a massive improvement, and the photos it is capable of taking are amazing.
+                </p>
+                <p className="max-w-sm mt-4 lg:text-sm">
+                  While the volume buttons did fall off, I do not discredit them for this, as Android makes it easy to have customizable on-screen volume buttons, something iPhones do not have.
                 </p>
               </div>
             </div>
