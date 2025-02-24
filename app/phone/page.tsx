@@ -14,7 +14,7 @@ export default function About() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="grow container mx-auto px-2 sm:px-4 py-8 md:py-12">
+      <main className="grow container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-6 flex justify-center">
             <Smartphone size={60} />
@@ -26,9 +26,9 @@ export default function About() {
             My Phone
           </h1>
         </div>
-        <div className="px-2 sm:px-6 pt-6">
+        <div className="px-6 pt-6">
           <div className="flex flex-col lg:flex-row items-start gap-6 md:gap-8">
-            <div className="w-full max-w-sm mx-auto lg:mx-0">
+            <div className="w-full max-w-sm mx-auto justify-start lg:justify-center lg:mx-0">
               <Image
                 src="/img/cheetah.png"
                 alt="Google Pixel 7 Pro (cheetah)"
@@ -44,7 +44,7 @@ export default function About() {
                   Pixel 7 Pro
                 </h1>
                 <h3 className="text-xl font-semibold mb-4 text-slate-500">cheetah</h3>
-                <hr />
+                <hr className="mb-6 lg:mb-0"/>
                 <h1 className="text-3xl font-semibold my-3 text-gray-200 flex items-center justify-center lg:justify-start">
                   <Cpu className="mr-2" />
                   Specifications
@@ -61,7 +61,7 @@ export default function About() {
                   <MemoryStick className="mr-2" size={20} />
                   <b className="mr-1">RAM:</b> 12GB
                 </p>
-                <hr className="mt-4" />
+                <hr className="my-6 lg:mt-4 lg:mb-0" />
                 <h1 className="text-3xl font-semibold my-3 text-gray-200 flex items-center justify-center lg:justify-start">
                   <Hash className="mr-2" />
                   Modifications
@@ -103,8 +103,9 @@ export default function About() {
                   </Link>
                 </p>
               </div>
-              <div className="w-full mt-8 lg:mt-0 text-center lg:text-left lg:ml-8">
-                <h1 className="text-3xl font-semibold my-3 text-gray-200 flex items-center justify-center lg:justify-start">
+              <hr className="lg:hidden" />
+              <div className="w-full text-center lg:text-left lg:ml-8">
+                <h1 className="text-3xl font-semibold mb-3 text-gray-200 flex items-center justify-center lg:justify-start">
                   <LuPackageOpen className="mr-2" />
                   Apps
                 </h1>
@@ -156,8 +157,8 @@ export default function About() {
                     ReVanced Extended
                   </Link>
                 </p>
-                <hr className="mt-4" />
-                <h1 className="text-3xl font-semibold my-3 text-gray-200 flex items-center justify-center lg:justify-start">
+                <hr className="mt-8 mb-6 lg:my-4" />
+                <h1 className="text-3xl font-semibold mb-3 text-gray-200 flex items-center justify-center lg:justify-start">
                   <Layers className="mr-2" />
                   Modules
                 </h1>
@@ -224,8 +225,9 @@ export default function About() {
                   </li>
                 </ul>
               </div>
-              <div className="w-full mt-8 lg:mt-0 text-center lg:text-left lg:ml-8">
-                <h1 className="text-3xl font-semibold my-3 text-gray-200 flex items-center justify-center lg:justify-start">
+              <hr className="mt-2 lg:mt-0 lg:hidden" />
+              <div className="w-full lg:mt-0 text-center lg:text-left lg:ml-8">
+                <h1 className="text-3xl font-semibold mb-3 text-gray-200 flex items-center justify-center lg:justify-start">
                   <SquarePen className="mr-2" />
                   Review
                 </h1>
