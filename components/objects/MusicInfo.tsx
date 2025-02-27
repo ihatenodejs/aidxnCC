@@ -13,16 +13,14 @@ const timePeriods: TimePeriod[] = [
 
 const MusicInfo: React.FC = () => {
   return (
-    <div className="max-w-2xl mx-auto text-center text-gray-200">
+    <div>
       {timePeriods.map((period) => (
         <section key={period.slug} className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">{period.title}</h2>
-          <div className="flex justify-center">
-            <Button 
-              href={`/time-periods/${period.slug}/what-was-going-on`}
-              label="WHAT WAS GOING ON"
-            />
-          </div>
+          <Button
+            href={`/time-periods/${period.slug}/what-was-going-on`}
+            label="WHAT WAS GOING ON"
+          />
         </section>
       ))}
     </div>

@@ -33,3 +33,4 @@ You will need some environment variables set to properly self-host aidxnCC. They
 ## To-Do
 
 - [ ] Dockerize for easier deployment
+- [ ] Use MusicBrainz recording collections for displaying data about music
