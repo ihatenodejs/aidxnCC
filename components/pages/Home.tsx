@@ -5,7 +5,7 @@ import Button from '../objects/Button'
 import LastPlayed from '@/components/widgets/LastPlayed'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
-
+import { Mail } from 'lucide-react'
 export default function Home() {
   const { t } = useTranslation();
 
@@ -62,6 +62,7 @@ export default function Home() {
         <Button
           href={'/contact'}
           label={t('home.contact.button')}
+          icon={Mail}
         />
       </section>
     </div>

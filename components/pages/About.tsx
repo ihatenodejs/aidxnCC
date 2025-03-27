@@ -1,6 +1,6 @@
 "use client"
 
-import { User } from 'lucide-react'
+import { User, Smartphone } from 'lucide-react'
 import FeaturedRepos from '../widgets/FeaturedRepos'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -52,6 +52,7 @@ export default function About() {
         <Button
           href="/phone"
           label="My Phone"
+          icon={Smartphone}
         />
       </div>
       <div className="mt-12">
