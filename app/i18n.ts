@@ -1,6 +1,7 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
+import enUS from '../public/locales/en-US.json'
 
 i18n
   .use(LanguageDetector)
@@ -8,7 +9,7 @@ i18n
   .init({
     resources: {
       'en-US': {
-        translation: require('../public/locales/en-US.json')
+        translation: enUS
       }
     },
     fallbackLng: 'en-US',
