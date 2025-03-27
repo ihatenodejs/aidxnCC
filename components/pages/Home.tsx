@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Button from '../objects/Button'
 import LastPlayed from '@/components/widgets/LastPlayed'
 import { useTranslation } from 'react-i18next'
-import Link from 'next/link'
+import Link from '@/components/objects/Link'
 import { Mail } from 'lucide-react'
 
 export default function Home() {
@@ -46,7 +46,7 @@ export default function Home() {
               {text}
               {secIndex === 2 && index === 1 && (
                 <>
-                  <Link href="https://nvd.nist.gov/vuln/detail/CVE-2025-29927" className="text-blue-400 hover:underline">
+                  <Link href="https://nvd.nist.gov/vuln/detail/CVE-2025-29927">
                     CVE-2025-29927
                   </Link>
                   .

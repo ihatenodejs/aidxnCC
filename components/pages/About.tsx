@@ -4,7 +4,7 @@ import { User, Smartphone } from 'lucide-react'
 import FeaturedRepos from '../widgets/FeaturedRepos'
 import Image from 'next/image'
 import { useState } from 'react'
-import Link from 'next/link'
+import Link from '@/components/objects/Link'
 import Button from '../objects/Button'
 
 export default function About() {
@@ -40,7 +40,7 @@ export default function About() {
           I consider maintaining my technology as a hobby as well, as I devote a lot of time to it. I currently run Gentoo Linux on my Thinkpad T470s, which does not use a single bin package. I am very proud of this laptop, despite it&apos;s constant need for compiling updates.
         </p>
         <p className="text-gray-300 mb-4">
-          I am almost always active on <Link href="https://git.pontusmail.org/" className="text-blue-400 hover:underline">my Gitea instance</Link> and GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
+          I am almost always active on <Link href="https://git.pontusmail.org/">my Gitea instance</Link> and GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
         </p>
         <p className="text-gray-300 mb-4">
           My Google Pixel 7 Pro (cheetah) runs LineageOS 22.1, and has been one of my favorite additions to my life. It is proudly rooted with KernelSU-Next. It has suffered one drop to it&apos;s back on a tile floor.
@@ -57,8 +57,8 @@ export default function About() {
       </div>
       <div className="mt-12">
         <h2 className="text-2xl font-semibold mb-4 text-gray-200">My Gitea/GitHub Contributions</h2>
-        <p className="text-gray-300 mb-4">Most of my repositories have migrated to <Link href="https://git.pontusmail.org/" className="text-blue-400 hover:underline">LibreCloud Git</Link>. My username is <Link href="https://git.pontusmail.org/aidan/" className="text-blue-400 hover:underline">aidan</Link>.</p>
-        <p className="text-gray-300 mb-4">You can find me on GitHub as <Link href="https://github.com/ihatenodejs/" className="text-blue-400 hover:underline">ihatenodejs</Link>.</p>
+        <p className="text-gray-300 mb-4">Most of my repositories have migrated to <Link href="https://git.pontusmail.org/">LibreCloud Git</Link>. My username is <Link href="https://git.pontusmail.org/aidan/">aidan</Link>.</p>
+        <p className="text-gray-300 mb-4">You can find me on GitHub as <Link href="https://github.com/ihatenodejs/">ihatenodejs</Link>.</p>
         {!imageError && (
           <div className="flex flex-col md:flex-row justify-center gap-4">
             <Image 

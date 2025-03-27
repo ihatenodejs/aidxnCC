@@ -7,7 +7,7 @@ import { MdOutlineAndroid } from "react-icons/md"
 import { LuPackageOpen } from "react-icons/lu"
 import { RiTelegram2Fill } from "react-icons/ri"
 import Image from "next/image"
-import Link from "next/link"
+import Link from "@/components/objects/Link"
 import { FaStarHalfStroke, FaStar } from "react-icons/fa6"
 
 export default function About() {
