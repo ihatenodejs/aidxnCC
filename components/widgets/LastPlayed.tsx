@@ -3,9 +3,9 @@
 import type React from "react"
 import { useEffect, useState, useCallback, useRef } from "react"
 import Image from "next/image"
-import { Music, ExternalLink, Disc, User, Loader2 } from "lucide-react"
+import { Music, ExternalLink, Disc, User, Loader2, AlertCircle } from "lucide-react"
 import Marquee from "react-fast-marquee"
-
+import { Progress } from "@/components/ui/progress"
 interface Track {
   track_name: string
   artist_name: string
@@ -47,110 +47,120 @@ const NowPlaying: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [loadingStatus, setLoadingStatus] = useState("Initializing")
   const [error, setError] = useState<string | null>(null)
+  const [progress, setProgress] = useState(0)
+  const [steps, setSteps] = useState(0)
+
+  const updateProgress = useCallback((current: number, total: number, status: string) => {
+    setProgress(current)
+    setSteps(total)
+    setLoadingStatus(status)
+    console.log(`[${current}/${total}] ${status}`)
+  }, [])
 
   const fetchAlbumArt = useCallback(async (artist: string, album?: string) => {
     if (!album) {
-      console.log("[i] no album found")
+      updateProgress(0, 0, "No album found")
       setCoverArt(null)
       setLoading(false)
       return
     }
     try {
-      console.log("[i] fetching album art: ", artist, album)
+      updateProgress(2, 3, `Searching for album: ${artist} - ${album}`)
       const response = await fetch(
         `https://musicbrainz.org/ws/2/release/?query=artist:${encodeURIComponent(
           artist
         )}%20AND%20release:${encodeURIComponent(album)}&fmt=json`
       )
       if (!response.ok) {
-        console.log("[!] album art fetch error:", response.status)
-        throw new Error(`HTTP error! status: ${response.status}`)
+        updateProgress(0, 0, `Album art fetch error: ${response.status}`)
+        setError("Error fetching album art (see console for details)")
+        setLoading(false)
+        return
       }
       const data = await response.json()
       if (data.releases && data.releases.length > 0) {
         const mbid = data.releases[0].id
-        console.log("✅ mbid found:", mbid)
+        updateProgress(3, 3, "Fetching cover art...")
         setTrack(prev => prev ? { ...prev, mbid: `${mbid || null}` } : { track_name: "", artist_name: "", release_name: undefined, mbid: `${mbid || null}` })
         const coverArtResponse = await fetch(`https://coverartarchive.org/release/${mbid}/front-250`)
         if (coverArtResponse.ok) {
-          console.log("✅ cover art found")
           setCoverArt(coverArtResponse.url)
+          setLoading(false)
         } else {
-          console.log("[i] cover art not found!")
+          updateProgress(0, 0, "Cover art not found")
           setCoverArt(null)
+          setLoading(false)
         }
       } else {
-        console.log("[i] no releases in data!")
+        updateProgress(0, 0, "No releases found")
         setCoverArt(null)
+        setLoading(false)
       }
     } catch (error) {
-      console.log("[!] album art error", error)
+      updateProgress(0, 0, `Error: ${error}`)
       setCoverArt(null)
-    } finally {
       setLoading(false)
-      console.log("[i] album art done")
     }
-  }, [])
+  }, [updateProgress])
 
   const fetchNowPlaying = useCallback(async () => {
-    setLoadingStatus("Fetching now playing")
-    console.log("[i] fetching now playing...")
+    updateProgress(1, 3, "Fetching current listen...")
     try {
-      const response = await fetch("https://api.listenbrainz.org/1/user/p0ntus/playing-now", {
-        headers: {
-          Authorization: `Token ${process.env.NEXT_PUBLIC_LISTENBRAINZ_TOKEN}`,
-        },
-      })
-      if (!response.ok) {
-        console.log("[!] now playing error:", response.status)
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
+      const response = await fetch("https://api.listenbrainz.org/1/user/p0ntus/playing-now")
       const data = await response.json()
+
       if (data.payload.count > 0 && data.payload.listens[0].track_metadata) {
         const trackMetadata = data.payload.listens[0].track_metadata
-        console.log("✅ track found: ", trackMetadata.track_name)
-        console.log("[i] song details: ", trackMetadata.track_name, "-", trackMetadata.artist_name, "/", trackMetadata.release_name)
+        console.log("= TRACK METADATA =")
+        if (trackMetadata.track_name) { console.log("🎵", trackMetadata.track_name) }
+        if (trackMetadata.artist_name) { console.log("🎤", trackMetadata.artist_name) }
+        if (trackMetadata.release_name) { console.log("💿", trackMetadata.release_name) }
         setTrack({
           track_name: trackMetadata.track_name,
           artist_name: trackMetadata.artist_name,
           release_name: trackMetadata.release_name,
           mbid: trackMetadata.mbid,
         })
-        setLoadingStatus("Fetching album art")
+        updateProgress(2, 3, "Finding album art...")
         await fetchAlbumArt(trackMetadata.artist_name, trackMetadata.release_name)
       } else {
-        console.log("[i] no track playing")
-        setLoadingStatus("No track playing")
+        updateProgress(0, 0, "No track playing")
         setLoading(false)
       }
     } catch (error) {
-      console.log("[!] now playing error:", error)
+      updateProgress(0, 0, `Error: ${error}`)
       setError("Error fetching now playing data")
       setLoading(false)
     }
-  }, [fetchAlbumArt])
+  }, [fetchAlbumArt, updateProgress])
 
   useEffect(() => {
     fetchNowPlaying()
   }, [fetchNowPlaying])
 
   if (loading) {
+    console.log("[LastPlayed] Loading state rendered")
     return (
       <div className="max-w-md mx-auto mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
+        <Progress value={steps > 0 ? (progress * 100) / steps : 0} className="mb-4" />
         <div className="flex items-center justify-center space-x-2">
           <Loader2 className="animate-spin text-gray-200" size={24} />
-          <p className="text-gray-200">{loadingStatus}</p>
+          <p className="text-gray-200">
+            {loadingStatus} {steps > 0 && `(${progress}/${steps})`}
+          </p>
         </div>
       </div>
     )
   }
 
   if (error) {
+    console.log("[LastPlayed] Error state rendered")
     return (
       <div className="max-w-md mx-auto mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
         <div className="flex items-center justify-center text-red-500">
+          <AlertCircle className="text-red-500 mr-2" size={24} />
           <p>{error}</p>
         </div>
       </div>
@@ -158,16 +168,11 @@ const NowPlaying: React.FC = () => {
   }
 
   if (!track) {
-    return (
-      <div className="max-w-md mx-auto mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
-        <div className="flex items-center justify-center text-gray-200">
-          <p>No track playing</p>
-        </div>
-      </div>
-    )
+    console.log("[LastPlayed] Hidden due to no track data")
+    return null
   }
 
+  console.log("[LastPlayed] Rendered track:", track.track_name)
   return (
     <div className="max-w-md mx-auto mb-12">
       <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
