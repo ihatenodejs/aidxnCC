@@ -21,14 +21,9 @@ Any and all contributions are welcome! Simply create a pull request and I should
 
 Please use common sense when contributing :)
 
-## Environment Variables
+## MusicBrainz
 
-You will need some environment variables set to properly self-host aidxnCC. They are listed below.
-
-| Environment Variable | Description | Example |
-|----------------------|-------------|---------|
-| `BRAINZ_USER_AGENT`  | User agent used to make requests to MusicBrainz (should include your contact info)        | `aidxnCC/1.0 ( aidan@p0ntus.com )` |
-| `LISTENBRAINZ_TOKEN` | Your ListenBrainz user token (get this in [settings](https://listenbrainz.org/settings/)) | `0e0x0a0m-0p0l-0e0t-0o0k-0e0n00000000` |
+This project does not use a custom user agent when interacting with the MusicBrainz API. This is because the LastPlayed component is rendered client-side and user agent support is not universal. If bugs were to occur, I believe it would be easier to block with this setup, and would likely come from only one client.
 
 ## To-Do
 
