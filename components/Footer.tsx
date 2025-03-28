@@ -1,7 +1,7 @@
 import { TbCopyrightOff } from "react-icons/tb"
 import { RxDividerVertical } from "react-icons/rx"
-import { SiNextdotjs } from "react-icons/si"
 import Link from 'next/link'
+import RandomFooterMsg from "./objects/RandomFooterMsg"
 
 export default function Footer() {
   return (
@@ -14,12 +14,7 @@ export default function Footer() {
           </div>
         </Link>
         <RxDividerVertical className="hidden sm:block mx-4"/>
-        <Link href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors mb-2 sm:mb-0">
-          <div className="flex items-center justify-center">
-            <SiNextdotjs className="text-md mr-2" />
-            Built with Next.js
-          </div>
-        </Link>
+        <RandomFooterMsg />
       </div>
     </footer>
   )
