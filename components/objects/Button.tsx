@@ -1,13 +1,13 @@
-import React from 'react';
-import Link from 'next/link';
+import React from 'react'
+import Link from 'next/link'
 
-interface MusicInfoButtonProps {
+interface ButtonProps {
   href: string;
   label: string;
   icon?: React.ElementType;
 }
 
-const MusicInfoButton: React.FC<MusicInfoButtonProps> = ({ href, label, icon }) => {
+const Button: React.FC<ButtonProps> = ({ href, label, icon }) => {
   return (
     <Link
       href={href}
@@ -19,4 +19,4 @@ const MusicInfoButton: React.FC<MusicInfoButtonProps> = ({ href, label, icon }) 
   );
 };
 
-export default MusicInfoButton;
+export default Button
