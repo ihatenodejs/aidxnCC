@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
+export const runtime = 'edge';
+
 export async function GET() {
   try {
     const response = await fetch("https://api.listenbrainz.org/1/user/p0ntus/playing-now", {
