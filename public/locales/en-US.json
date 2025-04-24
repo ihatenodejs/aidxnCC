@@ -25,6 +25,22 @@
       "description": "Feel free to reach out for collaborations or just a hello :)",
       "button": "Contact Me"
     },
+    "donation": {
+      "title": "Support my work",
+      "description": "Feeling generous? Support me or one of the causes I support!",
+      "charities": {
+        "title": "Charities",
+        "description": "I support the following charities:",
+        "unsilenced": "Unsilenced",
+        "drugpolicy": "Drug Policy Alliance",
+        "aclu": "ACLU"
+      },
+      "donate": {
+        "title": "Donate to Me",
+        "stripe": "Stripe",
+        "github": "GitHub Sponsors"
+      }
+    },
     "profile": {
       "name": "Aidan",
       "description": "SysAdmin, Developer, and Student"

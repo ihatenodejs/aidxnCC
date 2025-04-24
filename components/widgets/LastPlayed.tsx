@@ -141,7 +141,7 @@ const NowPlaying: React.FC = () => {
   if (loading) {
     console.log("[LastPlayed] Loading state rendered")
     return (
-      <div className="max-w-md mx-auto mb-12">
+      <div className="mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
         <Progress value={steps > 0 ? (progress * 100) / steps : 0} className="mb-4" />
         <div className="flex items-center justify-center space-x-2">
@@ -157,7 +157,7 @@ const NowPlaying: React.FC = () => {
   if (error) {
     console.log("[LastPlayed] Error state rendered")
     return (
-      <div className="max-w-md mx-auto mb-12">
+      <div className="mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
         <div className="flex items-center justify-center text-red-500">
           <AlertCircle className="text-red-500 mr-2" size={24} />
@@ -174,11 +174,11 @@ const NowPlaying: React.FC = () => {
 
   console.log("[LastPlayed] Rendered track:", track.track_name)
   return (
-    <div className="max-w-md mx-auto mb-12">
+    <div className="mb-12">
       <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
-      <div className="now-playing flex items-center border border-gray-300 rounded-lg p-4 bg-white/10 backdrop-filter backdrop-blur-lg shadow-lg">
+      <div className="now-playing flex items-center">
         {coverArt ? (
-          <div className="relative w-24 h-24 rounded-lg mr-4 flex-shrink-0">
+          <div className="relative w-26 h-26 md:w-40 md:h-40 rounded-lg mr-4 flex-shrink-0">
             <Image
               src={coverArt || ""}
               alt={track.track_name}
@@ -189,7 +189,7 @@ const NowPlaying: React.FC = () => {
             />
           </div>
         ) : (
-          <div className="w-24 h-24 bg-gray-200 rounded-lg mr-4 flex items-center justify-center flex-shrink-0">
+          <div className="w-26 h-26 md:w-40 md:h-40 bg-gray-200 rounded-lg mr-4 flex items-center justify-center flex-shrink-0">
             <Music size={48} className="text-gray-400" />
           </div>
         )}
