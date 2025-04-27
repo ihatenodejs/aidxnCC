@@ -1,18 +1,19 @@
 {
   "home": {
     "whoAmI": [
-      "Hey there! I'm Aidan, a systems administrator, web developer, and student from the United States. I primarily work with Node.js and Linux.",
-      "I am most interested in backend development and have experience with Node.js, Express, and Tailwind CSS. Despite my best efforts, I am no designer",
-      "When I'm not programming, I can be found re-flashing my phone with a new custom ROM and telling everyone I use Arch."
+      "Hey there! My name is Aidan, and I'm a systems administrator, full-stack developer, and student from the United States. I primarily work with Linux, Docker, Next.js, and Node.js.",
+      "I primarily focus on Linux system administration with a few servers I run for myself and others. I enjoy working on web development projects on the side, most of which are Unlicensed/CC0.",
+      "When I'm not programming, I can be found re-flashing my phone with a new custom ROM and jumping between projects."
     ],
     "whatIDo": [
-      "I am at my best when I am doing system administration, but I also enjoy working on web development projects. I enjoy contributing under open licenses more than anything. I have never felt much of a draw to profiting off my work.",
-      "I host a few public services and websites on my VPS, most of which can be found on the \"Domains\" page with a short description.",
-      "I'm most proud of LibreCloud/p0ntus mail, which is a cloud services provider that I self-host and maintain, free of charge.",
-      "I frequently write and work on a website hosted on a public Linux server, known as a \"tilde\" You can check it out"
+      "I'm at my best when I'm doing system administration, which is what I'd say I have the most experience and familiarity with.",
+      "I host a variety of public-access services and websites on my VPS, most of which can be found on my \"Domains\" page with a short description.",
+      "My biggest project is LibreCloud, a cloud services provider which I self-host and maintain. It features most services you would find from large companies like Google, although everything is free and open-source.",
+      "I frequently write and work on a website hosted on a public Linux server, known as a \"tilde.\""
     ],
     "whereYouAre": [
-      "My website is my home, not my business. I am not here to brag about my accomplishments or plug my cool SaaS product. That's why I've made every effort to make this website as personal and fun as possible.",
+      "I am not here to brag about my accomplishments or plug my cool SaaS product. That's why I've made every effort to make this website as personal and fun as possible.",
+      "I hope you find this website an interesting place to find more about me, but also learn something new, and inspire a new project or two.",
       "This page is currently hosted on Cloudflare Workers, after what happened with "
     ],
     "sections": {
@@ -22,7 +23,7 @@
     },
     "contact": {
       "title": "Send me a message",
-      "description": "Feel free to reach out for collaborations or just a hello :)",
+      "description": "Feel free to reach out for feedback, collaborations, or just a hello :)",
       "button": "Contact Me"
     },
     "donation": {
@@ -55,21 +56,22 @@
       "busyPerson": {
         "title": "I'm a busy person",
         "texts": [
-          "I do a lot of things during the day and I'm not always able to respond to messages right away. Please be patient and remember not to demand things from me... Somehow this is an issue for people :(",
+          "I'm busy most of the time, so please be patient and understanding of my workload. I can tend to be offline for a few days when I'm busy, but I will respond as soon as I can.",
           "For the best chance of a response, please send me a message on Telegram. If you've made a pull request on one of my repos, I will most likely respond by the next day. If you've sent me an email, I will most likely respond within three days or less."
         ]
       },
       "callingNote": {
         "title": "A note about calling and texting",
         "texts": [
-          "I have a phone number listed above. Please do not call or text me unless you absolutely need to. I will likely not respond, or use an automated recording system to handle your call. No, I haven't provided you my real phone number. I may be able to respond to your call/text, just know this is not checked/used often.",
-          "If you need to get in touch with me, please send me a message on Telegram or an email."
+          "I have a phone number listed above. Please do not call or text me unless you absolutely need to. I will likely not respond, or use an automated recording system to handle your call. No, I haven't provided you my actual phone number, it's a Voice over IP number. I may be able to respond to your call/text, just know this is not checked/used often.",
+          "If you need to get in touch with me, please send me a message on Telegram or an email. I will provide my actual phone number if you have a valid reason."
         ]
       }
     },
     "buttons": {
       "github": "ihatenodejs",
       "telegram": "@p0ntu5",
+      "x": "@ihatenodejs",
       "bluesky": "@aidxn.cc",
       "phone": "(802) 416-9516",
       "email": "aidan@p0ntus.com"

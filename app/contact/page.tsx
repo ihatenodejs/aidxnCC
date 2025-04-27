@@ -6,7 +6,7 @@ import ContactButton from '@/components/objects/ContactButton'
 import { Phone } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faTelegram, faBluesky } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faTelegram, faBluesky, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -26,6 +26,7 @@ export default function Contact() {
     t('contact.buttons.github'),
     t('contact.buttons.telegram'),
     t('contact.buttons.bluesky'),
+    t('contact.buttons.x'),
     t('contact.buttons.phone'),
     t('contact.buttons.email')
   ];
@@ -34,11 +35,12 @@ export default function Contact() {
     "https://github.com/ihatenodejs",
     "https://t.me/p0ntu5",
     "https://bsky.app/profile/aidxn.cc",
+    "https://x.com/ihatenodejs",
     "tel:+18024169516",
     "mailto:aidan@p0ntus.com"
   ];
   
-  const contactButtonIcons = [faGithub, faTelegram, faBluesky, faPhone, faEnvelope];
+  const contactButtonIcons = [faGithub, faTelegram, faBluesky, faXTwitter, faPhone, faEnvelope];
 
   return (
     <div className="min-h-screen flex flex-col">
