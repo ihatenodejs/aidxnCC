@@ -6,6 +6,7 @@ import Image from "next/image"
 import { Music, ExternalLink, Disc, User, Loader2, AlertCircle } from "lucide-react"
 import Marquee from "react-fast-marquee"
 import { Progress } from "@/components/ui/progress"
+import Link from "@/components/objects/Link"
 interface Track {
   track_name: string
   artist_name: string
@@ -169,7 +170,14 @@ const NowPlaying: React.FC = () => {
 
   if (!track) {
     console.log("[LastPlayed] Hidden due to no track data")
-    return null
+    return (
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold mb-4 text-gray-200">Nothing's playing right now</h2>
+        <div className="flex items-center justify-center">
+          <p>Can you believe it? I'm not listening to anything on ListenBrainz right now! If you're in the mood, feel free to check out my <Link href="https://listenbrainz.org/user/p0ntus" target="_blank" rel="noopener noreferrer">ListenBrainz</Link>.</p>
+        </div>
+      </div>
+    )
   }
 
   console.log("[LastPlayed] Rendered track:", track.track_name)

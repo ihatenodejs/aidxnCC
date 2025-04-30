@@ -20,4 +20,4 @@ export async function GET() {
     console.error('Error fetching now playing:', error)
     return NextResponse.json({ error: 'Failed to fetch now playing data' }, { status: 500 })
   }
-} 
+}

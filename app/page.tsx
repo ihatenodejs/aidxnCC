@@ -53,8 +53,9 @@ export default function Home() {
               {mainStrings[secIndex].map((text: string, index: number) => (
                 <p key={index} className="text-gray-300 leading-relaxed mt-2">
                   {text}
-                  {secIndex === 2 && index === 1 && (
+                  {secIndex === 2 && index === 2 && (
                     <>
+                      {' '}
                       <Link href="https://nvd.nist.gov/vuln/detail/CVE-2025-29927">
                         CVE-2025-29927
                       </Link>
