@@ -172,9 +172,9 @@ const NowPlaying: React.FC = () => {
     console.log("[LastPlayed] Hidden due to no track data")
     return (
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-gray-200">Nothing's playing right now</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-200">Nothing&apos;s playing right now</h2>
         <div className="flex items-center justify-center">
-          <p>Can you believe it? I'm not listening to anything on ListenBrainz right now! If you're in the mood, feel free to check out my <Link href="https://listenbrainz.org/user/p0ntus" target="_blank" rel="noopener noreferrer">ListenBrainz</Link>.</p>
+          <p>Can you believe it? I&apos;m not listening to anything on ListenBrainz right now! If you&apos;re in the mood, feel free to check out my <Link href="https://listenbrainz.org/user/p0ntus" target="_blank" rel="noopener noreferrer">ListenBrainz</Link>.</p>
         </div>
       </div>
     )
