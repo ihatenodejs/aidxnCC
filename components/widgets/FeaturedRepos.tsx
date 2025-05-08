@@ -3,10 +3,11 @@ import { faGitAlt, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import featuredProjects from '@/public/data/featured.json'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
-export default function GitHubFeatured() {
+export default function GitHubFeatured({ className }: { className?: string }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className={cn("grid grid-cols-1 md:grid-cols-2 gap-4", className)}>
       {featuredProjects.map((project) => (
         <div key={project.id} className="bg-gray-800 p-6 rounded-lg shadow-md min-h-[200px] flex flex-col">
           <div className="flex-1">

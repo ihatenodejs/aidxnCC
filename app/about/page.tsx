@@ -8,94 +8,178 @@ import FeaturedRepos from '@/components/widgets/FeaturedRepos'
 import Image from 'next/image'
 import { useState } from 'react'
 import { User, Smartphone } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { cn } from '@/lib/utils'
 
 export default function About() {
+  const { t } = useTranslation()
   const [imageError, setImageError] = useState(false)
+  const mainStrings: string[][] = [
+    t('about.projects', { returnObjects: true }) as string[],
+    t('about.hobbies', { returnObjects: true }) as string[],
+    t('about.devices', { returnObjects: true }) as string[],
+    t('about.contributions', { returnObjects: true }) as string[],
+    t('about.featuredProjects', { returnObjects: true }) as string[]
+  ]
 
+  const mainSections = [
+    t('about.sections.projects'),
+    t('about.sections.hobbies'),
+    t('about.sections.devices'),
+    t('about.sections.contributions'),
+    t('about.sections.featuredProjects')
+  ]
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="grow container mx-auto px-4 py-12">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className='mb-6 flex justify-center'>
-            <User size={60} />
-          </div>
-          <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
-            About Me
-          </h1>
-          <div className="px-6 pt-6">
-            <p className="text-gray-300 mb-4">
-              Hey there! I&apos;m Aidan, a web developer and student, and this is my website. I&apos;m passionate about web development (although I&apos;m not great with design), especially with Next.js and APIs! I enjoy working with both backend and frontend.
-            </p>
-            <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">Projects</h2>
-            <p className="text-gray-300 mb-4">
-              I have worked on countless projects over the past five years, for the most part. I have been learning to program in Python since I was seven and have evolved from there. I got into web development due to my uncle, who taught my how to write my first lines of HTML.
-            </p>
-            <p className="text-gray-300 mb-4">
-              Recently, I have been involved in developing several projects, especially with Node.js, my new favorite language as of a year ago. My biggest project is <Link href="https://librecloud.cc">LibreCloud</Link>, a free service provider for individuals.
-            </p>
-            <p className="text-gray-300 mb-4">
-              In terms of system administration, I have developed my skills over the past three years of learning Linux for fun. I currently operate three servers running in the cloud, which run out of Germany and the United States.
-            </p>
-            <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">Hobbies</h2>
-            <p className="text-gray-300 mb-4">
-              When I&apos;m not programming, I can typically be found installing another Linux distro on my laptop or flashing a new ROM to my phone. I am also a passionate writer and I like to write creatively in my free time.
-            </p>
-            <p className="text-gray-300 mb-4">
-              I consider maintaining my technology as a hobby as well, as I devote a lot of time to it. I currently run Gentoo Linux on my Thinkpad T470s, which does not use a single bin package. I am very proud of this laptop, despite it&apos;s constant need for compiling updates.
-            </p>
-            <p className="text-gray-300 mb-4">
-              I am almost always active on <Link href="https://git.pontusmail.org/">my Gitea instance</Link> and GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you&apos;re currently on is free and open source. It&apos;s even under the public domain!
-            </p>
-            <p className="text-gray-300 mb-4">
-              My Google Pixel 7 Pro (cheetah) runs LineageOS 22.1, and has been one of my favorite additions to my life. It is proudly rooted with KernelSU-Next. It has suffered one drop to it&apos;s back on a tile floor.
-            </p>
-          </div>
-          <div className="mt-12">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-200">Devices</h2>
-            <p className="text-gray-300 mb-4">You can learn more about the devices I use daily with the pages below:</p>
-            <Button
-              href="/phone"
-              label="My Phone"
-              icon={Smartphone}
-            />
-          </div>
-          <div className="mt-12">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-200">My Gitea/GitHub Contributions</h2>
-            <p className="text-gray-300 mb-4">Most of my repositories have migrated to <Link href="https://git.pontusmail.org/">LibreCloud Git</Link>. My username is <Link href="https://git.pontusmail.org/aidan/">aidan</Link>.</p>
-            <p className="text-gray-300 mb-4">You can find me on GitHub as <Link href="https://github.com/ihatenodejs/">ihatenodejs</Link>.</p>
-            {!imageError && (
-              <div className="flex flex-col md:flex-row justify-center gap-4">
-                <Image 
-                  src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" 
-                  alt="ihatenodejs's Stats" 
-                  width={500} 
-                  height={200} 
-                  className="w-full md:w-1/2" 
-                  onError={() => setImageError(true)}
-                  loading="eager"
-                  priority
-                  unoptimized
-                />
-                <Image 
-                  src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" 
-                  alt="ihatenodejs's Top Languages" 
-                  width={500} 
-                  height={200} 
-                  className="w-full md:w-1/3" 
-                  onError={() => setImageError(true)}
-                  loading="eager"
-                  priority
-                  unoptimized
-                />
-              </div>
-            )}
-          </div>
-          <div className="mt-12">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-200">Featured Projects</h2>
-            <p className="text-gray-300 mb-6">Here&apos;s just four of my top projects. Star and fork counts are manually updated and count both Gitea and GitHub.</p>
-            <FeaturedRepos />
-          </div>
+      <main className="text-center py-12">
+        <div className='mb-6 flex justify-center'>
+          <User size={60} />
+        </div>
+        <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+          {t('about.title')}
+        </h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+          {mainStrings.map((section, index) => {
+            if (mainSections[index] === t('about.sections.featuredProjects')) {
+              return (
+                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg col-span-2 hover:border-gray-600 transition-colors duration-300">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
+                  {section.map((text, index) => (
+                    <p key={index} className="text-gray-300 leading-relaxed mt-2">
+                      {text}
+                    </p>
+                  ))}
+                  <FeaturedRepos className="mt-4" />
+                </section>
+              )
+            } else if (mainSections[index] === t('about.sections.contributions')) {
+              return (
+                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
+                  {section.map((text, index) => (
+                    <p key={index} className="text-gray-300 leading-relaxed mt-2">
+                      {text.split(/(ihatenodejs|LibreCloud Git|aidan)/).map((part, i) => {
+                        if (part === 'ihatenodejs') {
+                          return <Link key={i} href="https://github.com/ihatenodejs/">GitHub</Link>
+                        }
+                        if (part === 'LibreCloud Git') {
+                          return <Link key={i} href="https://git.pontusmail.org/">LibreCloud Git</Link>
+                        }
+                        if (part === 'aidan') {
+                          return <Link key={i} href="https://git.pontusmail.org/aidan/">aidan</Link>
+                        }
+                        return part
+                      })}
+                    </p>
+                  ))}
+                  {!imageError && (
+                    <div className="flex flex-col justify-center items-center w-full mt-4 gap-4">
+                      <Image 
+                        src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" 
+                        alt="ihatenodejs's Stats"
+                        width={420} 
+                        height={200}
+                        onError={() => setImageError(true)}
+                        loading="eager"
+                        priority
+                        unoptimized
+                      />
+                      <Image 
+                        src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" 
+                        alt="ihatenodejs's Top Languages"
+                        width={300}
+                        height={200}
+                        onError={() => setImageError(true)}
+                        loading="eager"
+                        priority
+                        unoptimized
+                      />
+                    </div>
+                  )}
+                </section>
+              )
+            } else if (mainSections[index] === t('about.sections.devices')) {
+              return (
+                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
+                  {Object.entries(section).map(([key, value], index) => (
+                    <div key={index}>
+                      <h3 className={cn("text-xl font-semibold mb-2 text-gray-200", key === "Laptop" && "mt-4")}>{key}</h3>
+                      {(value as unknown as string[]).map((text: string, index: number) => (
+                        <p key={index} className="text-gray-300 leading-relaxed mt-2">
+                          {text.split(/(KernelSU-Next|LineageOS microG)/).map((part, i) => {
+                            if (part === 'KernelSU-Next') {
+                              return <Link key={i} href="https://github.com/KernelSU-Next/KernelSU-Next">KernelSU-Next</Link>
+                            }
+                            if (part === 'LineageOS microG') {
+                              return <Link key={i} href="https://lineage.microg.org/">LineageOS microG</Link>
+                            }
+                            return part
+                          })}
+                        </p>
+                      ))}
+                      {key === "Phone" && (
+                        <Button
+                          href="/phone"
+                          label="My Phone"
+                          icon={Smartphone}
+                          className="mt-4"
+                        />
+                      )}
+                    </div>
+                  ))}
+                </section>
+              )
+            } else if (mainSections[index] === t('about.sections.hobbies')) {
+              return (
+                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
+                  {section.map((text, index) => (
+                    <p key={index} className="text-gray-300 leading-relaxed mt-2">
+                      {text.split(/(my Gitea instance|my phone)/).map((part, i) => {
+                        if (part === 'my Gitea instance') {
+                          return <Link key={i} href="https://git.pontusmail.org/">my Gitea instance</Link>
+                        }
+                        if (part === 'my phone') {
+                          return <Link key={i} href="/phone">my phone</Link>
+                        }
+                        return part
+                      })}
+                    </p>
+                  ))}
+                </section>
+              )
+            } else if (mainSections[index] === t('about.sections.projects')) {
+              return (
+                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
+                  {section.map((text, index) => (
+                    <p key={index} className="text-gray-300 leading-relaxed mt-2">
+                      {text.split(/(LibreCloud)/).map((part, i) => {
+                        if (part === 'LibreCloud') {
+                          return <Link key={i} href="https://librecloud.cc/">LibreCloud</Link>
+                        }
+                        return part
+                      })}
+                    </p>
+                  ))}
+                </section>
+              )
+            } else {
+              return (
+                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
+                  {section.map((text, index) => (
+                    <p key={index} className="text-gray-300 leading-relaxed mt-2">
+                      {text}
+                    </p>
+                  ))}
+                </section>
+              )
+            }
+          })}
         </div>
       </main>
       <Footer />

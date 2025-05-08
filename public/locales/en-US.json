@@ -76,5 +76,43 @@
       "phone": "(802) 416-9516",
       "email": "aidan@p0ntus.com"
     }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Hey there! My name is Aidan, and I'm a systems administrator, full-stack developer, and student from the United States. I primarily work with Linux, Docker, Next.js, and Node.js.",
+    "sections": {
+      "projects": "Projects",
+      "hobbies": "Hobbies",
+      "devices": "Devices",
+      "contributions": "Contributions",
+      "featuredProjects": "Featured Projects"
+    },
+    "projects": [
+      "I have worked on countless projects over the past five years, for the most part. I have been learning to program in Python since I was seven and have evolved from there. I got into web development due to my uncle, who taught my how to write my first lines of HTML.",
+      "Recently, I have been involved in developing several projects, especially with Node.js, my new favorite language as of a year ago. My biggest project is LibreCloud, a free service provider for individuals.",
+      "In terms of system administration, I have developed my skills over the past three years of learning Linux for fun. I currently operate three servers running in the cloud, which run out of Germany and the United States."
+    ],
+    "hobbies": [
+      "When I'm not programming, I can typically be found installing another Linux distro on my laptop or flashing a new ROM to my phone. I am also a passionate writer and I like to write creatively in my free time.",
+      "I consider maintaining my technology as a hobby as well, as I devote a lot of time to it. I currently run Gentoo Linux on my Thinkpad T470s, which does not use a single bin package. I am very proud of this laptop, despite it's constant need for compiling updates.",
+      "I am almost always active on my Gitea instance and GitHub and make daily contributions to several of my repositories. I am a big fan of open source software and public domain software (which most of my repos are licensed under). In fact, the website you're currently on is free and open source. It's even under the public domain!",
+      "My Google Pixel 7 Pro (cheetah) runs LineageOS 22.1, and has been one of my favorite additions to my life. It is proudly rooted with KernelSU-Next. It has suffered one drop to it's back on a tile floor."
+    ],
+    "devices": {
+      "Phone": [
+        "I use a Google Pixel 7 Pro (cheetah) as my daily driver. It runs LineageOS microG and is proudly rooted with KernelSU-Next.",
+        "It's back is shattered and missing volume buttons, but it continues to thrive and survive as my daily driver."
+      ],
+      "Laptop": [
+        "I use a Lenovo Thinkpad T470s running Arch Linux. I've had it for about half a year now, and it's been a great experience. I proudly use X11 and LXDE, with some Xfce backend components to make management easier."
+      ]
+    },
+    "contributions": [
+      "Most of my repositories have migrated to LibreCloud Git. My username is aidan.",
+      "You can find me on GitHub as ihatenodejs."
+    ],
+    "featuredProjects": [
+      "Here's just four of my top projects. Star and fork counts are manually updated and count both Gitea and GitHub."
+    ]
   }
 } 
