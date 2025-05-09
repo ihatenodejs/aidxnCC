@@ -44,9 +44,6 @@ next-env.d.ts
 bun.lock
 bun.lockb
 
-# misc
-package-lock.json
-
 # vs code
 .vscode/
 
