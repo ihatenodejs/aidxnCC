@@ -4,9 +4,11 @@ import type React from "react"
 import { useEffect, useState, useCallback, useRef } from "react"
 import Image from "next/image"
 import { Music, ExternalLink, Disc, User, Loader2, AlertCircle } from "lucide-react"
+import { TbDiscOff, TbDisc } from "react-icons/tb"
 import Marquee from "react-fast-marquee"
 import { Progress } from "@/components/ui/progress"
 import Link from "@/components/objects/Link"
+
 interface Track {
   track_name: string
   artist_name: string
@@ -83,7 +85,7 @@ const NowPlaying: React.FC = () => {
         const mbid = data.releases[0].id
         updateProgress(3, 3, "Fetching cover art...")
         setTrack(prev => prev ? { ...prev, mbid: `${mbid || null}` } : { track_name: "", artist_name: "", release_name: undefined, mbid: `${mbid || null}` })
-        const coverArtResponse = await fetch(`https://coverartarchive.org/release/${mbid}/front-250`)
+        const coverArtResponse = await fetch(`https://coverartarchive.org/release/${mbid}/front`)
         if (coverArtResponse.ok) {
           setCoverArt(coverArtResponse.url)
           setLoading(false)
@@ -143,10 +145,12 @@ const NowPlaying: React.FC = () => {
     console.log("[LastPlayed] Loading state rendered")
     return (
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
+        <div className="flex items-center gap-2 mb-4">
+          <Loader2 className="animate-spin text-gray-200" size={24} />
+          <h2 className="text-2xl font-bold text-gray-200">Fetching music data...</h2>
+        </div>
         <Progress value={steps > 0 ? (progress * 100) / steps : 0} className="mb-4" />
         <div className="flex items-center justify-center space-x-2">
-          <Loader2 className="animate-spin text-gray-200" size={24} />
           <p className="text-gray-200">
             {loadingStatus} {steps > 0 && `(${progress}/${steps})`}
           </p>
@@ -172,7 +176,10 @@ const NowPlaying: React.FC = () => {
     console.log("[LastPlayed] Hidden due to no track data")
     return (
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-gray-200">Nothing&apos;s playing right now</h2>
+        <div className="flex items-center gap-2 mb-4">
+          <TbDiscOff className="text-gray-200" size={24} />
+          <h2 className="text-2xl font-bold text-gray-200">Nothing&apos;s playing right now</h2>
+        </div>
         <div className="flex items-center justify-center">
           <p>Can you believe it? I&apos;m not listening to anything on ListenBrainz right now! If you&apos;re in the mood, feel free to check out my <Link href="https://listenbrainz.org/user/p0ntus" target="_blank" rel="noopener noreferrer">ListenBrainz</Link>.</p>
         </div>
@@ -183,7 +190,10 @@ const NowPlaying: React.FC = () => {
   console.log("[LastPlayed] Rendered track:", track.track_name)
   return (
     <div className="mb-12">
-      <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
+      <div className="flex items-center gap-2 mb-4">
+        <TbDisc className="animate-spin text-gray-200" size={24} />
+        <h2 className="text-2xl font-bold text-gray-200">Now Playing</h2>
+      </div>
       <div className="now-playing flex items-center">
         {coverArt ? (
           <div className="relative w-26 h-26 md:w-40 md:h-40 rounded-lg mr-4 flex-shrink-0">
@@ -226,6 +236,17 @@ const NowPlaying: React.FC = () => {
             <span>View on MusicBrainz</span>
           </a>
         </div>
+      </div>
+      <div className="flex flex-col items-center gap-2 mt-6">
+        <div className="flex items-center gap-1">
+          <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+          <p className="text-gray-200 text-sm">
+            <span className="font-bold text-red-400">LIVE</span> data provided by <Link href="https://listenbrainz.org" target="_blank" rel="noopener noreferrer">ListenBrainz</Link>
+          </p>
+        </div>
+        <p className="text-gray-200 text-sm">
+          Last updated: {new Date().toLocaleString()}
+        </p>
       </div>
     </div>
   )

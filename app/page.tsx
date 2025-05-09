@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Button from '@/components/objects/Button'
 import Link from '@/components/objects/Link'
-import LastPlayed from '@/components/widgets/LastPlayed'
+import LastPlayed from '@/components/widgets/NowPlaying'
 import Image from 'next/image'
 import { CreditCard, Mail, PillBottle, Scale } from 'lucide-react'
 import { FaHandcuffs } from "react-icons/fa6"
