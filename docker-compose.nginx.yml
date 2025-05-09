@@ -1,0 +1,11 @@
+services:
+  aidxncc:
+    build: .
+    networks:
+      - nginx
+    environment:
+      - NODE_ENV=production
+
+networks:
+  nginx:
+    external: true
