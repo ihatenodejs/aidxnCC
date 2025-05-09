@@ -48,8 +48,3 @@ Please use common sense when contributing :)
 This project does not use a custom user agent when interacting with the MusicBrainz API. This is because the LastPlayed component is rendered client-side and user agent support is not universal.
 
 If bugs were to occur with my code, I believe it would be easier for MusicBrainz to block this way.
-
-## To-Do
-
-- [ ] Dockerize for easier deployment
-- [ ] Use MusicBrainz recording collections for displaying data about music
