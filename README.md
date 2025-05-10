@@ -2,6 +2,7 @@
 
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 [![Build Status](https://git.pontusmail.org/aidan/aidxnCC/actions/workflows/push.yml/badge.svg)](https://git.pontusmail.org/aidan/aidxnCC/actions/?workflow=push.yml)
+[![ESLint Status](https://git.pontusmail.org/aidan/aidxnCC/actions/workflows/lint.yml/badge.svg)](https://git.pontusmail.org/aidan/aidxnCC/actions/?workflow=lint.yml)
 
 aidxnCC is the third version of my personal website.
 
