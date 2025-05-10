@@ -8,7 +8,7 @@ export function Overview() {
           Overview
         </h1>
         <p className="text-gray-400">
-          It's time to get a cup of coffee!
+          It&apos;s time to get a cup of coffee!
         </p>
       </div>
       <div className="flex flex-col gap-2 mt-6">
@@ -22,7 +22,7 @@ export function Overview() {
           </p>
           <ul className="list-disc list-inside">
             <li>
-              Even if your opinion is different than mine, that does not mean you're wrong.
+              Even if your opinion is different than mine, that does not mean you&apos;re wrong.
             </li>
             <li>
               Take all advice with a grain of salt; nobody lives the same life as you do.
