@@ -2,7 +2,18 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { House, Link as LinkIcon, User, Phone, BookOpen, Music, Rss, X, Menu, Globe, ChevronDown } from 'lucide-react'
+import {
+  House,
+  Link as LinkIcon,
+  User,
+  Phone,
+  BookOpen,
+  Rss,
+  X,
+  Menu,
+  Globe,
+  ChevronDown
+} from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 interface NavItemProps {
@@ -25,7 +36,7 @@ const LanguageSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
+
   const languages = [
     { code: 'en-US', name: 'English' },
   ];
@@ -34,7 +45,7 @@ const LanguageSelector = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -77,7 +88,7 @@ const LanguageSelector = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         className={`flex items-center text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 transition-all duration-300 ${isMobile ? 'w-full' : ''}`}
@@ -87,10 +98,10 @@ const LanguageSelector = () => {
         {buttonContent}
       </button>
       {isOpen && (
-        <div 
+        <div
           className={`${
-            isMobile 
-              ? 'relative mt-1 w-full bg-gray-800 rounded-md shadow-lg' 
+            isMobile
+              ? 'relative mt-1 w-full bg-gray-800 rounded-md shadow-lg'
               : 'absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg z-50'
           }`}
           role="menu"
@@ -137,7 +148,6 @@ export default function Header() {
           <NavItem href="/contact" icon={Phone}>Contact</NavItem>
           <NavItem href="/domains" icon={LinkIcon}>Domains</NavItem>
           <NavItem href="/manifesto" icon={BookOpen}>Manifesto</NavItem>
-          <NavItem href="/music" icon={Music}>Music</NavItem>
           <NavItem href="https://disfunction.blog" icon={Rss}>Blog</NavItem>
           <div className="lg:hidden">
             <LanguageSelector />

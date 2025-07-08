@@ -3,7 +3,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Button from '@/components/objects/Button'
-import Link from '@/components/objects/Link'
 import LastPlayed from '@/components/widgets/NowPlaying'
 import Image from 'next/image'
 import { CreditCard, Mail, PillBottle, Scale } from 'lucide-react'
@@ -53,15 +52,6 @@ export default function Home() {
               {mainStrings[secIndex].map((text: string, index: number) => (
                 <p key={index} className="text-gray-300 leading-relaxed mt-2">
                   {text}
-                  {secIndex === 2 && index === 2 && (
-                    <>
-                      {' '}
-                      <Link href="https://nvd.nist.gov/vuln/detail/CVE-2025-29927">
-                        CVE-2025-29927
-                      </Link>
-                      .
-                    </>
-                  )}
                 </p>
               ))}
             </section>
@@ -80,7 +70,6 @@ export default function Home() {
           <section id="donation" className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
             <h2 className="text-2xl font-semibold mb-4 text-gray-200">{t('home.donation.title')}</h2>
             <p className="text-gray-300 mb-6">{t('home.donation.description')}</p>
-            
             <h4 className="text-lg font-semibold mb-2 text-gray-200">{t('home.donation.charities.title')}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 md:text-sm gap-3">
               <Button

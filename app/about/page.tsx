@@ -33,12 +33,12 @@ export default function About() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="text-center py-12">
-        <div className='mb-6 flex justify-center'>
+        <div className='flex flex-col items-center justify-center gap-6 mb-6'>
           <User size={60} />
+          <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+            {t('about.title')}
+          </h1>
         </div>
-        <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
-          {t('about.title')}
-        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
           {mainStrings.map((section, index) => {
@@ -60,15 +60,15 @@ export default function About() {
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
-                      {text.split(/(ihatenodejs|LibreCloud Git|aidan)/).map((part, i) => {
+                      {text.split(/(ihatenodejs|p0ntus git|aidan)/).map((part, i) => {
                         if (part === 'ihatenodejs') {
-                          return <Link key={i} href="https://github.com/ihatenodejs/">GitHub</Link>
+                          return <Link key={i} href="https://github.com/ihatenodejs/">ihatenodejs</Link>
                         }
-                        if (part === 'LibreCloud Git') {
-                          return <Link key={i} href="https://git.pontusmail.org/">LibreCloud Git</Link>
+                        if (part === 'p0ntus git') {
+                          return <Link key={i} href="https://git.p0ntus.com/">p0ntus git</Link>
                         }
                         if (part === 'aidan') {
-                          return <Link key={i} href="https://git.pontusmail.org/aidan/">aidan</Link>
+                          return <Link key={i} href="https://git.p0ntus.com/aidan/">aidan</Link>
                         }
                         return part
                       })}
@@ -76,17 +76,17 @@ export default function About() {
                   ))}
                   {!imageError && (
                     <div className="flex flex-col justify-center items-center w-full mt-4 gap-4">
-                      <Image 
+                      <Image
                         src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" 
                         alt="ihatenodejs's Stats"
-                        width={420} 
+                        width={420}
                         height={200}
                         onError={() => setImageError(true)}
                         loading="eager"
                         priority
                         unoptimized
                       />
-                      <Image 
+                      <Image
                         src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" 
                         alt="ihatenodejs's Top Languages"
                         width={300}
@@ -106,27 +106,42 @@ export default function About() {
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {Object.entries(section).map(([key, value], index) => (
                     <div key={index}>
-                      <h3 className={cn("text-xl font-semibold mb-2 text-gray-200", key === "Laptop" && "mt-4")}>{key}</h3>
+                      <h3 className={cn("text-xl font-semibold mb-2 text-gray-200", key === "Laptops" && "mt-4")}>{key}</h3>
                       {(value as unknown as string[]).map((text: string, index: number) => (
                         <p key={index} className="text-gray-300 leading-relaxed mt-2">
-                          {text.split(/(KernelSU-Next|LineageOS microG)/).map((part, i) => {
+                          {text.split(/(KernelSU-Next|LineageOS 22.2|Android 16|NixOS|Xubuntu)/).map((part, i) => {
                             if (part === 'KernelSU-Next') {
                               return <Link key={i} href="https://github.com/KernelSU-Next/KernelSU-Next">KernelSU-Next</Link>
                             }
-                            if (part === 'LineageOS microG') {
-                              return <Link key={i} href="https://lineage.microg.org/">LineageOS microG</Link>
+                            if (part === 'LineageOS 22.2') {
+                              return <Link key={i} href="https://wiki.lineageos.org/devices/bonito/">LineageOS 22.2</Link>
+                            }
+                            if (part === 'Android 16') {
+                              return <Link key={i} href="https://developer.android.com/about/versions/16/get">Android 16</Link>
+                            }
+                            if (part === 'NixOS') {
+                              return <Link key={i} href="https://nixos.org/">NixOS</Link>
+                            }
+                            if (part === 'Xubuntu') {
+                              return <Link key={i} href="https://xubuntu.org/">Xubuntu</Link>
                             }
                             return part
                           })}
                         </p>
                       ))}
-                      {key === "Phone" && (
-                        <Button
-                          href="/phone"
-                          label="My Phone"
-                          icon={Smartphone}
-                          className="mt-4"
-                        />
+                      {key === "Mobile Devices" && (
+                        <div className="flex flex-row justify-center gap-4 mt-4">
+                          <Button
+                            href="/device/cheetah"
+                            label="Pixel 7 Pro"
+                            icon={Smartphone}
+                          />
+                          <Button
+                            href="/device/bonito"
+                            label="Pixel 3a XL"
+                            icon={Smartphone}
+                          />
+                        </div>
                       )}
                     </div>
                   ))}
@@ -138,12 +153,18 @@ export default function About() {
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
-                      {text.split(/(my Gitea instance|my phone)/).map((part, i) => {
-                        if (part === 'my Gitea instance') {
-                          return <Link key={i} href="https://git.pontusmail.org/">my Gitea instance</Link>
+                      {text.split(/(my Forgejo server|my phone|AfC|OnlyNano)/).map((part, i) => {
+                        if (part === 'my Forgejo server') {
+                          return <Link key={i} href="https://git.p0ntus.com/">my Forgejo server</Link>
                         }
                         if (part === 'my phone') {
-                          return <Link key={i} href="/phone">my phone</Link>
+                          return <Link key={i} href="/device/cheetah">my phone</Link>
+                        }
+                        if (part === 'AfC') {
+                          return <Link key={i} href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Articles_for_creation">AfC</Link>
+                        }
+                        if (part === 'OnlyNano') {
+                          return <Link key={i} href="https://en.wikipedia.org/wiki/User:OnlyNano">OnlyNano</Link>
                         }
                         return part
                       })}
@@ -157,9 +178,21 @@ export default function About() {
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
-                      {text.split(/(LibreCloud)/).map((part, i) => {
-                        if (part === 'LibreCloud') {
-                          return <Link key={i} href="https://librecloud.cc/">LibreCloud</Link>
+                      {text.split(/(p0ntus|PontusHub|ABOCN|Kowalski|@KowalskiNodeBot)/).map((part, i) => {
+                        if (part === 'p0ntus') {
+                          return <Link key={i} href="https://p0ntus.com/">p0ntus</Link>
+                        }
+                        if (part === 'PontusHub') {
+                          return <Link key={i} href="https://t.me/PontusHub">PontusHub</Link>
+                        }
+                        if (part === 'ABOCN') {
+                          return <Link key={i} href="https://github.com/abocn">ABOCN</Link>
+                        }
+                        if (part === 'Kowalski') {
+                          return <Link key={i} href="https://github.com/abocn/TelegramBot">Kowalski</Link>
+                        }
+                        if (part === '@KowalskiNodeBot') {
+                          return <Link key={i} href="https://t.me/KowalskiNodeBot">@KowalskiNodeBot</Link>
                         }
                         return part
                       })}

@@ -1,14 +1,16 @@
+"use client"
+
 import {
   SiNextdotjs,
   SiLucide,
   SiVercel,
-  SiCloudflarepages,
   SiSimpleicons,
   SiFontawesome,
   SiShadcnui,
   SiTailwindcss
 } from "react-icons/si"
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export const footerMessages = [
   [
@@ -32,11 +34,6 @@ export const footerMessages = [
     <SiVercel key="vercel" className="text-md mr-2" />
   ],
   [
-    "Hosted by Cloudflare",
-    "https://workers.cloudflare.com/",
-    <SiCloudflarepages key="cloudflare" className="text-md mr-2" />
-  ],
-  [
     "Icons by Font Awesome",
     "https://fontawesome.com/",
     <SiFontawesome key="fontawesome" className="text-md mr-2" />
@@ -54,11 +51,30 @@ export const footerMessages = [
 ]
 
 export default function RandomFooterMsg() {
-  const randomIndex = Math.floor(Math.random() * footerMessages.length)
+  const [randomIndex, setRandomIndex] = useState(0)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+    setRandomIndex(Math.floor(Math.random() * footerMessages.length))
+  }, [])
+
+  if (!isMounted) {
+    const [message, url, icon] = footerMessages[0]
+    return (
+      <Link href={String(url)} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors mb-2 sm:mb-0">
+        <div className="flex items-center justify-center">
+          {icon}
+          {message}
+        </div>
+      </Link>
+    )
+  }
+
   const [message, url, icon] = footerMessages[randomIndex]
 
   return (
-    <Link href={String(url)} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors mb-2 sm:mb-0" suppressHydrationWarning>
+    <Link href={String(url)} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors mb-2 sm:mb-0">
       <div className="flex items-center justify-center">
         {icon}
         {message}
