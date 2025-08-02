@@ -2,12 +2,8 @@
 
 import React, { useEffect } from 'react'
 import './globals.css'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { config } from '@fortawesome/fontawesome-svg-core'
 import { GeistSans } from 'geist/font/sans'
 import '../i18n'
-
-config.autoAddCss = false
 
 export default function RootLayout({
   children,
