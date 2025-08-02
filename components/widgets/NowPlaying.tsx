@@ -1,47 +1,23 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useState, useCallback, useRef } from "react"
+import { useEffect, useState, useCallback } from "react"
 import Image from "next/image"
-import { Music, ExternalLink, Disc, User, Loader2, AlertCircle } from "lucide-react"
-import { TbDiscOff, TbDisc } from "react-icons/tb"
-import Marquee from "react-fast-marquee"
+import { Loader2, AlertCircle } from "lucide-react"
+import { PiMusicNotesFill } from "react-icons/pi";
+import { FaBluetoothB } from "react-icons/fa6";
+import { IoBatteryFullSharp } from "react-icons/io5"
+import { IoIosPlay } from "react-icons/io"
+import { TbDiscOff } from "react-icons/tb"
 import { Progress } from "@/components/ui/progress"
 import Link from "@/components/objects/Link"
+import ScrollTxt from "@/components/objects/MusicText"
 
 interface Track {
   track_name: string
   artist_name: string
   release_name?: string
   mbid?: string
-}
-
-const ScrollableText: React.FC<{ text: string; className?: string }> = ({ text, className = "" }) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [shouldScroll, setShouldScroll] = useState(false)
-
-  useEffect(() => {
-    if (containerRef.current) {
-      setShouldScroll(containerRef.current.scrollWidth > containerRef.current.clientWidth)
-      console.log("[i] text width checked: ", containerRef.current.scrollWidth, containerRef.current.clientWidth)
-    }
-  }, [containerRef])
-
-  if (shouldScroll) {
-    console.log("✅ scrolling is active")
-    return (
-      <Marquee gradientWidth={20} speed={20} pauseOnHover={true}>
-        <div className={className}>{text}</div>
-        <span className="mx-4 text-gray-400">&bull;</span>
-      </Marquee>
-    )
-  }
-
-  return (
-    <div ref={containerRef} className={`overflow-hidden ${className}`}>
-      <div className="whitespace-nowrap">{text}</div>
-    </div>
-  )
 }
 
 const NowPlaying: React.FC = () => {
@@ -52,6 +28,9 @@ const NowPlaying: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [progress, setProgress] = useState(0)
   const [steps, setSteps] = useState(0)
+  const [currentTime, setCurrentTime] = useState(new Date())
+  const [volume, setVolume] = useState(25)
+  const [screenOn, setScreenOn] = useState(true)
 
   const updateProgress = useCallback((current: number, total: number, status: string) => {
     setProgress(current)
@@ -141,112 +120,260 @@ const NowPlaying: React.FC = () => {
     fetchNowPlaying()
   }, [fetchNowPlaying])
 
-  if (loading) {
-    console.log("[LastPlayed] Loading state rendered")
-    return (
-      <div className="mb-12">
-        <div className="flex items-center gap-2 mb-4">
-          <Loader2 className="animate-spin text-gray-200" size={24} />
-          <h2 className="text-2xl font-bold text-gray-200">Fetching music data...</h2>
-        </div>
-        <Progress value={steps > 0 ? (progress * 100) / steps : 0} className="mb-4" />
-        <div className="flex items-center justify-center space-x-2">
-          <p className="text-gray-200">
-            {loadingStatus} {steps > 0 && `(${progress}/${steps})`}
-          </p>
-        </div>
-      </div>
-    )
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date())
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    })
   }
 
-  if (error) {
-    console.log("[LastPlayed] Error state rendered")
-    return (
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-gray-200">Now Playing</h2>
-        <div className="flex items-center justify-center text-red-500">
-          <AlertCircle className="text-red-500 mr-2" size={24} />
-          <p>{error}</p>
+  const renderScreenContent = () => {
+    if (loading) {
+      return (
+        <div className="flex flex-col items-center justify-center h-full">
+          <Loader2 className="animate-spin text-white mb-4" size={32} />
+          <div className="text-white text-xs text-center px-4">
+            <div className="mb-2">{loadingStatus}</div>
+            <Progress value={steps > 0 ? (progress * 100) / steps : 0} className="h-1" />
+          </div>
         </div>
-      </div>
-    )
-  }
+      )
+    }
 
-  if (!track) {
-    console.log("[LastPlayed] Hidden due to no track data")
-    return (
-      <div className="mb-12">
-        <div className="flex items-center gap-2 mb-4">
-          <TbDiscOff className="text-gray-200" size={24} />
-          <h2 className="text-2xl font-bold text-gray-200">Nothing&apos;s playing right now</h2>
+    if (error) {
+      return (
+        <div className="flex flex-col items-center justify-center h-full">
+          <AlertCircle className="text-red-500 mb-4" size={32} />
+          <div className="text-red-500 text-xs text-center px-4">{error}</div>
         </div>
-        <div className="flex items-center justify-center">
-          <p>Can you believe it? I&apos;m not listening to anything on ListenBrainz right now! If you&apos;re in the mood, feel free to check out my <Link href="https://listenbrainz.org/user/p0ntus" target="_blank" rel="noopener noreferrer">ListenBrainz</Link>.</p>
-        </div>
-      </div>
-    )
-  }
+      )
+    }
 
-  console.log("[LastPlayed] Rendered track:", track.track_name)
-  return (
-    <div className="mb-12">
-      <div className="flex items-center gap-2 mb-4">
-        <TbDisc className="animate-spin text-gray-200" size={24} />
-        <h2 className="text-2xl font-bold text-gray-200">Now Playing</h2>
-      </div>
-      <div className="now-playing flex items-center">
-        {coverArt ? (
-          <div className="relative w-26 h-26 md:w-40 md:h-40 rounded-lg mr-4 flex-shrink-0">
+    if (!track) {
+      return (
+        <div className="flex flex-col items-center justify-center h-full">
+          <TbDiscOff className="text-gray-400 mb-4" size={32} />
+          <div className="text-gray-400 text-xs text-center px-4">
+            Nothing playing
+          </div>
+          <div className="text-gray-500 text-xs text-center px-4 mt-2">
+            Check my <Link href="https://listenbrainz.org/user/p0ntus" target="_blank" rel="noopener noreferrer" className="text-blue-400">ListenBrainz</Link>
+          </div>
+        </div>
+      )
+    }
+
+    // normal state
+    const currentTrack = track!;
+    return (
+      <>
+        <a
+          href={currentTrack.mbid ? `https://musicbrainz.org/release/${currentTrack.mbid}` : `https://listenbrainz.org/user/p0ntus`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-gradient-to-b from-gray-700 to-gray-900 border-b border-gray-700 px-2 py-0 block" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}
+        >
+          <div className="text-center leading-none">
+            <ScrollTxt text={currentTrack.artist_name.toUpperCase()} type="artist" className="-my-0.5" />
+            <ScrollTxt text={currentTrack.track_name} type="track" className="-my-0.5" />
+            {currentTrack.release_name && <ScrollTxt text={currentTrack.release_name} type="release" className="-mt-1.5 mb-0.5" />}
+          </div>
+        </a>
+        {/* Album art */}
+        <div className="relative w-full aspect-square">
+          {coverArt ? (
             <Image
-              src={coverArt || ""}
-              alt={track.track_name}
+              src={coverArt}
+              alt={currentTrack.track_name}
               fill
-              sizes="96px"
               style={{ objectFit: "cover" }}
-              className="rounded-lg"
             />
-          </div>
-        ) : (
-          <div className="w-26 h-26 md:w-40 md:h-40 bg-gray-200 rounded-lg mr-4 flex items-center justify-center flex-shrink-0">
-            <Music size={48} className="text-gray-400" />
-          </div>
-        )}
-        <div className="flex-grow min-w-0 overflow-hidden">
-          <div className="flex items-center space-x-2 font-bold text-lg mb-1">
-            <Music size={16} className="text-gray-200 flex-shrink-0" />
-            <ScrollableText text={track.track_name} className="text-gray-200" />
-          </div>
-          {track.release_name && (
-            <div className="flex items-center space-x-2 mb-1">
-              <Disc size={16} className="text-gray-300 flex-shrink-0" />
-              <ScrollableText text={track.release_name} className="text-gray-300" />
+          ) : (
+            <div className="w-full h-full bg-gray-700 flex items-center justify-center">
+              <PiMusicNotesFill size={74} className="text-gray-400" />
             </div>
           )}
-          <div className="flex items-center space-x-2 mb-2">
-            <User size={16} className="text-gray-300 flex-shrink-0" />
-            <ScrollableText text={track.artist_name} className="text-gray-300" />
+        </div>
+        {/* Player controls and seekbar */}
+        <div className="bg-gradient-to-b from-gray-700 to-gray-900 pb-2.5 flex flex-col items-center" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
+          <div className="flex justify-center items-center gap-0 px-2">
+          <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+            <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
+              <defs>
+                <linearGradient id="skipBackGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#f9fafb" />
+                  <stop offset="49%" stopColor="#e5e7eb" />
+                  <stop offset="51%" stopColor="#6b7280" />
+                  <stop offset="100%" stopColor="#d1d5db" />
+                </linearGradient>
+              </defs>
+              <rect x="2" y="4" width="2" height="12" fill="url(#skipBackGradient)" />
+              <polygon points="12,4 6,10 12,16" fill="url(#skipBackGradient)" />
+              <polygon points="20,4 12,10 20,16" fill="url(#skipBackGradient)" />
+            </svg>
+          </button>
+          <div className="w-[1px] h-6 bg-gray-800 mx-0.5"></div>
+          <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+            <svg width="38" height="38" viewBox="0 0 24 24" className="drop-shadow-sm">
+              <defs>
+                <linearGradient id="pauseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#f9fafb" />
+                  <stop offset="49%" stopColor="#e5e7eb" />
+                  <stop offset="51%" stopColor="#6b7280" />
+                  <stop offset="100%" stopColor="#d1d5db" />
+                </linearGradient>
+              </defs>
+              <rect x="6" y="4" width="4" height="16" fill="url(#pauseGradient)" />
+              <rect x="14" y="4" width="4" height="16" fill="url(#pauseGradient)" />
+            </svg>
+          </button>
+          <div className="w-[1px] h-6 bg-gray-800 mx-1"></div>
+          <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+            <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
+              <defs>
+                <linearGradient id="skipForwardGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#f9fafb" />
+                  <stop offset="49%" stopColor="#e5e7eb" />
+                  <stop offset="51%" stopColor="#6b7280" />
+                  <stop offset="100%" stopColor="#d1d5db" />
+                </linearGradient>
+              </defs>
+              <polygon points="2,4 9,10 2,16" fill="url(#skipForwardGradient)" />
+              <polygon points="9,4 17,10 9,16" fill="url(#skipForwardGradient)" />
+              <rect x="18" y="4" width="2" height="12" fill="url(#skipForwardGradient)" />
+            </svg>
+          </button>
           </div>
-          <a
-            href={track.mbid ? `https://musicbrainz.org/release/${track.mbid}` : `https://listenbrainz.org/user/p0ntus`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 flex items-center mt-1 hover:text-blue-300 transition-colors duration-200"
-          >
-            <ExternalLink size={16} className="mr-1 flex-shrink-0" />
-            <span>View on MusicBrainz</span>
-          </a>
+          <div className="relative w-full flex justify-center mt-1">
+            <div className="w-38 h-2 bg-gray-800 rounded-full relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-600 rounded-full" style={{width: `${volume}%`}} />
+              <div
+                className="absolute top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-500 rounded-full border border-gray-400 shadow-inner" style={{
+                left: `calc(${volume}% - 8px)`,
+                backgroundImage: 'radial-gradient(circle at 30% 30%, #f0f0f0 0%, #c0c0c0 60%, #808080 100%), repeating-conic-gradient(#f9fafb 0deg 45deg, #9ca3af 45deg 90deg)',
+                backgroundBlendMode: 'overlay',
+                boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.5)'
+              }}></div>
+              <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col items-center gap-2 mt-6">
-        <div className="flex items-center gap-1">
-          <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-          <p className="text-gray-200 text-sm">
-            <span className="font-bold text-red-400">LIVE</span> data provided by <Link href="https://listenbrainz.org" target="_blank" rel="noopener noreferrer">ListenBrainz</Link>
-          </p>
+      </>
+    )
+  }
+
+  return (
+    <div className="flex justify-center items-center">
+      <div className="relative w-52 h-95 bg-[#D4C29A] rounded-xs shadow-2xl border border-[#BFAF8A]">
+        {/* Volume buttons */}
+        <div className="absolute -left-[2.55px] top-8 rounded-l w-[1.75px] flex flex-col z-0">
+          <div className="h-8 bg-[#BFAF8A] border-b border-[#A09070] rounded-l cursor-pointer" onClick={() => setVolume(v => Math.min(100, v + 5))}></div> {/* up */}
+          <div className="h-12 bg-[#A09070] translate-x-[0.65px] -my-[0.85px]"></div> {/* play/pause */}
+          <div className="h-8 bg-[#BFAF8A] border-t border-[#A09070] rounded-l cursor-pointer" onClick={() => setVolume(v => Math.max(0, v - 5))}></div> {/* down */}
         </div>
-        <p className="text-gray-200 text-sm">
-          Last updated: {new Date().toLocaleString()}
-        </p>
+        {/* Top power button */}
+        <div className="absolute right-1 -top-[3px] w-9 h-[3px] bg-[#BFAF8A] rounded-t-2xl cursor-pointer" onClick={() => setScreenOn(prev => !prev)}></div>
+        {/* White bezel (fuses screen+home btn) */}
+        <div className="absolute inset-2 bg-white rounded-sm overflow-hidden flex flex-col">
+          {/* Virtual screen */}
+        <div className="mx-2 mt-2 flex-1 bg-black overflow-hidden flex flex-col">
+            {screenOn && (
+              <div className="bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 border-b border-gray-700" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
+                <div className="relative flex items-center pr-1 py-0.5">
+                  <FaBluetoothB size={14} className="text-gray-400" />
+                  <div className="absolute left-1/2 transform -translate-x-1/2 text-white text-xs font-medium">{formatTime(currentTime)}</div>
+                  <div className="flex items-center gap-0.5 ml-auto ">
+                    <IoIosPlay size={14} className="text-white" />
+                    <IoBatteryFullSharp size={18} className="text-white" />
+                  </div>
+                </div>
+              </div>
+            )}
+            {screenOn ? renderScreenContent() : (
+              <div className="w-full h-full bg-black"></div>
+            )}
+            {/* Player controls and seekbar */}
+            {screenOn && track && (
+              <div className="bg-gradient-to-b from-gray-700 to-gray-900 pb-2.5 flex flex-col items-center" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
+                <div className="flex justify-center items-center gap-0 px-2">
+                <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+                  <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
+                    <defs>
+                      <linearGradient id="skipBackGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#f9fafb" />
+                        <stop offset="49%" stopColor="#e5e7eb" />
+                        <stop offset="51%" stopColor="#6b7280" />
+                        <stop offset="100%" stopColor="#d1d5db" />
+                      </linearGradient>
+                    </defs>
+                    <rect x="2" y="4" width="2" height="12" fill="url(#skipBackGradient)" />
+                    <polygon points="12,4 6,10 12,16" fill="url(#skipBackGradient)" />
+                    <polygon points="20,4 12,10 20,16" fill="url(#skipBackGradient)" />
+                  </svg>
+                </button>
+                <div className="w-[1px] h-6 bg-gray-800 mx-0.5"></div>
+                <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+                  <svg width="38" height="38" viewBox="0 0 24 24" className="drop-shadow-sm">
+                    <defs>
+                      <linearGradient id="pauseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#f9fafb" />
+                        <stop offset="49%" stopColor="#e5e7eb" />
+                        <stop offset="51%" stopColor="#6b7280" />
+                        <stop offset="100%" stopColor="#d1d5db" />
+                      </linearGradient>
+                    </defs>
+                    <rect x="6" y="4" width="4" height="16" fill="url(#pauseGradient)" />
+                    <rect x="14" y="4" width="4" height="16" fill="url(#pauseGradient)" />
+                  </svg>
+                </button>
+                <div className="w-[1px] h-6 bg-gray-800 mx-1"></div>
+                <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+                  <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
+                    <defs>
+                      <linearGradient id="skipForwardGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#f9fafb" />
+                        <stop offset="49%" stopColor="#e5e7eb" />
+                        <stop offset="51%" stopColor="#6b7280" />
+                        <stop offset="100%" stopColor="#d1d5db" />
+                      </linearGradient>
+                    </defs>
+                    <polygon points="2,4 9,10 2,16" fill="url(#skipForwardGradient)" />
+                    <polygon points="9,4 17,10 9,16" fill="url(#skipForwardGradient)" />
+                    <rect x="18" y="4" width="2" height="12" fill="url(#skipForwardGradient)" />
+                  </svg>
+                </button>
+                </div>
+                <div className="relative w-full flex justify-center mt-1">
+                  <div className="w-38 h-2 bg-gray-800 rounded-full relative">
+                    <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-600 rounded-full" style={{width: `${volume}%`}} />
+                    <div
+                      className="absolute top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-500 rounded-full border border-gray-400 shadow-inner" style={{
+                      left: `calc(${volume}% - 8px)`,
+                      backgroundImage: 'radial-gradient(circle at 30% 30%, #f0f0f0 0%, #c0c0c0 60%, #808080 100%), repeating-conic-gradient(#f9fafb 0deg 45deg, #9ca3af 45deg 90deg)',
+                      backgroundBlendMode: 'overlay',
+                      boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.5)'
+                    }}></div>
+                    <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          {/* Home button */}
+          <div className="flex justify-center py-2">
+            <div className="w-8 h-8 bg-white rounded-full border border-gray-300 shadow flex items-center justify-center">
+              <div className="w-4 h-4 border-1 border-[#D4C29A] rounded-full"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

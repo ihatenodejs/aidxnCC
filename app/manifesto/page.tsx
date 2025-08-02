@@ -8,12 +8,14 @@ export default function Manifesto() {
       <Header />
       <main className="grow container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto text-center">
-          <div className='mb-6 flex justify-center'>
-            <BookOpen size={60} />
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-center">
+              <BookOpen size={60} />
+            </div>
+            <h1 className="text-4xl font-bold mt-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+              Internet Manifesto
+            </h1>
           </div>
-          <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
-            Internet Manifesto
-          </h1>
           <div className="px-6 pt-6">
           <h2 className="text-2xl font-semibold mb-4 text-gray-200">
               1. Empathy and Understanding

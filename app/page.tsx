@@ -42,8 +42,18 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-          <div className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
-            <LastPlayed />
+          <div className="relative border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300 p-4">
+            <div className="absolute top-2 right-2">
+              <div className="flex items-center gap-1 bg-black bg-opacity-50 rounded-full px-2 py-1">
+                <div className="w-1 h-1 bg-red-400 rounded-full animate-pulse"></div>
+                <div className="text-white text-xs">
+                  LIVE
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center items-center h-full">
+              <LastPlayed />
+            </div>
           </div>
 
           {mainSections.map((section, secIndex) => (
@@ -62,9 +72,10 @@ export default function Home() {
             <p className="text-gray-300 mb-6">{t('home.contact.description')}</p>
             <Button
               href={'/contact'}
-              label={t('home.contact.button')}
-              icon={Mail}
-            />
+              icon={<Mail size={16} />}
+            >
+              {t('home.contact.button')}
+            </Button>
           </section>
 
           <section id="donation" className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
@@ -73,39 +84,44 @@ export default function Home() {
             <h4 className="text-lg font-semibold mb-2 text-gray-200">{t('home.donation.charities.title')}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 md:text-sm gap-3">
               <Button
-                href={'https://unsilenced.org'}
-                label={t('home.donation.charities.unsilenced')}
-                icon={FaHandcuffs}
+                href="https://unsilenced.org"
+                icon={<FaHandcuffs />}
                 target="_blank"
-              />
+              >
+                {t('home.donation.charities.unsilenced')}
+              </Button>
               <Button
-                href={'https://drugpolicy.org'}
-                label={t('home.donation.charities.drugpolicy')}
-                icon={PillBottle}
+                href="https://drugpolicy.org"
+                icon={<PillBottle size={16} />}
                 target="_blank"
-              />
+              >
+                {t('home.donation.charities.drugpolicy')}
+              </Button>
               <Button
-                href={'https://www.aclu.org'}
-                label={t('home.donation.charities.aclu')}
-                icon={Scale}
+                href="https://www.aclu.org"
+                icon={<Scale size={16} />}
                 target="_blank"
-              />
+              >
+                {t('home.donation.charities.aclu')}
+              </Button>
             </div>
 
             <h4 className="text-lg font-semibold mt-5 mb-2 text-gray-200">{t('home.donation.donate.title')}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 md:text-sm gap-3">
               <Button
-                href={'https://donate.stripe.com/6oEeWVcXs9L9ctW4gj'}
-                label={t('home.donation.donate.stripe')}
-                icon={CreditCard}
+                href="https://donate.stripe.com/6oEeWVcXs9L9ctW4gj"
+                icon={<CreditCard size={16} />}
                 target="_blank"
-              />
+              >
+                {t('home.donation.donate.stripe')}
+              </Button>
               <Button
-                href={'https://github.com/sponsors/ihatenodejs'}
-                label={t('home.donation.donate.github')}
-                icon={SiGithubsponsors}
+                href="https://github.com/sponsors/ihatenodejs"
+                icon={<SiGithubsponsors size={16} />}
                 target="_blank"
-              />
+              >
+                {t('home.donation.donate.github')}
+              </Button>
             </div>
           </section>
         </div>

@@ -1,20 +1,20 @@
 {
   "home": {
     "whoAmI": [
-      "Hey there! My name is Aidan, and I'm a systems administrator, full-stack developer, and student from the United States. I primarily work with Linux, Docker, Next.js, and Node.js.",
-      "I primarily focus on Linux system administration with a few servers I run for myself and others. I enjoy working on web development projects on the side, most of which are Unlicensed/CC0.",
+      "Hey there! My name is Aidan, and I'm a systems administrator, full-stack developer, and student from the United States. I primarily work with Linux, Docker, Next.js, Tailwind CSS and TypeScript.",
+      "My favorite projects and hobbies include web development and SysAdmin. Most of my work is released into the public domain.",
+      "I'm also a huge advocate for AI, and it's practical applications to programming and life itself. I am fond of open-source models the most, specifically Qwen3!",
       "When I'm not programming, I can be found re-flashing my phone with a new custom ROM and jumping between projects."
     ],
     "whatIDo": [
-      "I'm at my best when I'm doing system administration, which is what I'd say I have the most experience and familiarity with.",
-      "I host a variety of public-access services and websites on my VPS, most of which can be found on my \"Domains\" page with a short description.",
-      "My biggest project is LibreCloud, a cloud services provider which I self-host and maintain. It features most services you would find from large companies like Google, although everything is free and open-source.",
-      "I frequently write and work on a website hosted on a public Linux server, known as a \"tilde.\""
+      "I'm at my best when I'm doing system administration and development in TypeScript. I frequently implement AI into my workflow.",
+      "I manage three servers, including a mailserver (against my better judgement). I'm also crazy enough to self-host LLMs running on CPU.",
+      "My biggest project is p0ntus, a cloud services provider which I self-host and maintain. It features most services you would find from large companies like Google, although everything is free and open-source."
     ],
     "whereYouAre": [
-      "I am not here to brag about my accomplishments or plug my cool SaaS product. That's why I've made every effort to make this website as personal and fun as possible.",
+      "I am not here to brag about my accomplishments or plug my shitty SaaS. That's why I've made every effort to make this website as personal and fun as possible.",
       "I hope you find this website an interesting place to find more about me, but also learn something new, and inspire a new project or two.",
-      "In a technical sense, this site is hosted on my NY1 dedicated server, hosted by ColoCrossing out of Buffalo, New York."
+      "In a technical sense, this site is hosted on my dedicated server hosted in Buffalo, New York by ColoCrossing."
     ],
     "sections": {
       "whoIAm": "Who I am",
@@ -23,7 +23,7 @@
     },
     "contact": {
       "title": "Send me a message",
-      "description": "Feel free to reach out for feedback, collaborations, or just a hello :)",
+      "description": "Feel free to reach out for feedback, collaborations, or just a hello! I aim to answer all of my messages in a timely fashion, but please have patience.",
       "button": "Contact Me"
     },
     "donation": {
@@ -67,14 +67,6 @@
           "If you need to get in touch with me, please send me a message on Telegram or an email. I will provide my actual phone number if you have a valid reason."
         ]
       }
-    },
-    "buttons": {
-      "github": "ihatenodejs",
-      "telegram": "@p0ntu5",
-      "x": "@ihatenodejs",
-      "bluesky": "@aidxn.cc",
-      "phone": "(802) 416-9516",
-      "email": "aidan@p0ntus.com"
     }
   },
   "about": {
@@ -90,6 +82,7 @@
     "projects": [
       "I have worked on countless projects over the past five years, for the most part. I started learning to code with Python when I was seven and my interest has only evolved from there. I got into web development due to my uncle, who taught my how to write my first lines of HTML.",
       "Recently, I have been involved in developing several projects, especially with TypeScript, which is my new favorite language as of a year ago. My biggest project currently is p0ntus, a free service provider for privacy-focused individuals.",
+      "You will also come to find that I have an addiction to Docker! Almost every project I've made is able to be run in Docker.",
       "Me and my developer friends operate an organization called ABOCN, where we primarily maintain a Telegram bot called Kowalski. You can find it on Telegram as @KowalskiNodeBot.",
       "I have learned system administration from the past three years of learning Linux for practical use and fun. I currently operate four servers running in the cloud, ran out of Canada, Germany, and the United States.",
       "I own a channel called PontusHub on Telegram, where I post updates about my projects, along with commentary and info about my projects related to the Android rooting community."
@@ -108,8 +101,9 @@
         "I also have a Google Pixel 3a XL (bonito) which I use as a secondary device. It runs LineageOS 22.2 and is also rooted with KernelSU-Next."
       ],
       "Laptops": [
-        "I use a Lenovo Thinkpad T470s with NixOS unstable as my daily driver. I've had it for about a year now, and it's been a great experience. At the time of writing, I am using KDE Plasma as my desktop environment.",
-        "I also own two MacBook Airs (2015 and 2013 base model) and a HP Chromebook used as a secondary devices. The 2013 runs unsupported macOS Sequoia Beta, the 2015 runs Xubuntu, and the Chromebook runs Arch Linux."
+        "I currently daily-drive with a 16-inch MacBook Pro with an M4 Max, 64GB of memory, 2TB of storage, 16 core CPU, and a 40 core GPU.",
+        "I use a Lenovo Thinkpad T470s with macOS Sequoia (using OpenCore) as my \"side piece,\" if you will. I've had it for about a year now, and it's been a great experience.",
+        "I also own two MacBook Airs (2015 and 2013 base models) and an HP Chromebook, used as secondary devices. The 2013 runs unsupported macOS Sequoia Beta, the 2015 runs Xubuntu, and the Chromebook runs Arch Linux."
       ]
     },
     "contributions": [

@@ -33,9 +33,11 @@ export default function About() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="text-center py-12">
-        <div className='flex flex-col items-center justify-center gap-6 mb-6'>
-          <User size={60} />
-          <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+        <div className="flex flex-col gap-4">
+          <div className="flex justify-center">
+            <User size={60} />
+          </div>
+          <h1 className="text-4xl font-bold mt-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
             {t('about.title')}
           </h1>
         </div>
@@ -109,7 +111,7 @@ export default function About() {
                       <h3 className={cn("text-xl font-semibold mb-2 text-gray-200", key === "Laptops" && "mt-4")}>{key}</h3>
                       {(value as unknown as string[]).map((text: string, index: number) => (
                         <p key={index} className="text-gray-300 leading-relaxed mt-2">
-                          {text.split(/(KernelSU-Next|LineageOS 22.2|Android 16|NixOS|Xubuntu)/).map((part, i) => {
+                          {text.split(/(KernelSU-Next|LineageOS 22.2|Android 16|Xubuntu)/).map((part, i) => {
                             if (part === 'KernelSU-Next') {
                               return <Link key={i} href="https://github.com/KernelSU-Next/KernelSU-Next">KernelSU-Next</Link>
                             }
@@ -119,8 +121,8 @@ export default function About() {
                             if (part === 'Android 16') {
                               return <Link key={i} href="https://developer.android.com/about/versions/16/get">Android 16</Link>
                             }
-                            if (part === 'NixOS') {
-                              return <Link key={i} href="https://nixos.org/">NixOS</Link>
+                            if (part === 'OpenCore') {
+                              return <Link key={i} href="https://github.com/acidanthera/OpenCorePkg">OpenCore</Link>
                             }
                             if (part === 'Xubuntu') {
                               return <Link key={i} href="https://xubuntu.org/">Xubuntu</Link>
@@ -133,14 +135,16 @@ export default function About() {
                         <div className="flex flex-row justify-center gap-4 mt-4">
                           <Button
                             href="/device/cheetah"
-                            label="Pixel 7 Pro"
-                            icon={Smartphone}
-                          />
+                            icon={<Smartphone />}
+                          >
+                            Pixel 7 Pro
+                          </Button>
                           <Button
                             href="/device/bonito"
-                            label="Pixel 3a XL"
-                            icon={Smartphone}
-                          />
+                            icon={<Smartphone />}
+                          >
+                            Pixel 3a XL
+                          </Button>
                         </div>
                       )}
                     </div>

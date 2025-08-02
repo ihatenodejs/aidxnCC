@@ -2,11 +2,11 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import ContactButton from '@/components/objects/ContactButton'
+import Button from '@/components/objects/Button'
 import { Phone } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faTelegram, faBluesky, faXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { SiGithub, SiForgejo, SiTelegram } from 'react-icons/si'
+import { Mail, Smartphone } from 'lucide-react'
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -23,56 +23,65 @@ export default function Contact() {
   ];
 
   const contactButtonLabels = [
-    t('contact.buttons.github'),
-    t('contact.buttons.telegram'),
-    t('contact.buttons.bluesky'),
-    t('contact.buttons.x'),
-    t('contact.buttons.phone'),
-    t('contact.buttons.email')
+    "ihatenodejs",
+    "aidan",
+    "p0ntu5",
+    "+1 802-416-9516",
+    "aidan@p0ntus.com",
   ];
   
   const contactButtonHrefs = [
     "https://github.com/ihatenodejs",
+    "https://git.p0ntus.com/aidan",
     "https://t.me/p0ntu5",
-    "https://bsky.app/profile/aidxn.cc",
-    "https://x.com/ihatenodejs",
     "tel:+18024169516",
     "mailto:aidan@p0ntus.com"
   ];
   
-  const contactButtonIcons = [faGithub, faTelegram, faBluesky, faXTwitter, faPhone, faEnvelope];
+  const contactButtonIcons = [
+    <SiGithub key="github" />,
+    <SiForgejo key="forgejo" />,
+    <SiTelegram key="telegram" />,
+    <Smartphone key="smartphone" />,
+    <Mail key="mail" />
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="grow container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto text-center">
-          <div className='mb-6 flex justify-center'>
-            <Phone size={60} />
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-center">
+              <Phone size={60} />
+            </div>
+            <h1 className="text-4xl font-bold mt-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+              {t('contact.title')}
+            </h1>
           </div>
-          <h1 className="text-4xl font-bold my-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
-            {t('contact.title')}
-          </h1>
-          <div className="p-6 space-y-4">
-            {contactButtonLabels.map((label, index) => (
-              <ContactButton 
-                key={index} 
-                label={label} 
-                href={contactButtonHrefs[index]} 
-                icon={contactButtonIcons[index]} 
-                className='mr-3'
-              />
-            ))}
-          </div>
-
-          {sections.map((section, sectionIndex) => (
-            <div key={sectionIndex}>
-              <h2 className="text-2xl font-semibold mb-4 text-gray-200 mt-10">{section.title}</h2>
-              {section.texts.map((text, index) => (
-                <p key={index} className="text-gray-300 mb-4">{text}</p>
+          <div className="flex flex-col gap-8 mt-8">
+            <div className="flex flex-wrap justify-center gap-3">
+              {contactButtonLabels.map((label, index) => (
+                <Button
+                  key={index}
+                  href={contactButtonHrefs[index]}
+                  target="_blank"
+                  variant="rounded"
+                  icon={contactButtonIcons[index]}
+                >
+                  {label}
+                </Button> 
               ))}
             </div>
-          ))}
+            {sections.map((section, sectionIndex) => (
+              <div key={sectionIndex} className="flex flex-col gap-4">
+                <h2 className="text-2xl font-semibold text-gray-200">{section.title}</h2>
+                {section.texts.map((text, index) => (
+                  <p key={index} className="text-gray-300">{text}</p>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </main>
       <Footer />
