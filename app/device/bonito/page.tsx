@@ -5,12 +5,9 @@ import {
   MemoryStick,
   HardDrive,
   Hash,
-  Hammer,
   Music,
-  Folder,
-  Layers,
 } from "lucide-react"
-import { FaGoogle, FaYoutube } from "react-icons/fa"
+import { FaGoogle } from "react-icons/fa"
 import { VscTerminalLinux } from "react-icons/vsc"
 import { MdOutlineAndroid } from "react-icons/md"
 import { LuPackageOpen } from "react-icons/lu"
