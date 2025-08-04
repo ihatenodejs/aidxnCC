@@ -7,3 +7,7 @@ export const robots: MetadataRoute.Robots = {
   },
   sitemap: 'https://aidxn.cc/sitemap.xml',
 }
+
+export default function handler(): MetadataRoute.Robots {
+  return robots
+}
