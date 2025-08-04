@@ -27,6 +27,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: 'https://aidxn.cc/device/cheetah',
+      lastModified: new Date(),
+      changeFrequency: 'weekly' /* yes, i really re-flash roms this often */,
+      priority: 0.8,
+    },
+    {
+      url: 'https://aidxn.cc/device/bonito',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: 'https://aidxn.cc/manifesto',
       lastModified: new Date(),
       changeFrequency: 'yearly',

@@ -75,7 +75,7 @@ export default function Cheetah() {
                       <p className="flex items-center justify-center lg:justify-start">
                         <VscTerminalLinux className="mr-3" size={20} />
                         <b className="mr-2">Kernel:</b>
-                        6.1.129-android14
+                        6.1.99-android14
                       </p>
                       <p className="flex items-center justify-center lg:justify-start">
                         <MdOutlineAndroid className="mr-3" size={20} />
@@ -84,9 +84,9 @@ export default function Cheetah() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://developer.android.com/about/versions/16/get-qpr"
+                          href="https://crdroid.net"
                         >
-                          Android 16 QPR1
+                          crDroid Android 11.6
                         </Link>
                       </p>
                       <p className="flex items-center justify-center lg:justify-start">
@@ -118,9 +118,9 @@ export default function Cheetah() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://qobuz.com"
+                          href="https://tidal.com"
                         >
-                          Qobuz
+                          Tidal
                         </Link>
                       </p>
                       <p className="flex items-center justify-center lg:justify-start">
@@ -132,7 +132,7 @@ export default function Cheetah() {
                           rel="noopener noreferrer"
                           href="https://mixplorer.com/"
                         >
-                          MiXplorer Beta
+                          MiXplorer
                         </Link>
                       </p>
                       <p className="flex items-center justify-center lg:justify-start">
@@ -154,9 +154,9 @@ export default function Cheetah() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://github.com/NoName-exe/revanced-extended"
+                          href="https://revanced.app"
                         >
-                          ReVanced Extended
+                          ReVanced
                         </Link>
                       </p>
                     </div>
@@ -172,9 +172,9 @@ export default function Cheetah() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://github.com/5ec1cff/TrickyStore"
+                          href="https://github.com/bindhosts/bindhosts"
                         >
-                          Tricky Store
+                          bindhosts
                         </Link>
                       </li>
                       <li>
@@ -182,9 +182,9 @@ export default function Cheetah() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://github.com/dpejoh/yurikey"
+                          href="https://github.com/EmojiReplacer/Emoji-Replacer"
                         >
-                          Yurikey Manager
+                          Emoji Replacer
                         </Link>
                       </li>
                       <li>
@@ -192,9 +192,9 @@ export default function Cheetah() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://github.com/LSPosed/LSPosed.github.io/releases"
+                          href="https://github.com/PerformanC/ReZygisk"
                         >
-                          Shamiko
+                          ReZygisk
                         </Link>
                       </li>
                       <li>
@@ -205,16 +205,6 @@ export default function Cheetah() {
                           href="https://github.com/JingMatrix/LSPosed"
                         >
                           LSPosed JingMatrix
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className="underline hover:glow transition-all"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://github.com/Dr-TSNG/ZygiskNext"
-                        >
-                          Zygisk Next
                         </Link>
                       </li>
                     </ul>

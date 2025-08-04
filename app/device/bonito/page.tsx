@@ -82,12 +82,12 @@ export default function Bonito() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://wiki.lineageos.org/devices/bonito/"
+                          href="https://www.ubuntu-touch.io"
                         >
-                          LineageOS 22.2
+                          Ubuntu Touch
                         </Link>
                       </p>
-                      <p className="flex items-center justify-center lg:justify-start">
+                      {/*<p className="flex items-center justify-center lg:justify-start">
                         <Hammer className="mr-3" size={20} />
                         <b className="mr-2">Root:</b>
                         <Link
@@ -98,7 +98,8 @@ export default function Bonito() {
                         >
                           Magisk
                         </Link>
-                      </p>
+                        N/A
+                      </p>*/}
                     </div>
                   </div>
                 </div>
@@ -116,12 +117,12 @@ export default function Bonito() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://powerampapp.com/"
+                          href="https://github.com/arubislander/uSonic"
                         >
-                          Poweramp
+                          uSonic
                         </Link>
                       </p>
-                      <p className="flex items-center justify-center lg:justify-start">
+                      {/*<p className="flex items-center justify-center lg:justify-start">
                         <Folder className="mr-3" size={20} />
                         <b className="mr-2">Files:</b>
                         <Link
@@ -132,7 +133,8 @@ export default function Bonito() {
                         >
                           MiXplorer Beta
                         </Link>
-                      </p>
+                        N/A
+                      </p>*/}
                       <p className="flex items-center justify-center lg:justify-start">
                         <RiTelegram2Fill className="mr-3" size={20} />
                         <b className="mr-2">Telegram Client:</b>
@@ -140,12 +142,12 @@ export default function Bonito() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://nekogram.app/"
+                          href="https://open-store.io/app/teleports.ubports"
                         >
-                          Nekogram
+                          TELEports
                         </Link>
                       </p>
-                      <p className="flex items-center justify-center lg:justify-start">
+                      {/*<p className="flex items-center justify-center lg:justify-start">
                         <FaYoutube className="mr-3" size={20} />
                         <b className="mr-2">YouTube:</b>
                         <Link
@@ -156,10 +158,10 @@ export default function Bonito() {
                         >
                           Tubular
                         </Link>
-                      </p>
+                      </p>*/}
                     </div>
                   </div>
-                  <div className="text-center lg:text-left">
+                  {/*<div className="text-center lg:text-left">
                     <h1 className="text-3xl font-semibold mb-6 text-gray-200 flex items-center justify-center lg:justify-start">
                       <Layers className="mr-2" />
                       Modules
@@ -186,7 +188,7 @@ export default function Bonito() {
                         </Link>
                       </li>
                     </ul>
-                  </div>
+                  </div>*/}
                 </div>
               </div>
             </div>
