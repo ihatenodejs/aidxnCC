@@ -8,7 +8,6 @@ import {
   User,
   Phone,
   BookOpen,
-  Rss,
   X,
   Menu,
   Globe,
@@ -150,7 +149,6 @@ export default function Header() {
           <NavItem href="/contact" icon={Phone}>Contact</NavItem>
           <NavItem href="/domains" icon={LinkIcon}>Domains</NavItem>
           <NavItem href="/manifesto" icon={BookOpen}>Manifesto</NavItem>
-          <NavItem href="https://disfunction.blog" icon={Rss}>Blog</NavItem>
           <div className="lg:hidden">
             <LanguageSelector />
           </div>
