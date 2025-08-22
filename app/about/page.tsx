@@ -7,7 +7,8 @@ import Button from '@/components/objects/Button'
 import FeaturedRepos from '@/components/widgets/FeaturedRepos'
 import Image from 'next/image'
 import { useState } from 'react'
-import { User, Smartphone } from 'lucide-react'
+import { User } from 'lucide-react'
+import { SiGoogle } from 'react-icons/si'
 import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 
@@ -32,21 +33,19 @@ export default function About() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="text-center py-12">
-        <div className="flex flex-col gap-4">
-          <div className="flex justify-center">
+      <main className="w-full">
+        <div className="my-12 text-center">
+          <div className="flex justify-center mb-6">
             <User size={60} />
           </div>
-          <h1 className="text-4xl font-bold mt-2 text-center text-gray-200" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
-            {t('about.title')}
-          </h1>
+          <h1 className="text-4xl font-bold mb-2 text-gray-100 glow">{t('about.title')}</h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
           {mainStrings.map((section, index) => {
             if (mainSections[index] === t('about.sections.featuredProjects')) {
               return (
-                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg col-span-2 hover:border-gray-600 transition-colors duration-300">
+                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg lg:col-span-2 hover:border-gray-600 transition-colors duration-300">
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
@@ -87,6 +86,7 @@ export default function About() {
                         loading="eager"
                         priority
                         unoptimized
+                        className="max-w-full h-auto"
                       />
                       <Image
                         src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" 
@@ -97,6 +97,7 @@ export default function About() {
                         loading="eager"
                         priority
                         unoptimized
+                        className="max-w-full h-auto"
                       />
                     </div>
                   )}
@@ -132,16 +133,22 @@ export default function About() {
                         </p>
                       ))}
                       {key === "Mobile Devices" && (
-                        <div className="flex flex-row justify-center gap-4 mt-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                           <Button
                             href="/device/cheetah"
-                            icon={<Smartphone />}
+                            icon={<SiGoogle />}
+                          >
+                            Pixel 9 Pro XL
+                          </Button>
+                          <Button
+                            href="/device/cheetah"
+                            icon={<SiGoogle />}
                           >
                             Pixel 7 Pro
                           </Button>
                           <Button
                             href="/device/bonito"
-                            icon={<Smartphone />}
+                            icon={<SiGoogle />}
                           >
                             Pixel 3a XL
                           </Button>

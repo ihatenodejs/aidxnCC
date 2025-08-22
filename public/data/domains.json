@@ -6,23 +6,23 @@
   },
   {
     "id": 2,
-    "domain": "aidxn.fun",
-    "usage": "My alternative homepage (Version 2)"
+    "domain": "pontushost.com",
+    "usage": "My hosting provider project"
   },
   {
     "id": 3,
-    "domain": "librecloud.cc",
-    "usage": "LibreCloud's root domain"
-  },
-  {
-    "id": 4,
     "domain": "disfunction.blog",
     "usage": "My blog's official home"
   },
   {
-    "id": 5,
+    "id": 4,
     "domain": "androidintegrity.org",
-    "usage": "A team project to improve Play Integrity"
+    "usage": "A project to fix Play Integrity"
+  },
+  {
+    "id": 5,
+    "domain": "librecloud.cc",
+    "usage": "My old cloud services provider project"
   },
   {
     "id": 6,
@@ -47,12 +47,12 @@
   {
     "id": 10,
     "domain": "dontbeevil.lol",
-    "usage": "A Google meme domain used for p0ntus mail"
+    "usage": "Another fun domain for p0ntus mail"
   },
   {
     "id": 11,
     "domain": "wikitools.cloud",
-    "usage": "Tools I've made for Wikipedia"
+    "usage": "Unused (for now!)"
   },
   {
     "id": 12,

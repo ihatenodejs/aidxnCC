@@ -96,9 +96,9 @@
     ],
     "devices": {
       "Mobile Devices": [
-        "I use a Google Pixel 7 Pro (cheetah) as my daily driver. It runs Android 16 and is proudly rooted with KernelSU-Next.",
-        "It's back is shattered and missing volume buttons, but it continues to thrive and survive as my daily driver.",
-        "I also have a Google Pixel 3a XL (bonito) which I use as a secondary device. It runs LineageOS 22.2 and is also rooted with KernelSU-Next."
+        "I use a Google Pixel 9 Pro XL (komodo) as my daily driver. It runs Android 16 and is proudly rooted with KernelSU-Next.",
+        "My previous phone, the Google Pixel 7 Pro (cheetah), is still in use as my secondary WiFi-only device. It runs Android 16 and is proudly rooted with KernelSU-Next.",
+        "I also have a Google Pixel 3a XL (bonito) which I use as a tertiary device. It runs LineageOS 22.2 and is rooted with Magisk."
       ],
       "Laptops": [
         "I currently daily-drive with a 16-inch MacBook Pro with an M4 Max, 64GB of memory, 2TB of storage, 16 core CPU, and a 40 core GPU.",

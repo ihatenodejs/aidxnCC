@@ -19,11 +19,11 @@
   },
   {
     "id": 3,
-    "name": "mail-connect",
-    "description": "API bridge for docker-mailserver",
+    "name": "modules",
+    "description": "A Magisk/KernelSU module repository",
     "github": true,
-    "url": "https://github.com/ihatenodejs/mail-connect",
-    "stars": 0,
+    "url": "https://github.com/abocn/modules",
+    "stars": 5,
     "forks": 0
   },
   {
