@@ -12,7 +12,8 @@ import {
   X,
   Menu,
   Globe,
-  ChevronDown
+  ChevronDown,
+  Brain
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
@@ -145,6 +146,7 @@ export default function Header() {
         <ul className={`flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 absolute lg:static bg-gray-800 lg:bg-transparent w-full lg:w-auto left-0 lg:left-auto top-16 lg:top-auto p-4 lg:p-0 transition-all duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden lg:flex'}`}>
           <NavItem href="/" icon={House}>Home</NavItem>
           <NavItem href="/about" icon={User}>About</NavItem>
+          <NavItem href="/ai" icon={Brain}>AI</NavItem>
           <NavItem href="/contact" icon={Phone}>Contact</NavItem>
           <NavItem href="/domains" icon={LinkIcon}>Domains</NavItem>
           <NavItem href="/manifesto" icon={BookOpen}>Manifesto</NavItem>
