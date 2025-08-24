@@ -272,7 +272,7 @@ const NowPlaying: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="relative w-52 h-95 bg-[#D4C29A] rounded-xs shadow-2xl border border-[#BFAF8A]">
+      <div className="relative w-52 h-95 bg-[#D4C29A] rounded-xs border border-[#BFAF8A] z-10">
         {/* Volume buttons */}
         <div className="absolute -left-[2.55px] top-8 rounded-l w-[1.75px] flex flex-col z-0">
           <div className="h-8 bg-[#BFAF8A] border-b border-[#A09070] rounded-l cursor-pointer" onClick={() => setVolume(v => Math.min(100, v + 5))}></div> {/* up */}

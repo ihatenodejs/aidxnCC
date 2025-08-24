@@ -9,7 +9,7 @@ export default function TopPick() {
         <Trophy size={32} />
         Top Pick of 2025
       </h2>
-      <div className="p-8 border-2 border-[#c15f3c] rounded-lg bg-orange-500/5">
+      <div className="p-6 sm:p-8 border-2 border-[#c15f3c] rounded-lg bg-orange-500/5">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex items-center gap-4">
             <SiClaude className="text-6xl text-[#c15f3c]" />

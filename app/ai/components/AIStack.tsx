@@ -8,7 +8,7 @@ interface AIStackProps {
 
 export default function AIStack({ tools }: AIStackProps) {
   const getStatusColor = (status: string) => {
-    switch(status) {
+    switch (status) {
       case 'primary': return 'text-green-400 border-green-400 bg-green-400/10'
       case 'active': return 'text-blue-400 border-blue-400 bg-blue-400/10'
       case 'occasional': return 'text-yellow-400 border-yellow-400 bg-yellow-400/10'
@@ -17,7 +17,7 @@ export default function AIStack({ tools }: AIStackProps) {
   }
 
   const getStatusLabel = (status: string) => {
-    switch(status) {
+    switch (status) {
       case 'primary': return 'Primary'
       case 'active': return 'Active Use'
       case 'occasional': return 'Occasional Use'
@@ -26,7 +26,7 @@ export default function AIStack({ tools }: AIStackProps) {
   }
 
   return (
-    <section className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+    <section className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
       <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
         <Bot size={24} />
         My AI Stack

@@ -7,7 +7,7 @@ interface ToolReviewsProps {
 
 export default function ToolReviews({ reviews }: ToolReviewsProps) {
   return (
-    <section className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+    <section className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
       <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
         <MessageSquare size={24} />
         Tool Reviews

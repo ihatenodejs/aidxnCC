@@ -134,15 +134,21 @@ export default function Header() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg-gray-800 shadow-lg">
-      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header className="bg-gray-800 relative">
+      {isOpen && (
+        <div
+          className="fixed inset-0 backdrop-blur-md z-40 lg:hidden"
+          onClick={toggleMenu}
+        />
+      )}
+      <nav className="container mx-auto px-4 py-4 flex justify-between items-center relative z-50">
         <Link href="/" className="text-gray-300 hover:text-white text-2xl font-bold transition-all duration-300 hover:glow">
           aidxn.cc
         </Link>
         <button onClick={toggleMenu} className="lg:hidden text-gray-300 focus:outline-hidden">
           {isOpen ? <X className="text-2xl" /> : <Menu className="text-2xl" />}
         </button>
-        <ul className={`flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 absolute lg:static bg-gray-800 lg:bg-transparent w-full lg:w-auto left-0 lg:left-auto top-16 lg:top-auto p-4 lg:p-0 transition-all duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden lg:flex'}`}>
+        <ul className={`flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 absolute lg:static bg-gray-800 lg:bg-transparent w-full lg:w-auto left-0 lg:left-auto top-full lg:top-auto p-4 lg:p-0 transition-all duration-300 ease-in-out z-50 ${isOpen ? 'flex' : 'hidden lg:flex'}`}>
           <NavItem href="/" icon={House}>Home</NavItem>
           <NavItem href="/about" icon={User}>About</NavItem>
           <NavItem href="/ai" icon={Brain}>AI</NavItem>
@@ -160,4 +166,3 @@ export default function Header() {
     </header>
   );
 }
-

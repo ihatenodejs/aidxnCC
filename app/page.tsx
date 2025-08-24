@@ -57,7 +57,7 @@ export default function Home() {
           </div>
 
           {mainSections.map((section, secIndex) => (
-            <section key={secIndex} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+            <section key={secIndex} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
               <h2 className="text-2xl font-semibold mb-4 text-gray-200">{section}</h2>
               {mainStrings[secIndex].map((text: string, index: number) => (
                 <p key={index} className="text-gray-300 leading-relaxed mt-2">
@@ -67,7 +67,7 @@ export default function Home() {
             </section>
           ))}
 
-          <section id="contact" className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+          <section id="contact" className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
             <h2 className="text-2xl font-semibold mb-4 text-gray-200">{t('home.contact.title')}</h2>
             <p className="text-gray-300 mb-6">{t('home.contact.description')}</p>
             <Button
@@ -78,7 +78,7 @@ export default function Home() {
             </Button>
           </section>
 
-          <section id="donation" className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+          <section id="donation" className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
             <h2 className="text-2xl font-semibold mb-4 text-gray-200">{t('home.donation.title')}</h2>
             <p className="text-gray-300 mb-6">{t('home.donation.description')}</p>
             <h4 className="text-lg font-semibold mb-2 text-gray-200">{t('home.donation.charities.title')}</h4>

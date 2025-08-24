@@ -45,7 +45,7 @@ export default function About() {
           {mainStrings.map((section, index) => {
             if (mainSections[index] === t('about.sections.featuredProjects')) {
               return (
-                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg lg:col-span-2 hover:border-gray-600 transition-colors duration-300">
+                <section key={index} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg lg:col-span-2 hover:border-gray-600 transition-colors duration-300">
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
@@ -57,7 +57,7 @@ export default function About() {
               )
             } else if (mainSections[index] === t('about.sections.contributions')) {
               return (
-                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                <section key={index} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
@@ -78,7 +78,7 @@ export default function About() {
                   {!imageError && (
                     <div className="flex flex-col justify-center items-center w-full mt-4 gap-4">
                       <Image
-                        src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true" 
+                        src="https://github-readme-stats.vercel.app/api?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&count_private=true"
                         alt="ihatenodejs's Stats"
                         width={420}
                         height={200}
@@ -89,7 +89,7 @@ export default function About() {
                         className="max-w-full h-auto"
                       />
                       <Image
-                        src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact" 
+                        src="https://github-readme-stats.vercel.app/api/top-langs/?username=ihatenodejs&theme=dark&show_icons=true&hide_border=true&layout=compact"
                         alt="ihatenodejs's Top Languages"
                         width={300}
                         height={200}
@@ -105,7 +105,7 @@ export default function About() {
               )
             } else if (mainSections[index] === t('about.sections.devices')) {
               return (
-                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                <section key={index} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {Object.entries(section).map(([key, value], index) => (
                     <div key={index}>
@@ -160,7 +160,7 @@ export default function About() {
               )
             } else if (mainSections[index] === t('about.sections.hobbies')) {
               return (
-                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                <section key={index} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
@@ -185,7 +185,7 @@ export default function About() {
               )
             } else if (mainSections[index] === t('about.sections.projects')) {
               return (
-                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                <section key={index} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
@@ -213,7 +213,7 @@ export default function About() {
               )
             } else {
               return (
-                <section key={index} className="p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
+                <section key={index} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
                   <h2 className="text-2xl font-semibold mb-4 text-gray-200">{mainSections[index]}</h2>
                   {section.map((text, index) => (
                     <p key={index} className="text-gray-300 leading-relaxed mt-2">
