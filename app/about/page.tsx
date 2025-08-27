@@ -135,7 +135,7 @@ export default function About() {
                       {key === "Mobile Devices" && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                           <Button
-                            href="/device/cheetah"
+                            href="/device/komodo"
                             icon={<SiGoogle />}
                           >
                             Pixel 9 Pro XL
