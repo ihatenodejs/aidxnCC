@@ -79,9 +79,9 @@ export default function Cheetah() {
                           rel="noopener noreferrer"
                           href="https://github.com/WildKernels/GKI_KernelSU_SUSFS"
                         >
-                          6.1.134-android14-SUSFS-Wild
+                          6.1.138-android14-SUSFS-Wild
                         </Link>
-                      </p>
+                      </p>;
                       <p className="flex items-center justify-center lg:justify-start">
                         <MdOutlineAndroid className="mr-3" size={20} />
                         <b className="mr-2">ROM:</b>
@@ -89,9 +89,9 @@ export default function Cheetah() {
                           className="underline hover:glow transition-all"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://developer.android.com/about/versions/16/get#google-pixel-devices"
+                          href="https://developer.android.com/about/versions/16/qpr2"
                         >
-                          Android 16 QPR1
+                          Android 16 Beta QPR2
                         </Link>
                       </p>
                       <p className="flex items-center justify-center lg:justify-start">
