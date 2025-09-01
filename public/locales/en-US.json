@@ -1,10 +1,10 @@
 {
   "home": {
     "whoAmI": [
-      "Hey there! My name is Aidan, and I'm a systems administrator, full-stack developer, and student from the United States. I primarily work with Linux, Docker, Next.js, Tailwind CSS and TypeScript.",
-      "My favorite projects and hobbies include web development and SysAdmin. Most of my work is released into the public domain.",
-      "I'm also a huge advocate for AI, and it's practical applications to programming and life itself. I am fond of open-source models the most, specifically Qwen3!",
-      "When I'm not programming, I can be found re-flashing my phone with a new custom ROM and jumping between projects."
+      "Hey there! My name is Aidan, and I'm a systems administrator, full-stack developer, and student from the Boston area. I primarily work with Linux, Docker, Next.js, Tailwind CSS and TypeScript.",
+      "My favorite projects and hobbies revolve around web development and SysAdmin. Most of my work is released into the public domain.",
+      "I'm also a huge advocate for AI and it's practical applications to programming and life itself. I am fond of open-source models the most, specifically Qwen3!",
+      "When I'm not programming, I can be found re-flashing my phone with a new custom ROM and jumping between projects. I tend to be quite depressed, but I make do."
     ],
     "whatIDo": [
       "I'm at my best when I'm doing system administration and development in TypeScript. I frequently implement AI into my workflow.",
@@ -13,7 +13,7 @@
     ],
     "whereYouAre": [
       "I am not here to brag about my accomplishments or plug my shitty SaaS. That's why I've made every effort to make this website as personal and fun as possible.",
-      "I hope you find this website an interesting place to find more about me, but also learn something new, and inspire a new project or two.",
+      "I hope you find this website an interesting place to find more about me, but also learn something new; maybe inspire a new project or two.",
       "In a technical sense, this site is hosted on my dedicated server hosted in Buffalo, New York by ColoCrossing."
     ],
     "sections": {
@@ -31,10 +31,10 @@
       "description": "Feeling generous? Support me or one of the causes I support!",
       "charities": {
         "title": "Charities",
-        "description": "I support the following charities:",
         "unsilenced": "Unsilenced",
         "drugpolicy": "Drug Policy Alliance",
-        "aclu": "ACLU"
+        "aclu": "ACLU",
+        "epic-restart": "EPIC Restart Foundation"
       },
       "donate": {
         "title": "Donate to Me",

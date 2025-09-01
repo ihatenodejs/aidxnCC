@@ -16,8 +16,8 @@ export default function Manifesto() {
               Internet Manifesto
             </h1>
           </div>
-          <div className="px-6 pt-6">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-200">
+          <div className="px-6 pt-12">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-200">
               1. Empathy and Understanding
             </h2>
             <p className="text-gray-300 mb-4">
@@ -28,6 +28,7 @@ export default function Manifesto() {
               <li>Suspend judgment and seek to understand</li>
               <li>Recognize the humanity in every digital interaction</li>
             </ul>
+
             <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">
               2. Unconditional Sharing!
             </h2>
@@ -40,12 +41,14 @@ export default function Manifesto() {
               <li>Support open-source principles</li>
               <li>Create extensive documentation on all of my projects</li>
             </ul>
+
             <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">
               3. Genuine Human Connection
             </h2>
             <p className="text-gray-300 mb-4">
               I aim to create a genuine human connection with all people I meet, regardless of who or where they are from.
             </p>
+
             <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">
               4. Privacy & Self-Hosted Services
             </h2>
@@ -62,6 +65,7 @@ export default function Manifesto() {
               <li>Focus my services on being free and open</li>
               <li>Suggest and support privacy-focused software</li>
             </ul>
+
             <h2 className="text-2xl font-semibold mb-4 mt-12 text-gray-200">
               I Commit
             </h2>

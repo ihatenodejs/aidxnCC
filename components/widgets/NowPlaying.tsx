@@ -181,10 +181,10 @@ const NowPlaying: React.FC = () => {
           rel="noopener noreferrer"
           className="bg-gradient-to-b from-gray-700 to-gray-900 border-b border-gray-700 px-2 py-0 block" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}
         >
-          <div className="text-center leading-none">
-            <ScrollTxt text={currentTrack.artist_name.toUpperCase()} type="artist" className="-my-0.5" />
-            <ScrollTxt text={currentTrack.track_name} type="track" className="-my-0.5" />
-            {currentTrack.release_name && <ScrollTxt text={currentTrack.release_name} type="release" className="-mt-1.5 mb-0.5" />}
+          <div className="text-center leading-none pb-1">
+            <ScrollTxt text={currentTrack.artist_name.toUpperCase()} type="artist" />
+            <ScrollTxt text={currentTrack.track_name} type="track" className="-mt-0.5" />
+            {currentTrack.release_name && <ScrollTxt text={currentTrack.release_name} type="release" />}
           </div>
         </a>
         {/* Album art */}
@@ -201,70 +201,6 @@ const NowPlaying: React.FC = () => {
               <PiMusicNotesFill size={74} className="text-gray-400" />
             </div>
           )}
-        </div>
-        {/* Player controls and seekbar */}
-        <div className="bg-gradient-to-b from-gray-700 to-gray-900 pb-2.5 flex flex-col items-center" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
-          <div className="flex justify-center items-center gap-0 px-2">
-          <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
-            <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
-              <defs>
-                <linearGradient id="skipBackGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#f9fafb" />
-                  <stop offset="49%" stopColor="#e5e7eb" />
-                  <stop offset="51%" stopColor="#6b7280" />
-                  <stop offset="100%" stopColor="#d1d5db" />
-                </linearGradient>
-              </defs>
-              <rect x="2" y="4" width="2" height="12" fill="url(#skipBackGradient)" />
-              <polygon points="12,4 6,10 12,16" fill="url(#skipBackGradient)" />
-              <polygon points="20,4 12,10 20,16" fill="url(#skipBackGradient)" />
-            </svg>
-          </button>
-          <div className="w-[1px] h-6 bg-gray-800 mx-0.5"></div>
-          <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
-            <svg width="38" height="38" viewBox="0 0 24 24" className="drop-shadow-sm">
-              <defs>
-                <linearGradient id="pauseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#f9fafb" />
-                  <stop offset="49%" stopColor="#e5e7eb" />
-                  <stop offset="51%" stopColor="#6b7280" />
-                  <stop offset="100%" stopColor="#d1d5db" />
-                </linearGradient>
-              </defs>
-              <rect x="6" y="4" width="4" height="16" fill="url(#pauseGradient)" />
-              <rect x="14" y="4" width="4" height="16" fill="url(#pauseGradient)" />
-            </svg>
-          </button>
-          <div className="w-[1px] h-6 bg-gray-800 mx-1"></div>
-          <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
-            <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
-              <defs>
-                <linearGradient id="skipForwardGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#f9fafb" />
-                  <stop offset="49%" stopColor="#e5e7eb" />
-                  <stop offset="51%" stopColor="#6b7280" />
-                  <stop offset="100%" stopColor="#d1d5db" />
-                </linearGradient>
-              </defs>
-              <polygon points="2,4 9,10 2,16" fill="url(#skipForwardGradient)" />
-              <polygon points="9,4 17,10 9,16" fill="url(#skipForwardGradient)" />
-              <rect x="18" y="4" width="2" height="12" fill="url(#skipForwardGradient)" />
-            </svg>
-          </button>
-          </div>
-          <div className="relative w-full flex justify-center mt-1">
-            <div className="w-38 h-2 bg-gray-800 rounded-full relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-600 rounded-full" style={{width: `${volume}%`}} />
-              <div
-                className="absolute top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-500 rounded-full border border-gray-400 shadow-inner" style={{
-                left: `calc(${volume}% - 8px)`,
-                backgroundImage: 'radial-gradient(circle at 30% 30%, #f0f0f0 0%, #c0c0c0 60%, #808080 100%), repeating-conic-gradient(#f9fafb 0deg 45deg, #9ca3af 45deg 90deg)',
-                backgroundBlendMode: 'overlay',
-                boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.5)'
-              }}></div>
-              <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
-            </div>
-          </div>
         </div>
       </>
     )
@@ -283,89 +219,89 @@ const NowPlaying: React.FC = () => {
         <div className="absolute right-1 -top-[3px] w-9 h-[3px] bg-[#BFAF8A] rounded-t-2xl cursor-pointer" onClick={() => setScreenOn(prev => !prev)}></div>
         {/* White bezel (fuses screen+home btn) */}
         <div className="absolute inset-2 bg-white rounded-sm overflow-hidden flex flex-col">
-          {/* Virtual screen */}
+        {/* Virtual screen */}
         <div className="mx-2 mt-2 flex-1 bg-black overflow-hidden flex flex-col">
-            {screenOn && (
-              <div className="bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 border-b border-gray-700" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
-                <div className="relative flex items-center pr-1 py-0.5">
-                  <FaBluetoothB size={14} className="text-gray-400" />
-                  <div className="absolute left-1/2 transform -translate-x-1/2 text-white text-xs font-medium">{formatTime(currentTime)}</div>
-                  <div className="flex items-center gap-0.5 ml-auto ">
-                    <IoIosPlay size={14} className="text-white" />
-                    <IoBatteryFullSharp size={18} className="text-white" />
-                  </div>
+          {screenOn && (
+            <div className="bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 border-b border-gray-700" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
+              <div className="relative flex items-center pr-1 py-0.5">
+                <FaBluetoothB size={14} className="text-gray-400" />
+                <div className="absolute left-1/2 transform -translate-x-1/2 text-white text-xs font-medium">{formatTime(currentTime)}</div>
+                <div className="flex items-center gap-0.5 ml-auto ">
+                  <IoIosPlay size={14} className="text-white" />
+                  <IoBatteryFullSharp size={18} className="text-white" />
                 </div>
               </div>
-            )}
-            {screenOn ? renderScreenContent() : (
-              <div className="w-full h-full bg-black"></div>
-            )}
-            {/* Player controls and seekbar */}
-            {screenOn && track && (
-              <div className="bg-gradient-to-b from-gray-700 to-gray-900 pb-2.5 flex flex-col items-center" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
-                <div className="flex justify-center items-center gap-0 px-2">
-                <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
-                  <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
-                    <defs>
-                      <linearGradient id="skipBackGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#f9fafb" />
-                        <stop offset="49%" stopColor="#e5e7eb" />
-                        <stop offset="51%" stopColor="#6b7280" />
-                        <stop offset="100%" stopColor="#d1d5db" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="2" y="4" width="2" height="12" fill="url(#skipBackGradient)" />
-                    <polygon points="12,4 6,10 12,16" fill="url(#skipBackGradient)" />
-                    <polygon points="20,4 12,10 20,16" fill="url(#skipBackGradient)" />
-                  </svg>
-                </button>
-                <div className="w-[1px] h-6 bg-gray-800 mx-0.5"></div>
-                <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
-                  <svg width="38" height="38" viewBox="0 0 24 24" className="drop-shadow-sm">
-                    <defs>
-                      <linearGradient id="pauseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#f9fafb" />
-                        <stop offset="49%" stopColor="#e5e7eb" />
-                        <stop offset="51%" stopColor="#6b7280" />
-                        <stop offset="100%" stopColor="#d1d5db" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="6" y="4" width="4" height="16" fill="url(#pauseGradient)" />
-                    <rect x="14" y="4" width="4" height="16" fill="url(#pauseGradient)" />
-                  </svg>
-                </button>
-                <div className="w-[1px] h-6 bg-gray-800 mx-1"></div>
-                <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
-                  <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
-                    <defs>
-                      <linearGradient id="skipForwardGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#f9fafb" />
-                        <stop offset="49%" stopColor="#e5e7eb" />
-                        <stop offset="51%" stopColor="#6b7280" />
-                        <stop offset="100%" stopColor="#d1d5db" />
-                      </linearGradient>
-                    </defs>
-                    <polygon points="2,4 9,10 2,16" fill="url(#skipForwardGradient)" />
-                    <polygon points="9,4 17,10 9,16" fill="url(#skipForwardGradient)" />
-                    <rect x="18" y="4" width="2" height="12" fill="url(#skipForwardGradient)" />
-                  </svg>
-                </button>
-                </div>
-                <div className="relative w-full flex justify-center mt-1">
-                  <div className="w-38 h-2 bg-gray-800 rounded-full relative">
-                    <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-600 rounded-full" style={{width: `${volume}%`}} />
-                    <div
-                      className="absolute top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-500 rounded-full border border-gray-400 shadow-inner" style={{
-                      left: `calc(${volume}% - 8px)`,
-                      backgroundImage: 'radial-gradient(circle at 30% 30%, #f0f0f0 0%, #c0c0c0 60%, #808080 100%), repeating-conic-gradient(#f9fafb 0deg 45deg, #9ca3af 45deg 90deg)',
-                      backgroundBlendMode: 'overlay',
-                      boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.5)'
-                    }}></div>
-                    <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
-                  </div>
+            </div>
+          )}
+          {screenOn ? renderScreenContent() : (
+            <div className="w-full h-full bg-black"></div>
+          )}
+          {/* Player controls and seekbar */}
+          {screenOn && track && (
+            <div className="bg-gradient-to-b from-gray-700 to-gray-900 pb-2.5 flex flex-col items-center" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
+              <div className="flex justify-center items-center gap-0 px-2">
+              <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+                <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
+                  <defs>
+                    <linearGradient id="skipBackGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#f9fafb" />
+                      <stop offset="49%" stopColor="#e5e7eb" />
+                      <stop offset="51%" stopColor="#6b7280" />
+                      <stop offset="100%" stopColor="#d1d5db" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="2" y="4" width="2" height="12" fill="url(#skipBackGradient)" />
+                  <polygon points="12,4 6,10 12,16" fill="url(#skipBackGradient)" />
+                  <polygon points="20,4 12,10 20,16" fill="url(#skipBackGradient)" />
+                </svg>
+              </button>
+              <div className="w-[1px] h-6 bg-gray-800 mx-0.5"></div>
+              <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+                <svg width="38" height="38" viewBox="0 0 24 24" className="drop-shadow-sm">
+                  <defs>
+                    <linearGradient id="pauseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#f9fafb" />
+                      <stop offset="49%" stopColor="#e5e7eb" />
+                      <stop offset="51%" stopColor="#6b7280" />
+                      <stop offset="100%" stopColor="#d1d5db" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="6" y="4" width="4" height="16" fill="url(#pauseGradient)" />
+                  <rect x="14" y="4" width="4" height="16" fill="url(#pauseGradient)" />
+                </svg>
+              </button>
+              <div className="w-[1px] h-6 bg-gray-800 mx-1"></div>
+              <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
+                <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
+                  <defs>
+                    <linearGradient id="skipForwardGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#f9fafb" />
+                      <stop offset="49%" stopColor="#e5e7eb" />
+                      <stop offset="51%" stopColor="#6b7280" />
+                      <stop offset="100%" stopColor="#d1d5db" />
+                    </linearGradient>
+                  </defs>
+                  <polygon points="2,4 9,10 2,16" fill="url(#skipForwardGradient)" />
+                  <polygon points="9,4 17,10 9,16" fill="url(#skipForwardGradient)" />
+                  <rect x="18" y="4" width="2" height="12" fill="url(#skipForwardGradient)" />
+                </svg>
+              </button>
+              </div>
+              <div className="relative w-full flex justify-center mt-1">
+                <div className="w-38 h-2 bg-gray-800 rounded-full relative">
+                  <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-600 rounded-full" style={{width: `${volume}%`}} />
+                  <div
+                    className="absolute top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-500 rounded-full border border-gray-400 shadow-inner" style={{
+                    left: `calc(${volume}% - 8px)`,
+                    backgroundImage: 'radial-gradient(circle at 30% 30%, #f0f0f0 0%, #c0c0c0 60%, #808080 100%), repeating-conic-gradient(#f9fafb 0deg 45deg, #9ca3af 45deg 90deg)',
+                    backgroundBlendMode: 'overlay',
+                    boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.5)'
+                  }}></div>
+                  <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
                 </div>
               </div>
-            )}
+            </div>
+          )}
           </div>
           {/* Home button */}
           <div className="flex justify-center py-2">

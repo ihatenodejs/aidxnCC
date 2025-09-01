@@ -15,12 +15,6 @@ Docker is the easiest way to deploy aidxnCC. There are two example `docker-compo
 
 Just create a `.env` file with the below variables, run `docker compose -d --build`, and you'll be all set.
 
-## Contributing
-
-Any and all contributions are welcome! Simply create a pull request and I should have a response to you within a day.
-
-Please use common sense when contributing :)
-
 ## Environment Variables
 
 | Variable             | Description                                                                         |
@@ -32,3 +26,9 @@ Please use common sense when contributing :)
 This project does not use a custom user agent when interacting with the MusicBrainz API. This is because the LastPlayed component is rendered client-side and user agent support is not universal.
 
 If bugs were to occur with my code, I believe it would be easier for MusicBrainz to block this way.
+
+## Contributing
+
+Any and all contributions are welcome! Simply create a pull request and I should have a response to you within a day.
+
+Please use common sense when contributing :)

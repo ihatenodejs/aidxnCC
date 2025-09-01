@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { useState, useEffect } from 'react'
 import { SiClaude } from 'react-icons/si'
+import Link from 'next/link'
 import {
   Line,
   BarChart,
@@ -83,8 +84,103 @@ export default function AI() {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-gray-300">Loading Claude metrics...</div>
+        <main className="w-full relative">
+          <Link 
+            href="/ai" 
+            className="absolute top-4 left-4 text-gray-400 hover:text-gray-200 hover:underline transition-colors duration-200 z-10 px-2 py-1 text-sm sm:text-base"
+          >
+            ← Back to AI
+          </Link>
+          
+          <div className="my-12 text-center">
+            <div className="flex justify-center mb-6">
+              <SiClaude size={60} />
+            </div>
+            <h1 className="text-4xl font-bold mb-2 text-gray-100 glow">Claude Code Usage</h1>
+            <p className="text-gray-400">How much I use Claude Code!</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
+            <div className="p-6 border-2 border-gray-700 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-400 mb-2">Total Cost</h3>
+              <div className="h-9 w-32 bg-gray-800 rounded animate-pulse" />
+            </div>
+            <div className="p-6 border-2 border-gray-700 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-400 mb-2">Total Tokens</h3>
+              <div className="h-9 w-32 bg-gray-800 rounded animate-pulse" />
+            </div>
+            <div className="p-6 border-2 border-gray-700 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-400 mb-2">Days Active</h3>
+              <div className="h-9 w-32 bg-gray-800 rounded animate-pulse" />
+            </div>
+            <div className="p-6 border-2 border-gray-700 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-400 mb-2">Avg Daily Cost</h3>
+              <div className="h-9 w-32 bg-gray-800 rounded animate-pulse" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
+            <section className="p-8 border-2 border-gray-700 rounded-lg">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-200">Daily Usage Trend</h2>
+              <div className="flex gap-2 mb-4">
+                <button className="px-3 py-1 rounded bg-gray-700 text-gray-300" disabled>
+                  Cost
+                </button>
+                <button className="px-3 py-1 rounded bg-gray-700 text-gray-300" disabled>
+                  Tokens
+                </button>
+              </div>
+              <div className="h-[300px] bg-gray-800 rounded animate-pulse" />
+            </section>
+            <section className="p-8 border-2 border-gray-700 rounded-lg">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-200">Model Usage Distribution</h2>
+              <div className="h-[300px] bg-gray-800 rounded animate-pulse" />
+            </section>
+            <section className="p-8 border-2 border-gray-700 rounded-lg">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-200">Token Type Breakdown</h2>
+              <div className="h-[300px] bg-gray-800 rounded animate-pulse" />
+            </section>
+            <section className="p-8 border-2 border-gray-700 rounded-lg">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-200">Daily Token Composition</h2>
+              <div className="h-[300px] bg-gray-800 rounded animate-pulse" />
+            </section>
+          </div>
+
+          <div className="px-4 pb-4">
+            <section className="p-8 border-2 border-gray-700 rounded-lg">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-200">Recent Sessions</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="border-b border-gray-700">
+                      <th className="py-2 px-4 text-gray-400">Date</th>
+                      <th className="py-2 px-4 text-gray-400">Models Used</th>
+                      <th className="py-2 px-4 text-gray-400">Total Tokens</th>
+                      <th className="py-2 px-4 text-gray-400">Cost</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...Array(5)].map((_, index) => (
+                      <tr key={index} className="border-b border-gray-800">
+                        <td className="py-2 px-4">
+                          <div className="h-5 w-24 bg-gray-800 rounded animate-pulse" />
+                        </td>
+                        <td className="py-2 px-4">
+                          <div className="h-5 w-96 bg-gray-800 rounded animate-pulse" />
+                        </td>
+                        <td className="py-2 px-4">
+                          <div className="h-5 w-16 bg-gray-800 rounded animate-pulse" />
+                        </td>
+                        <td className="py-2 px-4">
+                          <div className="h-5 w-20 bg-gray-800 rounded animate-pulse" />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
         </main>
         <Footer />
       </div>
@@ -114,6 +210,7 @@ export default function AI() {
     })
     return acc
   }, [] as { name: string; value: number }[])
+    .sort((a, b) => b.value - a.value)
 
   const tokenTypeData = [
     { name: 'Input', value: data.totals.inputTokens },
@@ -123,7 +220,7 @@ export default function AI() {
   ]
 
   const dailyTrendData = data.daily.map(day => ({
-    date: new Date(day.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+    date: new Date(day.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
     cost: day.totalCost,
     tokens: day.totalTokens / 1000000,
     inputTokens: day.inputTokens / 1000,
@@ -137,7 +234,13 @@ export default function AI() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="w-full">
+      <main className="w-full relative">
+        <Link 
+          href="/ai" 
+          className="absolute top-4 left-4 text-gray-400 hover:text-gray-200 hover:underline transition-colors duration-200 z-10 px-2 py-1 text-sm sm:text-base"
+        >
+          ← Back to AI
+        </Link>
         <div className="my-12 text-center">
           <div className="flex justify-center mb-6">
             <SiClaude size={60} />
@@ -227,6 +330,8 @@ export default function AI() {
                   <Tooltip
                     contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }}
                     formatter={(value: number) => formatCurrency(value)}
+                    labelStyle={{ color: '#fff' }}
+                    itemStyle={{ color: '#fff' }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -273,10 +378,13 @@ export default function AI() {
                 <XAxis dataKey="name" stroke="#9ca3af" />
                 <YAxis stroke="#9ca3af" tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151' }}
+                  contentStyle={{ backgroundColor: 'rgba(31, 41, 55)', border: '1px solid #374151' }}
                   formatter={(value: number) => `${(value / 1000000).toFixed(2)}M tokens`}
                 />
-                <Bar dataKey="value" fill="#b1ada1" />
+                <Bar 
+                  dataKey="value" 
+                  fill="#b1ada1"
+                />
               </BarChart>
             </ResponsiveContainer>
           </section>
@@ -317,7 +425,7 @@ export default function AI() {
                 <tbody>
                   {data.daily.slice(-5).reverse().map((day, index) => (
                     <tr key={index} className="border-b border-gray-800 hover:bg-gray-800/50">
-                      <td className="py-2 px-4 text-gray-300">{new Date(day.date).toLocaleDateString()}</td>
+                      <td className="py-2 px-4 text-gray-300">{new Date(day.date + 'T00:00:00').toLocaleDateString()}</td>
                       <td className="py-2 px-4 text-gray-300">
                         {day.modelsUsed.join(', ')}
                       </td>

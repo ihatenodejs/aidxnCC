@@ -446,14 +446,142 @@
           "cost": 8.052878999999999
         }
       ]
+    },
+    {
+      "date": "2025-08-23",
+      "inputTokens": 114,
+      "outputTokens": 6030,
+      "cacheCreationTokens": 408902,
+      "cacheReadTokens": 2606990,
+      "totalTokens": 3022036,
+      "totalCost": 11.605633500000005,
+      "modelsUsed": [
+        "claude-opus-4-1-20250805",
+        "claude-sonnet-4-20250514"
+      ],
+      "modelBreakdowns": [
+        {
+          "modelName": "claude-opus-4-1-20250805",
+          "inputTokens": 88,
+          "outputTokens": 5424,
+          "cacheCreationTokens": 387862,
+          "cacheReadTokens": 2545780,
+          "cost": 11.499202500000006
+        },
+        {
+          "modelName": "claude-sonnet-4-20250514",
+          "inputTokens": 26,
+          "outputTokens": 606,
+          "cacheCreationTokens": 21040,
+          "cacheReadTokens": 61210,
+          "cost": 0.106431
+        }
+      ]
+    },
+    {
+      "date": "2025-08-26",
+      "inputTokens": 2836,
+      "outputTokens": 22779,
+      "cacheCreationTokens": 465292,
+      "cacheReadTokens": 11182259,
+      "totalTokens": 11673166,
+      "totalCost": 25.288227900000006,
+      "modelsUsed": [
+        "claude-opus-4-1-20250805",
+        "claude-sonnet-4-20250514"
+      ],
+      "modelBreakdowns": [
+        {
+          "modelName": "claude-opus-4-1-20250805",
+          "inputTokens": 2745,
+          "outputTokens": 19221,
+          "cacheCreationTokens": 405641,
+          "cacheReadTokens": 10473081,
+          "cost": 24.798140250000003
+        },
+        {
+          "modelName": "claude-sonnet-4-20250514",
+          "inputTokens": 91,
+          "outputTokens": 3558,
+          "cacheCreationTokens": 59651,
+          "cacheReadTokens": 709178,
+          "cost": 0.49008765
+        }
+      ]
+    },
+    {
+      "date": "2025-08-30",
+      "inputTokens": 151,
+      "outputTokens": 63263,
+      "cacheCreationTokens": 430727,
+      "cacheReadTokens": 4992045,
+      "totalTokens": 5486186,
+      "totalCost": 20.311188749999992,
+      "modelsUsed": [
+        "claude-opus-4-1-20250805"
+      ],
+      "modelBreakdowns": [
+        {
+          "modelName": "claude-opus-4-1-20250805",
+          "inputTokens": 151,
+          "outputTokens": 63263,
+          "cacheCreationTokens": 430727,
+          "cacheReadTokens": 4992045,
+          "cost": 20.311188749999992
+        }
+      ]
+    },
+    {
+      "date": "2025-08-31",
+      "inputTokens": 108,
+      "outputTokens": 777,
+      "cacheCreationTokens": 40539,
+      "cacheReadTokens": 305195,
+      "totalTokens": 346619,
+      "totalCost": 1.2777937499999998,
+      "modelsUsed": [
+        "claude-opus-4-1-20250805"
+      ],
+      "modelBreakdowns": [
+        {
+          "modelName": "claude-opus-4-1-20250805",
+          "inputTokens": 108,
+          "outputTokens": 777,
+          "cacheCreationTokens": 40539,
+          "cacheReadTokens": 305195,
+          "cost": 1.2777937499999998
+        }
+      ]
+    },
+    {
+      "date": "2025-09-01",
+      "inputTokens": 592,
+      "outputTokens": 28240,
+      "cacheCreationTokens": 712734,
+      "cacheReadTokens": 12698327,
+      "totalTokens": 13439893,
+      "totalCost": 34.53813299999999,
+      "modelsUsed": [
+        "claude-opus-4-1-20250805"
+      ],
+      "modelBreakdowns": [
+        {
+          "modelName": "claude-opus-4-1-20250805",
+          "inputTokens": 592,
+          "outputTokens": 28240,
+          "cacheCreationTokens": 712734,
+          "cacheReadTokens": 12698327,
+          "cost": 34.53813299999999
+        }
+      ]
     }
   ],
   "totals": {
-    "inputTokens": 206310,
-    "outputTokens": 1126501,
-    "cacheCreationTokens": 23364621,
-    "cacheReadTokens": 491053910,
-    "totalCost": 617.5983253500001,
-    "totalTokens": 515751342
+    "inputTokens": 210111,
+    "outputTokens": 1247590,
+    "cacheCreationTokens": 25422815,
+    "cacheReadTokens": 522838726,
+    "totalCost": 710.6193022500001,
+    "totalTokens": 549719242
   }
 }

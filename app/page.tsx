@@ -4,11 +4,26 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Button from '@/components/objects/Button'
 import LastPlayed from '@/components/widgets/NowPlaying'
+
 import Image from 'next/image'
-import { CreditCard, Mail, PillBottle, Scale } from 'lucide-react'
+
+import {CreditCard, Mail, PillBottle, Scale, UserCircle} from 'lucide-react'
+import { BsArrowClockwise } from "react-icons/bs";
 import { FaHandcuffs } from "react-icons/fa6"
+import {
+  SiGithubsponsors,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiDocker,
+  SiLinux,
+  SiTypescript,
+  SiClaude,
+  SiPostgresql
+} from 'react-icons/si'
+
 import { useTranslation } from 'react-i18next'
-import { SiGithubsponsors } from 'react-icons/si'
+import {TbHeartHandshake, TbUserHeart, TbMessage} from "react-icons/tb";
+import {BiDonateHeart} from "react-icons/bi";
 
 export default function Home() {
   const { t } = useTranslation()
@@ -58,7 +73,33 @@ export default function Home() {
 
           {mainSections.map((section, secIndex) => (
             <section key={secIndex} className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-200">{section}</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-gray-200">{section === t('home.sections.whereYouAre') ? (
+                <div className="flex flex-row items-center gap-2">
+                  <TbHeartHandshake />
+                  <span className="align-middle">{section}</span>
+                </div>
+              ) : section === t('home.sections.whoIAm') ? (
+                <div className="flex flex-row items-center gap-2">
+                  <UserCircle />
+                  <span className="align-middle">{section}</span>
+                </div>
+              ) : section === t('home.sections.whatIDo') ? (
+                <div className="flex flex-row items-center gap-2">
+                  <TbUserHeart />
+                  <span className="align-middle">{section}</span>
+                </div>
+              ) : (section)}</h2>
+              {section === t('home.sections.whatIDo') && (
+                <div className="flex flex-row items-center justify-center gap-4 my-8">
+                  <SiNextdotjs size={38} />
+                  <SiTypescript size={38} />
+                  <SiTailwindcss size={38} />
+                  <SiPostgresql size={38} />
+                  <SiDocker size={38} />
+                  <SiLinux size={38} />
+                  <SiClaude size={38} />
+                </div>
+              )}
               {mainStrings[secIndex].map((text: string, index: number) => (
                 <p key={index} className="text-gray-300 leading-relaxed mt-2">
                   {text}
@@ -68,7 +109,10 @@ export default function Home() {
           ))}
 
           <section id="contact" className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-200">{t('home.contact.title')}</h2>
+            <h2 className="flex flex-row items-center gap-2 text-2xl font-semibold mb-4 text-gray-200">
+              <TbMessage />
+              {t('home.contact.title')}
+            </h2>
             <p className="text-gray-300 mb-6">{t('home.contact.description')}</p>
             <Button
               href={'/contact'}
@@ -79,7 +123,10 @@ export default function Home() {
           </section>
 
           <section id="donation" className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-200">{t('home.donation.title')}</h2>
+            <h2 className="flex flex-row items-center gap-2 text-2xl font-semibold mb-4 text-gray-200">
+              <BiDonateHeart />
+              {t('home.donation.title')}
+            </h2>
             <p className="text-gray-300 mb-6">{t('home.donation.description')}</p>
             <h4 className="text-lg font-semibold mb-2 text-gray-200">{t('home.donation.charities.title')}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 md:text-sm gap-3">
@@ -103,6 +150,13 @@ export default function Home() {
                 target="_blank"
               >
                 {t('home.donation.charities.aclu')}
+              </Button>
+              <Button
+                href="https://www.epicrestartfoundation.org"
+                icon={<BsArrowClockwise size={16} />}
+                target="_blank"
+              >
+                {t('home.donation.charities.epic-restart')}
               </Button>
             </div>
 
