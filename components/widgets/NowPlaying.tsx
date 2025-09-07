@@ -24,6 +24,7 @@ const NowPlaying: React.FC = () => {
   const [track, setTrack] = useState<Track | null>(null)
   const [coverArt, setCoverArt] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const [albumArtLoading, setAlbumArtLoading] = useState(false)
   const [loadingStatus, setLoadingStatus] = useState("Initializing")
   const [error, setError] = useState<string | null>(null)
   const [progress, setProgress] = useState(0)
@@ -43,10 +44,11 @@ const NowPlaying: React.FC = () => {
     if (!album) {
       updateProgress(0, 0, "No album found")
       setCoverArt(null)
-      setLoading(false)
+      setAlbumArtLoading(false)
       return
     }
     try {
+      setAlbumArtLoading(true)
       updateProgress(2, 3, `Searching for album: ${artist} - ${album}`)
       const response = await fetch(
         `https://musicbrainz.org/ws/2/release/?query=artist:${encodeURIComponent(
@@ -56,7 +58,7 @@ const NowPlaying: React.FC = () => {
       if (!response.ok) {
         updateProgress(0, 0, `Album art fetch error: ${response.status}`)
         setError("Error fetching album art (see console for details)")
-        setLoading(false)
+        setAlbumArtLoading(false)
         return
       }
       const data = await response.json()
@@ -67,21 +69,21 @@ const NowPlaying: React.FC = () => {
         const coverArtResponse = await fetch(`https://coverartarchive.org/release/${mbid}/front`)
         if (coverArtResponse.ok) {
           setCoverArt(coverArtResponse.url)
-          setLoading(false)
+          setAlbumArtLoading(false)
         } else {
           updateProgress(0, 0, "Cover art not found")
           setCoverArt(null)
-          setLoading(false)
+          setAlbumArtLoading(false)
         }
       } else {
         updateProgress(0, 0, "No releases found")
         setCoverArt(null)
-        setLoading(false)
+        setAlbumArtLoading(false)
       }
     } catch (error) {
       updateProgress(0, 0, `Error: ${error}`)
       setCoverArt(null)
-      setLoading(false)
+      setAlbumArtLoading(false)
     }
   }, [updateProgress])
 
@@ -103,6 +105,7 @@ const NowPlaying: React.FC = () => {
           release_name: trackMetadata.release_name,
           mbid: trackMetadata.mbid,
         })
+        setLoading(false)
         updateProgress(2, 3, "Finding album art...")
         await fetchAlbumArt(trackMetadata.artist_name, trackMetadata.release_name)
       } else {
@@ -184,12 +187,17 @@ const NowPlaying: React.FC = () => {
           <div className="text-center leading-none pb-1">
             <ScrollTxt text={currentTrack.artist_name.toUpperCase()} type="artist" />
             <ScrollTxt text={currentTrack.track_name} type="track" className="-mt-0.5" />
-            {currentTrack.release_name && <ScrollTxt text={currentTrack.release_name} type="release" />}
+            {currentTrack.release_name && <ScrollTxt text={currentTrack.release_name} type="release" className="-mt-1.5" />}
           </div>
         </a>
         {/* Album art */}
         <div className="relative w-full aspect-square">
-          {coverArt ? (
+          {albumArtLoading ? (
+            <div className="w-full h-full bg-gray-700 flex flex-col items-center justify-center">
+              <Loader2 className="animate-spin text-gray-400 mb-2" size={32} />
+              <div className="text-gray-400 text-xs">Fetching Album Art</div>
+            </div>
+          ) : coverArt ? (
             <Image
               src={coverArt}
               alt={currentTrack.track_name}
@@ -208,7 +216,7 @@ const NowPlaying: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="relative w-52 h-95 bg-[#D4C29A] rounded-xs border border-[#BFAF8A] z-10">
+      <div className={`relative w-52 bg-[#D4C29A] rounded-xs border border-[#BFAF8A] z-10 ${track?.release_name ? "h-[24.25rem]" : "h-[23.6rem]"}`}>
         {/* Volume buttons */}
         <div className="absolute -left-[2.55px] top-8 rounded-l w-[1.75px] flex flex-col z-0">
           <div className="h-8 bg-[#BFAF8A] border-b border-[#A09070] rounded-l cursor-pointer" onClick={() => setVolume(v => Math.min(100, v + 5))}></div> {/* up */}
@@ -238,7 +246,7 @@ const NowPlaying: React.FC = () => {
           )}
           {/* Player controls and seekbar */}
           {screenOn && track && (
-            <div className="bg-gradient-to-b from-gray-700 to-gray-900 pb-2.5 flex flex-col items-center" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
+            <div className={`bg-gradient-to-b from-gray-700 to-gray-900 ${track?.release_name ? "pb-3" : "pb-[12.5px]"} flex flex-col items-center`} style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
               <div className="flex justify-center items-center gap-0 px-2">
               <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
                 <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">

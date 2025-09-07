@@ -70,7 +70,7 @@
     }
   },
   "about": {
-    "title": "About Me",
+    "title": "Get to Know Me",
     "description": "Hey there! My name is Aidan, and I'm a systems administrator, full-stack developer, and student from the United States. I primarily work with Linux, Docker, Next.js, and Node.js.",
     "sections": {
       "projects": "Projects",

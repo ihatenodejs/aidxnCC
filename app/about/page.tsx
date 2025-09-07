@@ -7,8 +7,8 @@ import Button from '@/components/objects/Button'
 import FeaturedRepos from '@/components/widgets/FeaturedRepos'
 import Image from 'next/image'
 import { useState } from 'react'
-import { User } from 'lucide-react'
 import { SiGoogle } from 'react-icons/si'
+import { TbUserHeart } from 'react-icons/tb'
 import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 
@@ -36,7 +36,7 @@ export default function About() {
       <main className="w-full">
         <div className="my-12 text-center">
           <div className="flex justify-center mb-6">
-            <User size={60} />
+            <TbUserHeart size={60} />
           </div>
           <h1 className="text-4xl font-bold mb-2 text-gray-100 glow">{t('about.title')}</h1>
         </div>
