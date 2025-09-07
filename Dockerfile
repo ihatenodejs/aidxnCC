@@ -21,13 +21,16 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN groupadd --system --gid 1001 nodejs
-RUN useradd --system --uid 1001 nextjs
+RUN groupadd --system --gid 999 nodejs
+RUN useradd --system --uid 999 nextjs
 
-COPY --from=builder /app/public ./build/public
+COPY --from=builder /app/public ./public
 
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./build/
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./build/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/server.ts ./
+COPY --from=builder --chown=nextjs:nodejs /app/lib ./lib
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
 
 USER nextjs
 
@@ -36,4 +39,4 @@ EXPOSE 3000
 ENV PORT=3000
 
 ENV HOSTNAME="0.0.0.0"
-CMD ["node", "build/server.js"]
+CMD ["bun", "run", "server.ts"]

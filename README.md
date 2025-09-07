@@ -17,9 +17,10 @@ Just create a `.env` file with the below variables, run `docker compose -d --bui
 
 ## Environment Variables
 
-| Variable             | Description                                                                         |
-|----------------------|-------------------------------------------------------------------------------------|
-| `LISTENBRAINZ_TOKEN` | Get this from your ListenBrainz [user settings](https://listenbrainz.org/settings/) |
+| Variable             | Required? | Description                                                                         |
+|----------------------|-----------|-------------------------------------------------------------------------------------|
+| `LISTENBRAINZ_TOKEN` | No        | Get this from your ListenBrainz [user settings](https://listenbrainz.org/settings/) |
+| `LASTFM_API_KEY`     | Yes       | Get this from your Last.fm [API account](https://www.last.fm/api/account/create)    |
 
 ## MusicBrainz
 

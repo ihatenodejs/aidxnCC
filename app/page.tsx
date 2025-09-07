@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Button from '@/components/objects/Button'
 import LastPlayed from '@/components/widgets/NowPlaying'
+import LiveIndicator from '@/components/widgets/LiveIndicator'
 
 import Image from 'next/image'
 
@@ -59,12 +60,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
           <div className="relative border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300 p-4">
             <div className="absolute top-2 right-2">
-              <div className="flex items-center gap-1 bg-black bg-opacity-50 rounded-full px-2 py-1">
-                <div className="w-1 h-1 bg-red-400 rounded-full animate-pulse"></div>
-                <div className="text-white text-xs">
-                  LIVE
-                </div>
-              </div>
+              <LiveIndicator />
             </div>
             <div className="flex justify-center items-center h-full">
               <LastPlayed />

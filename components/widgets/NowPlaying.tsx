@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useState, useCallback } from "react"
-import Image from "next/image"
+import { useEffect, useState } from "react"
 import { Loader2, AlertCircle } from "lucide-react"
 import { PiMusicNotesFill } from "react-icons/pi";
 import { FaBluetoothB } from "react-icons/fa6";
@@ -12,116 +11,79 @@ import { TbDiscOff } from "react-icons/tb"
 import { Progress } from "@/components/ui/progress"
 import Link from "@/components/objects/Link"
 import ScrollTxt from "@/components/objects/MusicText"
+import { connectSocket, disconnectSocket } from "@/lib/socket"
 
-interface Track {
-  track_name: string
-  artist_name: string
+interface LastFmResponse {
+  album?: {
+    image?: Array<{ size: string; '#text': string }>
+  }
+  track?: {
+    album?: {
+      image?: Array<{ size: string; '#text': string }>
+    }
+  }
+}
+
+interface NowPlayingData {
+  track_name?: string
+  artist_name?: string
   release_name?: string
   mbid?: string
+  coverArt?: string | null
+  lastFmData?: LastFmResponse
+  status: 'loading' | 'partial' | 'complete' | 'error'
+  message?: string
 }
 
 const NowPlaying: React.FC = () => {
-  const [track, setTrack] = useState<Track | null>(null)
-  const [coverArt, setCoverArt] = useState<string | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [albumArtLoading, setAlbumArtLoading] = useState(false)
-  const [loadingStatus, setLoadingStatus] = useState("Initializing")
-  const [error, setError] = useState<string | null>(null)
-  const [progress, setProgress] = useState(0)
-  const [steps, setSteps] = useState(0)
+  const [nowPlaying, setNowPlaying] = useState<NowPlayingData>({ status: 'loading' })
   const [currentTime, setCurrentTime] = useState(new Date())
   const [volume, setVolume] = useState(25)
   const [screenOn, setScreenOn] = useState(true)
-
-  const updateProgress = useCallback((current: number, total: number, status: string) => {
-    setProgress(current)
-    setSteps(total)
-    setLoadingStatus(status)
-    console.log(`[${current}/${total}] ${status}`)
-  }, [])
-
-  const fetchAlbumArt = useCallback(async (artist: string, album?: string) => {
-    if (!album) {
-      updateProgress(0, 0, "No album found")
-      setCoverArt(null)
-      setAlbumArtLoading(false)
-      return
-    }
-    try {
-      setAlbumArtLoading(true)
-      updateProgress(2, 3, `Searching for album: ${artist} - ${album}`)
-      const response = await fetch(
-        `https://musicbrainz.org/ws/2/release/?query=artist:${encodeURIComponent(
-          artist
-        )}%20AND%20release:${encodeURIComponent(album)}&fmt=json`
-      )
-      if (!response.ok) {
-        updateProgress(0, 0, `Album art fetch error: ${response.status}`)
-        setError("Error fetching album art (see console for details)")
-        setAlbumArtLoading(false)
-        return
-      }
-      const data = await response.json()
-      if (data.releases && data.releases.length > 0) {
-        const mbid = data.releases[0].id
-        updateProgress(3, 3, "Fetching cover art...")
-        setTrack(prev => prev ? { ...prev, mbid: `${mbid || null}` } : { track_name: "", artist_name: "", release_name: undefined, mbid: `${mbid || null}` })
-        const coverArtResponse = await fetch(`https://coverartarchive.org/release/${mbid}/front`)
-        if (coverArtResponse.ok) {
-          setCoverArt(coverArtResponse.url)
-          setAlbumArtLoading(false)
-        } else {
-          updateProgress(0, 0, "Cover art not found")
-          setCoverArt(null)
-          setAlbumArtLoading(false)
-        }
-      } else {
-        updateProgress(0, 0, "No releases found")
-        setCoverArt(null)
-        setAlbumArtLoading(false)
-      }
-    } catch (error) {
-      updateProgress(0, 0, `Error: ${error}`)
-      setCoverArt(null)
-      setAlbumArtLoading(false)
-    }
-  }, [updateProgress])
-
-  const fetchNowPlaying = useCallback(async () => {
-    updateProgress(1, 3, "Fetching current listen...")
-    try {
-      const response = await fetch("https://api.listenbrainz.org/1/user/p0ntus/playing-now")
-      const data = await response.json()
-
-      if (data.payload.count > 0 && data.payload.listens[0].track_metadata) {
-        const trackMetadata = data.payload.listens[0].track_metadata
-        console.log("= TRACK METADATA =")
-        if (trackMetadata.track_name) { console.log("🎵", trackMetadata.track_name) }
-        if (trackMetadata.artist_name) { console.log("🎤", trackMetadata.artist_name) }
-        if (trackMetadata.release_name) { console.log("💿", trackMetadata.release_name) }
-        setTrack({
-          track_name: trackMetadata.track_name,
-          artist_name: trackMetadata.artist_name,
-          release_name: trackMetadata.release_name,
-          mbid: trackMetadata.mbid,
-        })
-        setLoading(false)
-        updateProgress(2, 3, "Finding album art...")
-        await fetchAlbumArt(trackMetadata.artist_name, trackMetadata.release_name)
-      } else {
-        updateProgress(0, 0, "No track playing")
-        setLoading(false)
-      }
-    } catch (error) {
-      updateProgress(0, 0, `Error: ${error}`)
-      setError("Error fetching now playing data")
-      setLoading(false)
-    }
-  }, [fetchAlbumArt, updateProgress])
+  const [progressSteps, setProgressSteps] = useState({ current: 0, total: 3 })
 
   useEffect(() => {
-    fetchNowPlaying()
-  }, [fetchNowPlaying])
+    const socket = connectSocket()
+    
+    socket.on('connect', () => {
+      console.log('Connected to server')
+      socket.emit('requestNowPlaying')
+      socket.emit('startAutoRefresh')
+    })
+
+    socket.on('disconnect', () => {
+      console.log('[i] Disconnected from server')
+    })
+
+    socket.on('nowPlaying', (data: NowPlayingData) => {
+      console.log('Received now playing data:', data)
+      setNowPlaying(prevState => ({
+        ...prevState,
+        ...data
+      }))
+      
+      if (data.status === 'loading') {
+        setProgressSteps({ current: 1, total: 3 })
+      } else if (data.status === 'partial') {
+        setProgressSteps({ current: 2, total: 3 })
+      } else if (data.status === 'complete') {
+        setProgressSteps({ current: 3, total: 3 })
+      }
+    })
+
+    socket.on('connect_error', (error) => {
+      console.error('[!] Connection error:', error)
+      setNowPlaying({ status: 'error', message: 'Connection failed' })
+    })
+
+    return () => {
+      socket.off('connect')
+      socket.off('disconnect')
+      socket.off('nowPlaying')
+      socket.off('connect_error')
+      disconnectSocket()
+    }
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -139,28 +101,33 @@ const NowPlaying: React.FC = () => {
   }
 
   const renderScreenContent = () => {
-    if (loading) {
+    if (nowPlaying.status === 'loading') {
       return (
         <div className="flex flex-col items-center justify-center h-full">
           <Loader2 className="animate-spin text-white mb-4" size={32} />
           <div className="text-white text-xs text-center px-4">
-            <div className="mb-2">{loadingStatus}</div>
-            <Progress value={steps > 0 ? (progress * 100) / steps : 0} className="h-1" />
+            <div className="mb-2">{nowPlaying.message || 'Connecting...'}</div>
+            <Progress 
+              value={progressSteps.total > 0 ? (progressSteps.current * 100) / progressSteps.total : 0} 
+              className="h-1" 
+            />
           </div>
         </div>
       )
     }
 
-    if (error) {
+    if (nowPlaying.status === 'error') {
       return (
         <div className="flex flex-col items-center justify-center h-full">
           <AlertCircle className="text-red-500 mb-4" size={32} />
-          <div className="text-red-500 text-xs text-center px-4">{error}</div>
+          <div className="text-red-500 text-xs text-center px-4">
+            {nowPlaying.message || 'Error loading data'}
+          </div>
         </div>
       )
     }
 
-    if (!track) {
+    if (!nowPlaying.track_name) {
       return (
         <div className="flex flex-col items-center justify-center h-full">
           <TbDiscOff className="text-gray-400 mb-4" size={32} />
@@ -175,34 +142,33 @@ const NowPlaying: React.FC = () => {
     }
 
     // normal state
-    const currentTrack = track!;
     return (
       <>
         <a
-          href={currentTrack.mbid ? `https://musicbrainz.org/release/${currentTrack.mbid}` : `https://listenbrainz.org/user/p0ntus`}
+          href={nowPlaying.mbid ? `https://musicbrainz.org/release/${nowPlaying.mbid}` : `https://listenbrainz.org/user/p0ntus`}
           target="_blank"
           rel="noopener noreferrer"
           className="bg-gradient-to-b from-gray-700 to-gray-900 border-b border-gray-700 px-2 py-0 block" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}
         >
           <div className="text-center leading-none pb-1">
-            <ScrollTxt text={currentTrack.artist_name.toUpperCase()} type="artist" />
-            <ScrollTxt text={currentTrack.track_name} type="track" className="-mt-0.5" />
-            {currentTrack.release_name && <ScrollTxt text={currentTrack.release_name} type="release" className="-mt-1.5" />}
+            <ScrollTxt text={nowPlaying.artist_name?.toUpperCase() || ''} type="artist" />
+            <ScrollTxt text={nowPlaying.track_name || ''} type="track" className="-mt-0.5" />
+            {nowPlaying.release_name && <ScrollTxt text={nowPlaying.release_name} type="release" className="-mt-1.5" />}
           </div>
         </a>
         {/* Album art */}
         <div className="relative w-full aspect-square">
-          {albumArtLoading ? (
+          {nowPlaying.status === 'partial' && !nowPlaying.coverArt ? (
             <div className="w-full h-full bg-gray-700 flex flex-col items-center justify-center">
               <Loader2 className="animate-spin text-gray-400 mb-2" size={32} />
               <div className="text-gray-400 text-xs">Fetching Album Art</div>
             </div>
-          ) : coverArt ? (
-            <Image
-              src={coverArt}
-              alt={currentTrack.track_name}
-              fill
-              style={{ objectFit: "cover" }}
+          ) : nowPlaying.coverArt ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={nowPlaying.coverArt}
+              alt={nowPlaying.track_name || 'Album cover'}
+              className="w-full h-full object-cover"
             />
           ) : (
             <div className="w-full h-full bg-gray-700 flex items-center justify-center">
@@ -216,7 +182,7 @@ const NowPlaying: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className={`relative w-52 bg-[#D4C29A] rounded-xs border border-[#BFAF8A] z-10 ${track?.release_name ? "h-[24.25rem]" : "h-[23.6rem]"}`}>
+      <div className={`relative w-52 bg-[#D4C29A] rounded-xs border border-[#BFAF8A] z-10 ${nowPlaying.release_name ? "h-[24.25rem]" : "h-[23.6rem]"}`}>
         {/* Volume buttons */}
         <div className="absolute -left-[2.55px] top-8 rounded-l w-[1.75px] flex flex-col z-0">
           <div className="h-8 bg-[#BFAF8A] border-b border-[#A09070] rounded-l cursor-pointer" onClick={() => setVolume(v => Math.min(100, v + 5))}></div> {/* up */}
@@ -245,8 +211,8 @@ const NowPlaying: React.FC = () => {
             <div className="w-full h-full bg-black"></div>
           )}
           {/* Player controls and seekbar */}
-          {screenOn && track && (
-            <div className={`bg-gradient-to-b from-gray-700 to-gray-900 ${track?.release_name ? "pb-3" : "pb-[12.5px]"} flex flex-col items-center`} style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
+          {screenOn && nowPlaying.track_name && (
+            <div className={`bg-gradient-to-b from-gray-700 to-gray-900 ${nowPlaying.release_name ? "pb-3" : "pb-[12.5px]"} flex flex-col items-center`} style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}>
               <div className="flex justify-center items-center gap-0 px-2">
               <button className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] hover:filter hover:brightness-110 transition-all duration-200 p-1 rounded-full overflow-hidden">
                 <svg width="38" height="34" viewBox="0 0 24 20" className="drop-shadow-sm">
