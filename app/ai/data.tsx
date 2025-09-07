@@ -1,7 +1,8 @@
 import {
   SiClaude,
   SiGithubcopilot,
-  SiGooglegemini
+  SiGooglegemini,
+  SiPerplexity
 } from 'react-icons/si'
 import type { AITool, FavoriteModel, AIReview } from './types'
 
@@ -58,6 +59,13 @@ export const aiTools: AITool[] = [
     status: "occasional",
     link: "https://chat.qwen.ai/"
   },
+  {
+    "name": "Perplexity",
+    icon: SiPerplexity,
+    description: "Reliable for more in-depth searching",
+    status: "occasional",
+    link: "https://perplexity.ai/"
+  }
 ]
 
 export const favoriteModels: FavoriteModel[] = [
@@ -70,7 +78,13 @@ export const favoriteModels: FavoriteModel[] = [
   {
     name: "Claude 4.1 Opus",
     provider: "Anthropic",
-    review: "Amazing planner, useful for Plan Mode in Claude Code. Useful in code generation too.",
+    review: "Amazing planner, useful for Plan Mode in Claude Code. Useful in code generation, albeit at a higher cost.",
+    rating: 5
+  },
+  {
+    name: "Qwen3-Max-Preview",
+    provider: "Alibaba",
+    review: "A new personality for Qwen3 at a larger size, amazing for use in chats. I'm not so happy that it's closed source (for now).",
     rating: 5
   },
   {

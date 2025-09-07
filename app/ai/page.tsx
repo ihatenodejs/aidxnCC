@@ -6,11 +6,10 @@ import { Brain } from 'lucide-react'
 import TopPick from './components/TopPick'
 import AIStack from './components/AIStack'
 import FavoriteModels from './components/FavoriteModels'
-import ToolReviews from './components/ToolReviews'
+import FavoriteTools from './components/FavoriteTools'
 import { aiTools, favoriteModels, aiReviews } from './data'
 
 export default function AI() {
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -31,7 +30,7 @@ export default function AI() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
           <FavoriteModels models={favoriteModels} />
-          <ToolReviews reviews={aiReviews} />
+          <FavoriteTools reviews={aiReviews} />
         </div>
       </main>
       <Footer />

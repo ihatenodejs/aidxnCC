@@ -1,17 +1,21 @@
-import { MessageSquare, Star } from 'lucide-react'
+import { Star } from 'lucide-react'
+import { TbTool } from 'react-icons/tb'
 import type { AIReview } from '../types'
 
-interface ToolReviewsProps {
+interface FavoriteToolsProps {
   reviews: AIReview[]
 }
 
-export default function ToolReviews({ reviews }: ToolReviewsProps) {
+export default function FavoriteTools({ reviews }: FavoriteToolsProps) {
   return (
     <section className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
-      <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
-        <MessageSquare size={24} />
-        Tool Reviews
-      </h2>
+      <div className="flex flex-row justify-between">
+        <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
+          <TbTool size={24} />
+          Favorite Tools
+        </h2>
+        <p className="text-muted-foreground italic text-sm">Based on personal preference</p>
+      </div>
       <div className="space-y-4">
         {reviews.map((review, index) => (
           <div key={index} className="p-4 bg-gray-800/50 rounded-lg">

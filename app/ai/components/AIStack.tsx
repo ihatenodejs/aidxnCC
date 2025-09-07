@@ -1,4 +1,4 @@
-import { Bot } from 'lucide-react'
+import { TbStack2 } from 'react-icons/tb'
 import Link from '@/components/objects/Link'
 import type { AITool } from '../types'
 
@@ -27,10 +27,13 @@ export default function AIStack({ tools }: AIStackProps) {
 
   return (
     <section className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
-      <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
-        <Bot size={24} />
-        My AI Stack
-      </h2>
+      <div className="flex flex-row justify-between">
+        <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
+          <TbStack2 size={24} />
+          My AI Stack
+        </h2>
+        <p className="text-muted-foreground">The AI tools I use as a part of my routine and workflow.</p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {tools.map((tool, index) => (
           <div key={index} className="p-4 border border-gray-700 rounded-lg hover:border-gray-500 transition-all duration-300 flex flex-col">
@@ -54,7 +57,7 @@ export default function AIStack({ tools }: AIStackProps) {
               </span>
               <span className="flex flex-row items-center gap-4">
                 {tool.link && (
-                  <Link href={tool.link} className="text-blue-400 hover:text-blue-300 text-sm">
+                  <Link href={tool.link} className="text-blue-400 hover:text-blue-300 text-sm" target="_blank" rel="noopener noreferrer">
                     View →
                   </Link>
                 )}

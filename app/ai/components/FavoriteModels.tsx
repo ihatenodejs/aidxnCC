@@ -1,4 +1,4 @@
-import { Star } from 'lucide-react'
+import { Brain, Star } from 'lucide-react'
 import type { FavoriteModel } from '../types'
 
 interface FavoriteModelsProps {
@@ -8,10 +8,13 @@ interface FavoriteModelsProps {
 export default function FavoriteModels({ models }: FavoriteModelsProps) {
   return (
     <section className="p-4 sm:p-8 border-2 border-gray-700 rounded-lg hover:border-gray-600 transition-colors duration-300">
-      <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
-        <Star size={24} />
-        Favorite Models
-      </h2>
+      <div className="flex flex-row justify-between">
+        <h2 className="text-2xl font-semibold mb-6 text-gray-200 flex items-center gap-2">
+          <Brain size={24} />
+          Favorite Models
+        </h2>
+        <p className="text-muted-foreground italic text-sm">Based on personal preference</p>
+      </div>
       <div className="space-y-4">
         {models.map((model, index) => (
           <div key={index} className="p-4 bg-gray-800/50 rounded-lg">
