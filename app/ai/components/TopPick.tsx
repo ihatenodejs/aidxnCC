@@ -17,6 +17,9 @@ export default function TopPick() {
               <h3 className="text-3xl font-bold text-gray-100">Claude</h3>
               <p className="text-gray-400">by Anthropic</p>
               <div className="flex items-center gap-2 mt-2">
+                <Link href="https://claude.ai" className="text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                  Visit <ChevronRight size={16} />
+                </Link>
                 <Link href="/ai/claude" className="text-blue-400 hover:text-blue-300 flex items-center gap-1">
                   My Usage <ChevronRight size={16} />
                 </Link>
@@ -31,8 +34,8 @@ export default function TopPick() {
             <div className='flex flex-col items-center gap-y-6 sm:flex-row sm:justify-between'>
               <div className="flex gap-2 flex-wrap">
                 <span className="px-2 py-1 bg-gray-700 rounded text-xs text-gray-300">Top-Tier Tool Calling</span>
-                <span className="px-2 py-1 bg-gray-700 rounded text-xs text-gray-300">Max Plan is High Value</span>
-                <span className="px-2 py-1 bg-gray-700 rounded text-xs text-gray-300">Fast Interface</span>
+                <span className="px-2 py-1 bg-gray-700 rounded text-xs text-gray-300">High-Value Plans</span>
+                <span className="px-2 py-1 bg-gray-700 rounded text-xs text-gray-300">Good Speed</span>
               </div>
             </div>
           </div>

@@ -44,7 +44,7 @@ const NowPlaying: React.FC = () => {
 
   useEffect(() => {
     const socket = connectSocket()
-    
+
     socket.on('connect', () => {
       console.log('Connected to server')
       socket.emit('requestNowPlaying')
@@ -61,7 +61,7 @@ const NowPlaying: React.FC = () => {
         ...prevState,
         ...data
       }))
-      
+
       if (data.status === 'loading') {
         setProgressSteps({ current: 1, total: 3 })
       } else if (data.status === 'partial') {
@@ -107,9 +107,9 @@ const NowPlaying: React.FC = () => {
           <Loader2 className="animate-spin text-white mb-4" size={32} />
           <div className="text-white text-xs text-center px-4">
             <div className="mb-2">{nowPlaying.message || 'Connecting...'}</div>
-            <Progress 
+            <Progress
               value={progressSteps.total > 0 ? (progressSteps.current * 100) / progressSteps.total : 0} 
-              className="h-1" 
+              className="h-1"
             />
           </div>
         </div>
@@ -151,7 +151,7 @@ const NowPlaying: React.FC = () => {
           className="bg-gradient-to-b from-gray-700 to-gray-900 border-b border-gray-700 px-2 py-0 block" style={{background: 'linear-gradient(to bottom, #4b5563 0%, #374151 30%, #1f2937 70%, #111827 100%)'}}
         >
           <div className="text-center leading-none pb-1">
-            <ScrollTxt text={nowPlaying.artist_name?.toUpperCase() || ''} type="artist" />
+            <ScrollTxt text={nowPlaying.artist_name?.toUpperCase() || ''} type="artist" className="-mt-0.5" />
             <ScrollTxt text={nowPlaying.track_name || ''} type="track" className="-mt-0.5" />
             {nowPlaying.release_name && <ScrollTxt text={nowPlaying.release_name} type="release" className="-mt-1.5" />}
           </div>
@@ -182,7 +182,7 @@ const NowPlaying: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className={`relative w-52 bg-[#D4C29A] rounded-xs border border-[#BFAF8A] z-10 ${nowPlaying.release_name ? "h-[24.25rem]" : "h-[23.6rem]"}`}>
+      <div className={`relative w-52 bg-[#D4C29A] rounded-xs border border-[#BFAF8A] z-10 ${nowPlaying.release_name ? "h-[24.1rem]" : "h-[23.6rem]"}`}>
         {/* Volume buttons */}
         <div className="absolute -left-[2.55px] top-8 rounded-l w-[1.75px] flex flex-col z-0">
           <div className="h-8 bg-[#BFAF8A] border-b border-[#A09070] rounded-l cursor-pointer" onClick={() => setVolume(v => Math.min(100, v + 5))}></div> {/* up */}

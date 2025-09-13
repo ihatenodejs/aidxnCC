@@ -6,6 +6,8 @@ export interface AITool {
   status: 'primary' | 'active' | 'occasional' | string;
   link?: string;
   usage?: string;
+  price?: number;
+  discountedPrice?: number;
 }
 
 export interface FavoriteModel {
