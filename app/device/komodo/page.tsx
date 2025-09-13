@@ -81,7 +81,7 @@ export default function Cheetah() {
                         >
                           6.1.138-android14-SUSFS-Wild
                         </Link>
-                      </p>;
+                      </p>
                       <p className="flex items-center justify-center lg:justify-start">
                         <MdOutlineAndroid className="mr-3" size={20} />
                         <b className="mr-2">ROM:</b>
